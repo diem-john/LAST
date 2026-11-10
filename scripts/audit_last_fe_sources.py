@@ -3,8 +3,15 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import pandas as pd
 from forecasting.data.audit import audit_csv, audit_raster, audit_ibtracs_instances, write_audit_report
 from forecasting.data.ingestion import load_area_averaged_precipitation, load_nasa_power
+from forecasting.data.quality import (
+    audit_frame_quality,
+    audit_precipitation_frame,
+    audit_ibtracs_quality,
+    audit_raster_full,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV_SOURCES = {
@@ -25,7 +32,9 @@ def main() -> None:
     parser.add_argument("--include-rasters", action="store_true")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    summary = {"csv": {}, "ibtracs": {}, "precipitation": {}, "rasters": {}, "errors": []}
+    summary = {"csv": {}, "ibtracs": {}, "ibtracs_quality": {}, "precipitation": {}, "precipitation_quality": {}, "rasters": {}, "errors": []}
+    quality_dir = args.output_dir / "quality"
+    quality_dir.mkdir(parents=True, exist_ok=True)
     for source_id, path in CSV_SOURCES.items():
         if source_id == "nasa_power":
             continue  # NASA POWER has a metadata block and a source-specific reader below.
@@ -36,6 +45,14 @@ def main() -> None:
             result = audit_csv(path, sample_rows=args.sample_rows)
             summary["csv"][source_id] = result
             write_audit_report(result, args.output_dir / f"{source_id}.json")
+            full_frame = pd.read_csv(path, low_memory=False)
+            quality = audit_frame_quality(
+                full_frame, timestamp_column="valid_time", expected_frequency="1h",
+                exclude_numeric=("latitude", "longitude"),
+            )
+            quality["source_id"] = source_id
+            summary["csv"].setdefault("full_record_quality", {})[source_id] = quality
+            write_audit_report(quality, quality_dir / f"{source_id}_full_quality.json")
         except Exception as exc:
             summary["errors"].append({"source": source_id, "error": str(exc)})
     try:
@@ -45,6 +62,9 @@ def main() -> None:
         )
         summary["ibtracs"] = ibtracs
         write_audit_report(ibtracs, args.output_dir / "ibtracs_instances.json")
+        ibtracs_quality = audit_ibtracs_quality(ROOT / "data/ibtracs/metadata")
+        summary["ibtracs_quality"] = ibtracs_quality
+        write_audit_report(ibtracs_quality, quality_dir / "ibtracs_quality.json")
     except Exception as exc:
         summary["errors"].append({"source": "ibtracs", "error": str(exc)})
 
@@ -61,6 +81,14 @@ def main() -> None:
             }
             summary["csv"]["nasa_power"] = result
             write_audit_report(result, args.output_dir / "nasa_power.json")
+            nasa_quality = audit_frame_quality(
+                frame, timestamp_column="timestamp_lst", expected_frequency="1h",
+                exclude_numeric=("YEAR", "MO", "DY", "HR"), timestamp_timezone="NAIVE",
+            )
+            nasa_quality["source_id"] = "nasa_power"
+            nasa_quality["time_convention"] = "LST; timezone-naive; not converted to UTC"
+            summary["csv"].setdefault("full_record_quality", {})["nasa_power"] = nasa_quality
+            write_audit_report(nasa_quality, quality_dir / "nasa_power_full_quality.json")
         except Exception as exc:
             summary["errors"].append({"source": "nasa_power", "error": str(exc)})
 
@@ -73,6 +101,16 @@ def main() -> None:
             result = {"metadata": metadata, "columns": list(frame.columns), "sample": frame.head(args.sample_rows).astype(str).to_dict(orient="records")[:20]}
             summary["precipitation"][report_id] = result
             write_audit_report(result, args.output_dir / f"{report_id}.json")
+            fill_value = pd.to_numeric(pd.Series([metadata.get("fill_value")]), errors="coerce").iloc[0]
+            quality = audit_precipitation_frame(
+                frame, source_id=canonical_source_id,
+                fill_value=float(fill_value) if pd.notna(fill_value) else None,
+            )
+            quality["source_variable"] = metadata.get("source_variable")
+            quality["requested_bbox"] = metadata.get("requested_bbox")
+            quality["data_bbox"] = metadata.get("data_bbox")
+            summary["precipitation_quality"][report_id] = quality
+            write_audit_report(quality, quality_dir / f"{report_id}_quality.json")
         except Exception as exc:
             summary["errors"].append({"source": report_id, "error": str(exc)})
     if args.include_rasters:
@@ -82,6 +120,9 @@ def main() -> None:
                 key = path.parent.name
                 summary["rasters"][key] = result
                 write_audit_report(result, args.output_dir / f"{key}_raster.json")
+                full_result = audit_raster_full(path)
+                summary.setdefault("raster_full_quality", {})[key] = full_result
+                write_audit_report(full_result, quality_dir / f"{key}_full_raster_quality.json")
             except Exception as exc:
                 summary["errors"].append({"source": str(path), "error": str(exc)})
     write_audit_report(summary, args.output_dir / "summary.json")
