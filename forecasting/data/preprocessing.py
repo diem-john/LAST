@@ -32,7 +32,9 @@ def validate_time_series(frame: pd.DataFrame, *, expected_frequency: str = "3h")
         raise ValueError("Input frame must contain 'timestamp'")
     parsed = pd.to_datetime(frame["timestamp"], utc=True, errors="coerce")
     timestamps = parsed.dropna().sort_values()
+    # Duplicate timestamps are reported separately, not double-counted as cadence gaps.
     deltas = timestamps.diff().dropna()
+    deltas = deltas[deltas > pd.Timedelta(0)]
     expected = pd.Timedelta(expected_frequency)
     return {
         "rows": int(len(frame)), "invalid_timestamps": int(parsed.isna().sum()),
