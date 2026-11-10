@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 import pandas as pd
+import numpy as np
 
 
 def audit_csv(path: str | Path, *, sample_rows: int = 1000) -> dict[str, Any]:
@@ -50,11 +51,13 @@ def audit_raster(path: str | Path) -> dict[str, Any]:
         for index in range(1, dataset.count + 1):
             band = dataset.read(index, masked=True, out_shape=(min(dataset.height, 256), min(dataset.width, 256)))
             compressed = band.compressed()
+            finite = compressed[np.isfinite(compressed)]
             bands.append({
                 "index": index, "dtype": dataset.dtypes[index - 1],
-                "nodata": dataset.nodata, "sample_valid_pixels": int(compressed.size),
-                "sample_min": float(compressed.min()) if compressed.size else None,
-                "sample_max": float(compressed.max()) if compressed.size else None,
+                "nodata": dataset.nodata, "sample_valid_pixels": int(finite.size),
+                "sample_nonfinite_pixels": int(compressed.size - finite.size),
+                "sample_min": float(finite.min()) if finite.size else None,
+                "sample_max": float(finite.max()) if finite.size else None,
                 "description": dataset.descriptions[index - 1],
                 "units": dataset.units[index - 1] if dataset.units else None,
             })
