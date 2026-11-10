@@ -1,0 +1,79 @@
+{
+  "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+  "driver": "GTiff",
+  "width": 4716,
+  "height": 5804,
+  "band_count": 5,
+  "crs": "EPSG:4326",
+  "transform": [
+    0.002245788210298804,
+    0.0,
+    111.95703385981597,
+    0.0,
+    -0.002245788210298804,
+    34.928744034777296
+  ],
+  "bounds": {
+    "left": 111.95703385981597,
+    "bottom": 21.89418926220304,
+    "right": 122.54817105958513,
+    "top": 34.928744034777296
+  },
+  "resolution": [
+    0.002245788210298804,
+    0.002245788210298804
+  ],
+  "bands": [
+    {
+      "index": 1,
+      "dtype": "float32",
+      "nodata": null,
+      "sample_valid_pixels": 65536,
+      "sample_min": NaN,
+      "sample_max": NaN,
+      "description": "flooded",
+      "units": null
+    },
+    {
+      "index": 2,
+      "dtype": "float32",
+      "nodata": null,
+      "sample_valid_pixels": 65536,
+      "sample_min": NaN,
+      "sample_max": NaN,
+      "description": "duration",
+      "units": null
+    },
+    {
+      "index": 3,
+      "dtype": "float32",
+      "nodata": null,
+      "sample_valid_pixels": 65536,
+      "sample_min": NaN,
+      "sample_max": NaN,
+      "description": "clear_views",
+      "units": null
+    },
+    {
+      "index": 4,
+      "dtype": "float32",
+      "nodata": null,
+      "sample_valid_pixels": 65536,
+      "sample_min": NaN,
+      "sample_max": NaN,
+      "description": "clear_perc",
+      "units": null
+    },
+    {
+      "index": 5,
+      "dtype": "float32",
+      "nodata": null,
+      "sample_valid_pixels": 65536,
+      "sample_min": NaN,
+      "sample_max": NaN,
+      "description": "jrc_perm_water",
+      "units": null
+    }
+  ],
+  "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+}

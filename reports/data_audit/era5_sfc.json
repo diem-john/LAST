@@ -1,0 +1,318 @@
+{
+  "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\era5\\reanalysis-era5-single-levels-timeseries-sfcnhk6q2bv.csv",
+  "size_bytes": 27925872,
+  "sample_rows_read": 1000,
+  "columns": {
+    "valid_time": {
+      "inferred_dtype": "str",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 0.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "2010-01-01 00:00:00",
+        "2010-01-01 01:00:00",
+        "2010-01-01 02:00:00",
+        "2010-01-01 03:00:00",
+        "2010-01-01 04:00:00"
+      ]
+    },
+    "u100": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "-0.8057556",
+        "-0.11225891",
+        "1.3613892",
+        "1.9486542",
+        "2.8473816"
+      ],
+      "numeric_sample_min": -3.0884094,
+      "numeric_sample_max": 4.3821564
+    },
+    "v100": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "-1.7375183",
+        "-0.62835693",
+        "-0.16645813",
+        "0.060150146",
+        "0.216568"
+      ],
+      "numeric_sample_min": -5.9000854,
+      "numeric_sample_max": 4.821594
+    },
+    "fg10": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "3.6062546",
+        "3.4596465",
+        "5.1742315",
+        "5.997755",
+        "6.2363677"
+      ],
+      "numeric_sample_min": 1.3749248,
+      "numeric_sample_max": 10.669136
+    },
+    "d2m": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "284.83783",
+        "285.70386",
+        "287.0066",
+        "287.3503",
+        "287.61188"
+      ],
+      "numeric_sample_min": 277.00314,
+      "numeric_sample_max": 291.14777
+    },
+    "t2m": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "287.7729",
+        "289.1613",
+        "291.71796",
+        "292.08295",
+        "292.11218"
+      ],
+      "numeric_sample_min": 280.45508,
+      "numeric_sample_max": 301.5759
+    },
+    "blh": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "75.06053",
+        "159.71992",
+        "336.14008",
+        "538.282",
+        "619.06555"
+      ],
+      "numeric_sample_min": 14.15044,
+      "numeric_sample_max": 1428.7726
+    },
+    "cbh": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 854,
+      "sample_null": 146,
+      "numeric_parse_ratio": 0.854,
+      "datetime_parse_ratio_utc": 0.854,
+      "sample_values": [
+        "437.30853",
+        "573.8906",
+        "737.1636",
+        "744.6777",
+        "456.67047"
+      ],
+      "numeric_sample_min": 30.915894,
+      "numeric_sample_max": 13668.046
+    },
+    "msl": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "101843.75",
+        "101896.375",
+        "101864.44",
+        "101795.31",
+        "101759.06"
+      ],
+      "numeric_sample_min": 101281.31,
+      "numeric_sample_max": 102750.5
+    },
+    "sst": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 0,
+      "sample_null": 1000,
+      "numeric_parse_ratio": 0.0,
+      "datetime_parse_ratio_utc": 0.0,
+      "sample_values": []
+    },
+    "skt": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "287.90063",
+        "291.7959",
+        "293.57617",
+        "295.6731",
+        "296.0713"
+      ],
+      "numeric_sample_min": 278.32343,
+      "numeric_sample_max": 305.78143
+    },
+    "slhf": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "-84652.0",
+        "-317333.0",
+        "-566931.0",
+        "-707476.0",
+        "-705865.0"
+      ],
+      "numeric_sample_min": -1066268.0,
+      "numeric_sample_max": 17415.0
+    },
+    "sp": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "96989.86",
+        "97042.945",
+        "97016.164",
+        "96953.85",
+        "96921.2"
+      ],
+      "numeric_sample_min": 96504.11,
+      "numeric_sample_max": 97832.5
+    },
+    "ssrd": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "342528.0",
+        "1002112.0",
+        "1565504.0",
+        "1942272.0",
+        "1924416.0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 2959936.0
+    },
+    "strd": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "1158801.8",
+        "1116410.1",
+        "1132638.5",
+        "1170026.2",
+        "1201868.2"
+      ],
+      "numeric_sample_min": 915408.56,
+      "numeric_sample_max": 1382161.9
+    },
+    "tcc": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0.67297363",
+        "0.5132446",
+        "0.50167847",
+        "0.46707153",
+        "0.3154602"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 1.0
+    },
+    "tp": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "2.2888184e-05",
+        "9.536743e-06",
+        "1.1444092e-05",
+        "3.0040741e-05",
+        "0.00010871887"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 0.0006761551
+    },
+    "fdir": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "182080.0",
+        "673088.0",
+        "1142464.0",
+        "1401088.0",
+        "1358784.0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 2468672.0
+    },
+    "latitude": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "23.25",
+        "23.25",
+        "23.25",
+        "23.25",
+        "23.25"
+      ],
+      "numeric_sample_min": 23.25,
+      "numeric_sample_max": 23.25
+    },
+    "longitude": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "120.5",
+        "120.5",
+        "120.5",
+        "120.5",
+        "120.5"
+      ],
+      "numeric_sample_min": 120.5,
+      "numeric_sample_max": 120.5
+    }
+  },
+  "note": "Dtype and parse ratios are sample-based; units and semantic roles require source documentation."
+}

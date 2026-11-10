@@ -1,0 +1,78 @@
+{
+  "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\era5\\reanalysis-era5-single-levels-timeseries-wavxnvtuiin.csv",
+  "size_bytes": 5019258,
+  "sample_rows_read": 1000,
+  "columns": {
+    "valid_time": {
+      "inferred_dtype": "str",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 0.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "2010-01-01 00:00:00",
+        "2010-01-01 01:00:00",
+        "2010-01-01 02:00:00",
+        "2010-01-01 03:00:00",
+        "2010-01-01 04:00:00"
+      ]
+    },
+    "mwd": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 0,
+      "sample_null": 1000,
+      "numeric_parse_ratio": 0.0,
+      "datetime_parse_ratio_utc": 0.0,
+      "sample_values": []
+    },
+    "mwp": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 0,
+      "sample_null": 1000,
+      "numeric_parse_ratio": 0.0,
+      "datetime_parse_ratio_utc": 0.0,
+      "sample_values": []
+    },
+    "swh": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 0,
+      "sample_null": 1000,
+      "numeric_parse_ratio": 0.0,
+      "datetime_parse_ratio_utc": 0.0,
+      "sample_values": []
+    },
+    "latitude": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "23.5",
+        "23.5",
+        "23.5",
+        "23.5",
+        "23.5"
+      ],
+      "numeric_sample_min": 23.5,
+      "numeric_sample_max": 23.5
+    },
+    "longitude": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "120.5",
+        "120.5",
+        "120.5",
+        "120.5",
+        "120.5"
+      ],
+      "numeric_sample_min": 120.5,
+      "numeric_sample_max": 120.5
+    }
+  },
+  "note": "Dtype and parse ratios are sample-based; units and semantic roles require source documentation."
+}

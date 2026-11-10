@@ -1,0 +1,1836 @@
+{
+  "csv": {
+    "era5_sfc": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\era5\\reanalysis-era5-single-levels-timeseries-sfcnhk6q2bv.csv",
+      "size_bytes": 27925872,
+      "sample_rows_read": 1000,
+      "columns": {
+        "valid_time": {
+          "inferred_dtype": "str",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 0.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "2010-01-01 00:00:00",
+            "2010-01-01 01:00:00",
+            "2010-01-01 02:00:00",
+            "2010-01-01 03:00:00",
+            "2010-01-01 04:00:00"
+          ]
+        },
+        "u100": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "-0.8057556",
+            "-0.11225891",
+            "1.3613892",
+            "1.9486542",
+            "2.8473816"
+          ],
+          "numeric_sample_min": -3.0884094,
+          "numeric_sample_max": 4.3821564
+        },
+        "v100": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "-1.7375183",
+            "-0.62835693",
+            "-0.16645813",
+            "0.060150146",
+            "0.216568"
+          ],
+          "numeric_sample_min": -5.9000854,
+          "numeric_sample_max": 4.821594
+        },
+        "fg10": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "3.6062546",
+            "3.4596465",
+            "5.1742315",
+            "5.997755",
+            "6.2363677"
+          ],
+          "numeric_sample_min": 1.3749248,
+          "numeric_sample_max": 10.669136
+        },
+        "d2m": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "284.83783",
+            "285.70386",
+            "287.0066",
+            "287.3503",
+            "287.61188"
+          ],
+          "numeric_sample_min": 277.00314,
+          "numeric_sample_max": 291.14777
+        },
+        "t2m": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "287.7729",
+            "289.1613",
+            "291.71796",
+            "292.08295",
+            "292.11218"
+          ],
+          "numeric_sample_min": 280.45508,
+          "numeric_sample_max": 301.5759
+        },
+        "blh": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "75.06053",
+            "159.71992",
+            "336.14008",
+            "538.282",
+            "619.06555"
+          ],
+          "numeric_sample_min": 14.15044,
+          "numeric_sample_max": 1428.7726
+        },
+        "cbh": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 854,
+          "sample_null": 146,
+          "numeric_parse_ratio": 0.854,
+          "datetime_parse_ratio_utc": 0.854,
+          "sample_values": [
+            "437.30853",
+            "573.8906",
+            "737.1636",
+            "744.6777",
+            "456.67047"
+          ],
+          "numeric_sample_min": 30.915894,
+          "numeric_sample_max": 13668.046
+        },
+        "msl": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "101843.75",
+            "101896.375",
+            "101864.44",
+            "101795.31",
+            "101759.06"
+          ],
+          "numeric_sample_min": 101281.31,
+          "numeric_sample_max": 102750.5
+        },
+        "sst": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 0,
+          "sample_null": 1000,
+          "numeric_parse_ratio": 0.0,
+          "datetime_parse_ratio_utc": 0.0,
+          "sample_values": []
+        },
+        "skt": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "287.90063",
+            "291.7959",
+            "293.57617",
+            "295.6731",
+            "296.0713"
+          ],
+          "numeric_sample_min": 278.32343,
+          "numeric_sample_max": 305.78143
+        },
+        "slhf": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "-84652.0",
+            "-317333.0",
+            "-566931.0",
+            "-707476.0",
+            "-705865.0"
+          ],
+          "numeric_sample_min": -1066268.0,
+          "numeric_sample_max": 17415.0
+        },
+        "sp": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "96989.86",
+            "97042.945",
+            "97016.164",
+            "96953.85",
+            "96921.2"
+          ],
+          "numeric_sample_min": 96504.11,
+          "numeric_sample_max": 97832.5
+        },
+        "ssrd": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "342528.0",
+            "1002112.0",
+            "1565504.0",
+            "1942272.0",
+            "1924416.0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 2959936.0
+        },
+        "strd": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "1158801.8",
+            "1116410.1",
+            "1132638.5",
+            "1170026.2",
+            "1201868.2"
+          ],
+          "numeric_sample_min": 915408.56,
+          "numeric_sample_max": 1382161.9
+        },
+        "tcc": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0.67297363",
+            "0.5132446",
+            "0.50167847",
+            "0.46707153",
+            "0.3154602"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 1.0
+        },
+        "tp": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "2.2888184e-05",
+            "9.536743e-06",
+            "1.1444092e-05",
+            "3.0040741e-05",
+            "0.00010871887"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 0.0006761551
+        },
+        "fdir": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "182080.0",
+            "673088.0",
+            "1142464.0",
+            "1401088.0",
+            "1358784.0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 2468672.0
+        },
+        "latitude": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "23.25",
+            "23.25",
+            "23.25",
+            "23.25",
+            "23.25"
+          ],
+          "numeric_sample_min": 23.25,
+          "numeric_sample_max": 23.25
+        },
+        "longitude": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "120.5",
+            "120.5",
+            "120.5",
+            "120.5",
+            "120.5"
+          ],
+          "numeric_sample_min": 120.5,
+          "numeric_sample_max": 120.5
+        }
+      },
+      "note": "Dtype and parse ratios are sample-based; units and semantic roles require source documentation."
+    },
+    "era5_wav": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\era5\\reanalysis-era5-single-levels-timeseries-wavxnvtuiin.csv",
+      "size_bytes": 5019258,
+      "sample_rows_read": 1000,
+      "columns": {
+        "valid_time": {
+          "inferred_dtype": "str",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 0.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "2010-01-01 00:00:00",
+            "2010-01-01 01:00:00",
+            "2010-01-01 02:00:00",
+            "2010-01-01 03:00:00",
+            "2010-01-01 04:00:00"
+          ]
+        },
+        "mwd": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 0,
+          "sample_null": 1000,
+          "numeric_parse_ratio": 0.0,
+          "datetime_parse_ratio_utc": 0.0,
+          "sample_values": []
+        },
+        "mwp": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 0,
+          "sample_null": 1000,
+          "numeric_parse_ratio": 0.0,
+          "datetime_parse_ratio_utc": 0.0,
+          "sample_values": []
+        },
+        "swh": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 0,
+          "sample_null": 1000,
+          "numeric_parse_ratio": 0.0,
+          "datetime_parse_ratio_utc": 0.0,
+          "sample_values": []
+        },
+        "latitude": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "23.5",
+            "23.5",
+            "23.5",
+            "23.5",
+            "23.5"
+          ],
+          "numeric_sample_min": 23.5,
+          "numeric_sample_max": 23.5
+        },
+        "longitude": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "120.5",
+            "120.5",
+            "120.5",
+            "120.5",
+            "120.5"
+          ],
+          "numeric_sample_min": 120.5,
+          "numeric_sample_max": 120.5
+        }
+      },
+      "note": "Dtype and parse ratios are sample-based; units and semantic roles require source documentation."
+    },
+    "ibtracs": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\ibtracs\\typhoon_data.csv",
+      "size_bytes": 15681486,
+      "sample_rows_read": 1000,
+      "columns": {
+        "Date": {
+          "inferred_dtype": "str",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 0.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "1978-11-25 12:00:00",
+            "1978-11-25 13:00:00",
+            "1978-11-25 14:00:00",
+            "1978-11-25 15:00:00",
+            "1978-11-25 16:00:00"
+          ]
+        },
+        "grade": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "2",
+            "2",
+            "2",
+            "2",
+            "2"
+          ],
+          "numeric_sample_min": 2.0,
+          "numeric_sample_max": 6.0
+        },
+        "lat": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "13.0",
+            "12.98",
+            "12.97",
+            "12.96",
+            "12.96"
+          ],
+          "numeric_sample_min": 2.0,
+          "numeric_sample_max": 39.0
+        },
+        "lng": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "154.0",
+            "153.82",
+            "153.64",
+            "153.46",
+            "153.29"
+          ],
+          "numeric_sample_min": 119.8,
+          "numeric_sample_max": 179.0
+        },
+        "pressure": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "1004.0",
+            "1003.7",
+            "1003.3",
+            "1003.0",
+            "1002.7"
+          ],
+          "numeric_sample_min": 930.0,
+          "numeric_sample_max": 1012.0
+        },
+        "wind": {
+          "inferred_dtype": "float64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 95.0
+        },
+        "dir50": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 9.0
+        },
+        "long50": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 75.0
+        },
+        "short50": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 75.0
+        },
+        "dir30": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 9.0
+        },
+        "long30": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 250.0
+        },
+        "short30": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 250.0
+        },
+        "intp": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "0",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "numeric_sample_min": 0.0,
+          "numeric_sample_max": 1.0
+        },
+        "seq_id": {
+          "inferred_dtype": "int64",
+          "sample_non_null": 1000,
+          "sample_null": 0,
+          "numeric_parse_ratio": 1.0,
+          "datetime_parse_ratio_utc": 1.0,
+          "sample_values": [
+            "197830",
+            "197830",
+            "197830",
+            "197830",
+            "197830"
+          ],
+          "numeric_sample_min": 197830.0,
+          "numeric_sample_max": 197904.0
+        }
+      },
+      "note": "Dtype and parse ratios are sample-based; units and semantic roles require source documentation."
+    },
+    "nasa_power": {
+      "metadata": {
+        "source_id": "nasa_power",
+        "source_file": "nasapow.csv",
+        "temporal_resolution": "hourly",
+        "time_convention": "LST (local solar time; timezone not specified by source)",
+        "requested_or_reported_date_range": "02/01/2020 through 11/10/2026 in LST",
+        "location": "Latitude  23.4814   Longitude 120.4539",
+        "elevation": "Average for 0.5 x 0.625 degree lat/lon region = 687.06 meters",
+        "missing_value_marker": "-999",
+        "parameter_descriptions": [
+          "ALLSKY_SFC_SW_DWN     CERES SYN1deg All Sky Surface Shortwave Downward Irradiance (Wh/m^2)",
+          "CLRSKY_SFC_SW_DWN     CERES SYN1deg Clear Sky Surface Shortwave Downward Irradiance (Wh/m^2)",
+          "T2M                   MERRA-2 Temperature at 2 Meters (C)",
+          "T2MDEW                MERRA-2 Dew/Frost Point at 2 Meters (C)",
+          "T2MWET                MERRA-2 Wet Bulb Temperature at 2 Meters (C)",
+          "WS10M                 MERRA-2 Wind Speed at 10 Meters (m/s)",
+          "WD10M                 MERRA-2 Wind Direction at 10 Meters (Degrees)"
+        ],
+        "row_count": 59400,
+        "valid_timestamp_count": 59400,
+        "observed_start_lst": "2020-02-01T00:00:00",
+        "observed_end_lst": "2026-11-10T23:00:00",
+        "measurement_columns": [
+          "ALLSKY_SFC_SW_DWN",
+          "CLRSKY_SFC_SW_DWN",
+          "T2M",
+          "T2MDEW",
+          "T2MWET",
+          "WS10M",
+          "WD10M"
+        ],
+        "missing_measurements": {
+          "ALLSKY_SFC_SW_DWN": 1728,
+          "CLRSKY_SFC_SW_DWN": 1728,
+          "T2M": 96,
+          "T2MDEW": 96,
+          "T2MWET": 96,
+          "WS10M": 96,
+          "WD10M": 96
+        }
+      },
+      "columns": [
+        "timestamp_lst",
+        "YEAR",
+        "MO",
+        "DY",
+        "HR",
+        "ALLSKY_SFC_SW_DWN",
+        "CLRSKY_SFC_SW_DWN",
+        "T2M",
+        "T2MDEW",
+        "T2MWET",
+        "WS10M",
+        "WD10M",
+        "source_id"
+      ],
+      "sample": [
+        {
+          "timestamp_lst": "2020-02-01 00:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "0",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "6.3",
+          "T2MDEW": "4.18",
+          "T2MWET": "5.24",
+          "WS10M": "2.21",
+          "WD10M": "97.5",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 01:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "1",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "6.17",
+          "T2MDEW": "3.73",
+          "T2MWET": "4.95",
+          "WS10M": "2.24",
+          "WD10M": "99.5",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 02:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "2",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "5.96",
+          "T2MDEW": "3.23",
+          "T2MWET": "4.6",
+          "WS10M": "2.29",
+          "WD10M": "100.8",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 03:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "3",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "5.7",
+          "T2MDEW": "2.76",
+          "T2MWET": "4.23",
+          "WS10M": "2.37",
+          "WD10M": "102.5",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 04:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "4",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "5.45",
+          "T2MDEW": "2.35",
+          "T2MWET": "3.9",
+          "WS10M": "2.44",
+          "WD10M": "103.2",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 05:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "5",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "5.24",
+          "T2MDEW": "2.03",
+          "T2MWET": "3.64",
+          "WS10M": "2.5",
+          "WD10M": "102.5",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 06:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "6",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "5.38",
+          "T2MDEW": "1.95",
+          "T2MWET": "3.67",
+          "WS10M": "2.52",
+          "WD10M": "102.6",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 07:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "7",
+          "ALLSKY_SFC_SW_DWN": "124.15",
+          "CLRSKY_SFC_SW_DWN": "124.32",
+          "T2M": "9.43",
+          "T2MDEW": "3.5",
+          "T2MWET": "6.46",
+          "WS10M": "2.28",
+          "WD10M": "105.8",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 08:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "8",
+          "ALLSKY_SFC_SW_DWN": "294.7",
+          "CLRSKY_SFC_SW_DWN": "301.67",
+          "T2M": "13.56",
+          "T2MDEW": "1.72",
+          "T2MWET": "7.64",
+          "WS10M": "2.03",
+          "WD10M": "108.7",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 09:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "9",
+          "ALLSKY_SFC_SW_DWN": "475.2",
+          "CLRSKY_SFC_SW_DWN": "484.35",
+          "T2M": "16.78",
+          "T2MDEW": "-0.84",
+          "T2MWET": "7.97",
+          "WS10M": "0.39",
+          "WD10M": "199.4",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 10:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "10",
+          "ALLSKY_SFC_SW_DWN": "607.55",
+          "CLRSKY_SFC_SW_DWN": "620.03",
+          "T2M": "18.38",
+          "T2MDEW": "-1.39",
+          "T2MWET": "8.49",
+          "WS10M": "1.45",
+          "WD10M": "277.9",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 11:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "11",
+          "ALLSKY_SFC_SW_DWN": "697.75",
+          "CLRSKY_SFC_SW_DWN": "711.5",
+          "T2M": "19.16",
+          "T2MDEW": "-0.65",
+          "T2MWET": "9.25",
+          "WS10M": "2.4",
+          "WD10M": "289.9",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 12:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "12",
+          "ALLSKY_SFC_SW_DWN": "789.12",
+          "CLRSKY_SFC_SW_DWN": "801.72",
+          "T2M": "19.4",
+          "T2MDEW": "0.24",
+          "T2MWET": "9.82",
+          "WS10M": "2.93",
+          "WD10M": "296.3",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 13:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "13",
+          "ALLSKY_SFC_SW_DWN": "732.85",
+          "CLRSKY_SFC_SW_DWN": "735.15",
+          "T2M": "19.14",
+          "T2MDEW": "1.07",
+          "T2MWET": "10.11",
+          "WS10M": "3.11",
+          "WD10M": "301.6",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 14:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "14",
+          "ALLSKY_SFC_SW_DWN": "598.72",
+          "CLRSKY_SFC_SW_DWN": "605.67",
+          "T2M": "18.33",
+          "T2MDEW": "1.79",
+          "T2MWET": "10.06",
+          "WS10M": "3.09",
+          "WD10M": "310.4",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 15:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "15",
+          "ALLSKY_SFC_SW_DWN": "404.25",
+          "CLRSKY_SFC_SW_DWN": "413.98",
+          "T2M": "17.05",
+          "T2MDEW": "2.39",
+          "T2MWET": "9.72",
+          "WS10M": "2.74",
+          "WD10M": "323.0",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 16:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "16",
+          "ALLSKY_SFC_SW_DWN": "186.55",
+          "CLRSKY_SFC_SW_DWN": "193.23",
+          "T2M": "15.13",
+          "T2MDEW": "3.25",
+          "T2MWET": "9.19",
+          "WS10M": "2.32",
+          "WD10M": "341.6",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 17:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "17",
+          "ALLSKY_SFC_SW_DWN": "20.55",
+          "CLRSKY_SFC_SW_DWN": "21.4",
+          "T2M": "11.32",
+          "T2MDEW": "5.81",
+          "T2MWET": "8.57",
+          "WS10M": "1.53",
+          "WD10M": "354.4",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 18:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "18",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "9.73",
+          "T2MDEW": "6.2",
+          "T2MWET": "7.96",
+          "WS10M": "1.54",
+          "WD10M": "25.4",
+          "source_id": "nasa_power"
+        },
+        {
+          "timestamp_lst": "2020-02-01 19:00:00",
+          "YEAR": "2020",
+          "MO": "2",
+          "DY": "1",
+          "HR": "19",
+          "ALLSKY_SFC_SW_DWN": "0.0",
+          "CLRSKY_SFC_SW_DWN": "0.0",
+          "T2M": "9.16",
+          "T2MDEW": "6.39",
+          "T2MWET": "7.77",
+          "WS10M": "1.7",
+          "WD10M": "56.8",
+          "source_id": "nasa_power"
+        }
+      ]
+    }
+  },
+  "precipitation": {
+    "gldas_noah_3h": {
+      "metadata": {
+        "source_id": "GLDAS_NOAH025_3H",
+        "source_file": "g4.areaAvgTimeSeries.GLDAS_NOAH025_3H_2_0_Rainf_f_tavg.20100101-20261130.119E_22N_121E_23N.csv",
+        "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg",
+        "title": "Time Series, Area-Averaged of Total precipitation rate 3-hourly 0.25 deg. [GLDAS Model GLDAS_NOAH025_3H (3-hourly)",
+        "requested_start": "2010-01-01T00:00:00Z",
+        "requested_end": "2026-11-30T23:59:59Z",
+        "requested_bbox": "119.9,22.8,121,23.8",
+        "data_bbox": "120.125,22.875,120.875,23.625",
+        "fill_value": "-9999",
+        "observed_start": "2010-01-01T00:00:00+00:00",
+        "observed_end": "2014-12-31T21:00:00+00:00",
+        "row_count": 14608
+      },
+      "columns": [
+        "timestamp",
+        "value",
+        "source_id",
+        "source_variable"
+      ],
+      "sample": [
+        {
+          "timestamp": "2010-01-01 00:00:00+00:00",
+          "value": "0.000229484271",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-01 03:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-01 06:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-01 09:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-01 12:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-01 15:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-01 18:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-01 21:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 00:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 03:00:00+00:00",
+          "value": "2.48111101e-05",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 06:00:00+00:00",
+          "value": "9.36486799e-07",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 09:00:00+00:00",
+          "value": "5.96309746e-06",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 12:00:00+00:00",
+          "value": "3.58493489e-05",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 15:00:00+00:00",
+          "value": "2.45209285e-05",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 18:00:00+00:00",
+          "value": "1.86407779e-05",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-02 21:00:00+00:00",
+          "value": "9.73257647e-06",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-03 00:00:00+00:00",
+          "value": "1.43607595e-05",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-03 03:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-03 06:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        },
+        {
+          "timestamp": "2010-01-03 09:00:00+00:00",
+          "value": "0.0",
+          "source_id": "GLDAS_NOAH025_3H",
+          "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg"
+        }
+      ]
+    },
+    "trmm_3b42_v7": {
+      "metadata": {
+        "source_id": "TRMM_3B42_V7",
+        "source_file": "g4.areaAvgTimeSeries.TRMM_3B42_7_precipitation.20100101-20261130.119E_22N_121E_23N.csv",
+        "source_variable": "TRMM_3B42_7_precipitation",
+        "title": "Time Series, Area-Averaged of Precipitation 3-hourly 0.25 deg. [TRMM TRMM_3B42 v7] (3-hourly)",
+        "requested_start": "2010-01-01T00:00:00Z",
+        "requested_end": "2026-11-30T23:59:59Z",
+        "requested_bbox": "119.9,22.8,121,23.8",
+        "data_bbox": "120.125,22.875,120.875,23.625",
+        "fill_value": "-9999.9",
+        "observed_start": "2009-12-31T22:30:00+00:00",
+        "observed_end": "2019-12-31T19:30:00+00:00",
+        "row_count": 29216
+      },
+      "columns": [
+        "timestamp",
+        "value",
+        "source_id",
+        "source_variable"
+      ],
+      "sample": [
+        {
+          "timestamp": "2009-12-31 22:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 01:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 04:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 07:30:00+00:00",
+          "value": "0.0448730327",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 10:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 13:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 16:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 19:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-01 22:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 01:30:00+00:00",
+          "value": "0.028045645",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 04:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 07:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 10:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 13:30:00+00:00",
+          "value": "0.00934854802",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 16:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 19:30:00+00:00",
+          "value": "0.567012012",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-02 22:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-03 01:30:00+00:00",
+          "value": "0.374057978",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-03 04:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        },
+        {
+          "timestamp": "2010-01-03 07:30:00+00:00",
+          "value": "0.0",
+          "source_id": "TRMM_3B42_V7",
+          "source_variable": "TRMM_3B42_7_precipitation"
+        }
+      ]
+    }
+  },
+  "rasters": {
+    "DFO_2516_From_20040629_to_20040713": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "driver": "GTiff",
+      "width": 5610,
+      "height": 1072,
+      "band_count": 5,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.002245788210298804,
+        0.0,
+        117.1695082959195,
+        0.0,
+        -0.002245788210298804,
+        7.95907341729896
+      ],
+      "bounds": {
+        "left": 117.1695082959195,
+        "bottom": 5.551588455858642,
+        "right": 129.76838015569578,
+        "top": 7.95907341729896
+      },
+      "resolution": [
+        0.002245788210298804,
+        0.002245788210298804
+      ],
+      "bands": [
+        {
+          "index": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "flooded",
+          "units": null
+        },
+        {
+          "index": 2,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "duration",
+          "units": null
+        },
+        {
+          "index": 3,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_views",
+          "units": null
+        },
+        {
+          "index": 4,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_perc",
+          "units": null
+        },
+        {
+          "index": 5,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "jrc_perm_water",
+          "units": null
+        }
+      ],
+      "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+    },
+    "DFO_2554_From_20040824_to_20040912": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "driver": "GTiff",
+      "width": 4204,
+      "height": 8796,
+      "band_count": 5,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.002245788210298804,
+        0.0,
+        117.1695082959195,
+        0.0,
+        -0.002245788210298804,
+        25.305541553646922
+      ],
+      "bounds": {
+        "left": 117.1695082959195,
+        "bottom": 5.551588455858642,
+        "right": 126.61080193201568,
+        "top": 25.305541553646922
+      },
+      "resolution": [
+        0.002245788210298804,
+        0.002245788210298804
+      ],
+      "bands": [
+        {
+          "index": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "flooded",
+          "units": null
+        },
+        {
+          "index": 2,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "duration",
+          "units": null
+        },
+        {
+          "index": 3,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_views",
+          "units": null
+        },
+        {
+          "index": 4,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_perc",
+          "units": null
+        },
+        {
+          "index": 5,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "jrc_perm_water",
+          "units": null
+        }
+      ],
+      "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+    },
+    "DFO_2669_From_20050611_to_20050617": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "driver": "GTiff",
+      "width": 1159,
+      "height": 1519,
+      "band_count": 5,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.002245788210298804,
+        0.0,
+        119.4063133533771,
+        0.0,
+        -0.002245788210298804,
+        25.305541553646922
+      ],
+      "bounds": {
+        "left": 119.4063133533771,
+        "bottom": 21.89418926220304,
+        "right": 122.00918188911342,
+        "top": 25.305541553646922
+      },
+      "resolution": [
+        0.002245788210298804,
+        0.002245788210298804
+      ],
+      "bands": [
+        {
+          "index": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "flooded",
+          "units": null
+        },
+        {
+          "index": 2,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "duration",
+          "units": null
+        },
+        {
+          "index": 3,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_views",
+          "units": null
+        },
+        {
+          "index": 4,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_perc",
+          "units": null
+        },
+        {
+          "index": 5,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "jrc_perm_water",
+          "units": null
+        }
+      ],
+      "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+    },
+    "DFO_2694_From_20050716_to_20050720": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "driver": "GTiff",
+      "width": 2738,
+      "height": 4562,
+      "band_count": 5,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.002245788210298804,
+        0.0,
+        116.399202939787,
+        0.0,
+        -0.002245788210298804,
+        32.139475077586184
+      ],
+      "bounds": {
+        "left": 116.399202939787,
+        "bottom": 21.894189262203042,
+        "right": 122.54817105958513,
+        "top": 32.139475077586184
+      },
+      "resolution": [
+        0.002245788210298804,
+        0.002245788210298804
+      ],
+      "bands": [
+        {
+          "index": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "flooded",
+          "units": null
+        },
+        {
+          "index": 2,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "duration",
+          "units": null
+        },
+        {
+          "index": 3,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_views",
+          "units": null
+        },
+        {
+          "index": 4,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_perc",
+          "units": null
+        },
+        {
+          "index": 5,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "jrc_perm_water",
+          "units": null
+        }
+      ],
+      "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+    },
+    "DFO_2722_From_20050901_to_20050904": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "driver": "GTiff",
+      "width": 4716,
+      "height": 5804,
+      "band_count": 5,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.002245788210298804,
+        0.0,
+        111.95703385981597,
+        0.0,
+        -0.002245788210298804,
+        34.928744034777296
+      ],
+      "bounds": {
+        "left": 111.95703385981597,
+        "bottom": 21.89418926220304,
+        "right": 122.54817105958513,
+        "top": 34.928744034777296
+      },
+      "resolution": [
+        0.002245788210298804,
+        0.002245788210298804
+      ],
+      "bands": [
+        {
+          "index": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "flooded",
+          "units": null
+        },
+        {
+          "index": 2,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "duration",
+          "units": null
+        },
+        {
+          "index": 3,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_views",
+          "units": null
+        },
+        {
+          "index": 4,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_perc",
+          "units": null
+        },
+        {
+          "index": 5,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "jrc_perm_water",
+          "units": null
+        }
+      ],
+      "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+    },
+    "DFO_3339_From_20080728_to_20080729": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "driver": "GTiff",
+      "width": 4204,
+      "height": 8796,
+      "band_count": 5,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.002245788210298804,
+        0.0,
+        117.1695082959195,
+        0.0,
+        -0.002245788210298804,
+        25.305541553646922
+      ],
+      "bounds": {
+        "left": 117.1695082959195,
+        "bottom": 5.551588455858642,
+        "right": 126.61080193201568,
+        "top": 25.305541553646922
+      },
+      "resolution": [
+        0.002245788210298804,
+        0.002245788210298804
+      ],
+      "bands": [
+        {
+          "index": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "flooded",
+          "units": null
+        },
+        {
+          "index": 2,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "duration",
+          "units": null
+        },
+        {
+          "index": 3,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_views",
+          "units": null
+        },
+        {
+          "index": 4,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_perc",
+          "units": null
+        },
+        {
+          "index": 5,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "jrc_perm_water",
+          "units": null
+        }
+      ],
+      "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+    },
+    "DFO_3668_From_20100625_to_20100627": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "driver": "GTiff",
+      "width": 1159,
+      "height": 1519,
+      "band_count": 5,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.002245788210298804,
+        0.0,
+        119.4063133533771,
+        0.0,
+        -0.002245788210298804,
+        25.305541553646922
+      ],
+      "bounds": {
+        "left": 119.4063133533771,
+        "bottom": 21.89418926220304,
+        "right": 122.00918188911342,
+        "top": 25.305541553646922
+      },
+      "resolution": [
+        0.002245788210298804,
+        0.002245788210298804
+      ],
+      "bands": [
+        {
+          "index": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "flooded",
+          "units": null
+        },
+        {
+          "index": 2,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "duration",
+          "units": null
+        },
+        {
+          "index": 3,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_views",
+          "units": null
+        },
+        {
+          "index": 4,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "clear_perc",
+          "units": null
+        },
+        {
+          "index": 5,
+          "dtype": "float32",
+          "nodata": null,
+          "sample_valid_pixels": 65536,
+          "sample_min": NaN,
+          "sample_max": NaN,
+          "description": "jrc_perm_water",
+          "units": null
+        }
+      ],
+      "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
+    }
+  },
+  "errors": []
+}

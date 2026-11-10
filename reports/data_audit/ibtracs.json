@@ -1,0 +1,230 @@
+{
+  "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\ibtracs\\typhoon_data.csv",
+  "size_bytes": 15681486,
+  "sample_rows_read": 1000,
+  "columns": {
+    "Date": {
+      "inferred_dtype": "str",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 0.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "1978-11-25 12:00:00",
+        "1978-11-25 13:00:00",
+        "1978-11-25 14:00:00",
+        "1978-11-25 15:00:00",
+        "1978-11-25 16:00:00"
+      ]
+    },
+    "grade": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "numeric_sample_min": 2.0,
+      "numeric_sample_max": 6.0
+    },
+    "lat": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "13.0",
+        "12.98",
+        "12.97",
+        "12.96",
+        "12.96"
+      ],
+      "numeric_sample_min": 2.0,
+      "numeric_sample_max": 39.0
+    },
+    "lng": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "154.0",
+        "153.82",
+        "153.64",
+        "153.46",
+        "153.29"
+      ],
+      "numeric_sample_min": 119.8,
+      "numeric_sample_max": 179.0
+    },
+    "pressure": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "1004.0",
+        "1003.7",
+        "1003.3",
+        "1003.0",
+        "1002.7"
+      ],
+      "numeric_sample_min": 930.0,
+      "numeric_sample_max": 1012.0
+    },
+    "wind": {
+      "inferred_dtype": "float64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 95.0
+    },
+    "dir50": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 9.0
+    },
+    "long50": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 75.0
+    },
+    "short50": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 75.0
+    },
+    "dir30": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 9.0
+    },
+    "long30": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 250.0
+    },
+    "short30": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 250.0
+    },
+    "intp": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "0",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "numeric_sample_min": 0.0,
+      "numeric_sample_max": 1.0
+    },
+    "seq_id": {
+      "inferred_dtype": "int64",
+      "sample_non_null": 1000,
+      "sample_null": 0,
+      "numeric_parse_ratio": 1.0,
+      "datetime_parse_ratio_utc": 1.0,
+      "sample_values": [
+        "197830",
+        "197830",
+        "197830",
+        "197830",
+        "197830"
+      ],
+      "numeric_sample_min": 197830.0,
+      "numeric_sample_max": 197904.0
+    }
+  },
+  "note": "Dtype and parse ratios are sample-based; units and semantic roles require source documentation."
+}
