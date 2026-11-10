@@ -28,9 +28,16 @@ python -m scripts.audit_last_fe_sources --include-rasters
 
 ## Raster interpretation safeguards
 
-The previous raster scan found large counts of unmasked non-finite pixels. The new integrity report distinguishes those from pixels masked by raster NoData/mask metadata. A raster with many unmasked NaN/Inf values must not be converted into a flood label raster without investigating the source encoding and product documentation.
+The previous raster scan found large counts of unmasked non-finite pixels. The integrity report distinguishes those from pixels masked by raster NoData/mask metadata. The official GFD GeoTIFF README and Earth Engine catalog define the five bands and event-map semantics; see [Global Flood Database interpretation for LAST-FE](global_flood_database_interpretation.md).
 
-The `flooded` band is counted only where its description is exactly `flooded`. Value counts are diagnostics, not proof of event exposure at a LAST asset. Permanent-water band values must remain distinct from event-flood values.
+Key safeguards:
+- `flooded` is the maximum observed event flood extent (1 = surface water; 0 = no water), not a forecast, depth estimate, or time-resolved hydrograph.
+- `duration` is based on 3-day MODIS composites. The source README warns that rapid/flash floods can be missed.
+- `clear_views` and `clear_perc` are observation-quality context and must be retained when interpreting either positive or negative flood classifications.
+- `jrc_perm_water` is a separate permanent-water layer; do not conflate it with event flood extent.
+- Current reports show no declared NoData value and an all-valid mask despite many unmasked NaNs. The product documentation reviewed so far does not specify the encoding of these NaNs in the checked-in downloads. They must remain unknown, not be recoded as dry, flooded, or confirmed outside-footprint.
+- The downloaded GeoTIFF's own transform, CRS, dimensions, and pixel grid govern spatial processing. Do not assume catalog nominal pixel size overrides the actual downloaded file.
+- Raster bounds and finite-pixel counts do not prove that a LAST asset was observed or flooded.
 
 ## Grid geometry repository inspection
 
@@ -46,7 +53,8 @@ Therefore:
 
 1. Run the updated tests and audit locally.
 2. Review the new ERA5 screening flags and raster integrity counts.
-3. Locate/provide authoritative grid asset geometry before performing spatial intersections.
-4. Verify the Global Flood Database product documentation for band semantics, event observation window, and valid-pixel interpretation before deriving flood labels.
+3. Resolve NaN/coverage semantics for the exact downloaded GFD GeoTIFFs, including spatial distribution and any source-side mask/metadata.
+4. Locate/provide authoritative grid asset geometry before performing spatial intersections.
+5. Only then design event/pixel labels that retain clear-view and permanent-water context.
 
 A completed audit still does not certify predictive skill or live flood-forecast capability.
