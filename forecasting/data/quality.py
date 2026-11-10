@@ -32,11 +32,17 @@ def audit_frame_quality(
     timestamp_column: str,
     expected_frequency: str | None = None,
     exclude_numeric: tuple[str, ...] = (),
+    timestamp_timezone: str = "UTC",
 ) -> dict[str, Any]:
     """Profile all rows of a frame without imputing, resampling, or dropping rows."""
     if timestamp_column not in frame.columns:
         raise ValueError(f"Missing timestamp column: {timestamp_column}")
-    parsed = pd.to_datetime(frame[timestamp_column], errors="coerce", utc=True)
+    if timestamp_timezone.upper() == "UTC":
+        parsed = pd.to_datetime(frame[timestamp_column], errors="coerce", utc=True)
+    elif timestamp_timezone.upper() == "NAIVE":
+        parsed = pd.to_datetime(frame[timestamp_column], errors="coerce")
+    else:
+        raise ValueError("timestamp_timezone must be 'UTC' or 'NAIVE'")
     valid = parsed.dropna().sort_values()
     duplicate_count = int(valid.duplicated().sum())
     unique = valid.drop_duplicates().sort_values()
@@ -65,8 +71,9 @@ def audit_frame_quality(
         "invalid_timestamps": int(parsed.isna().sum()),
         "duplicate_timestamps": duplicate_count,
         "unique_timestamp_count": int(len(unique)),
-        "observed_start_utc": valid.min().isoformat() if not valid.empty else None,
-        "observed_end_utc": valid.max().isoformat() if not valid.empty else None,
+        "observed_start": valid.min().isoformat() if not valid.empty else None,
+        "observed_end": valid.max().isoformat() if not valid.empty else None,
+        "timestamp_timezone": timestamp_timezone.upper(),
         "cadence": cadence,
         "numeric_columns": numeric,
     }
