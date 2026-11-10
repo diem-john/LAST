@@ -1,0 +1,110 @@
+{
+  "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+  "width": 5610,
+  "height": 1072,
+  "crs": "EPSG:4326",
+  "transform": [
+    0.002245788210298804,
+    0.0,
+    117.1695082959195,
+    0.0,
+    -0.002245788210298804,
+    7.95907341729896
+  ],
+  "bounds": {
+    "left": 117.1695082959195,
+    "bottom": 5.551588455858642,
+    "right": 129.76838015569578,
+    "top": 7.95907341729896
+  },
+  "bands": [
+    {
+      "index": 1,
+      "description": "flooded",
+      "nodata_value": null,
+      "mask_flags": [
+        "1"
+      ],
+      "total_pixels": 6013920,
+      "masked_or_nodata_pixels": 0,
+      "finite_unmasked_pixels": 410464,
+      "nonfinite_unmasked_pixels": 5603456,
+      "finite_fraction_of_total": 0.06825232128129406,
+      "min_finite": 0.0,
+      "max_finite": 1.0,
+      "flooded_value_counts": {
+        "0.0": 375942,
+        "1.0": 34522
+      }
+    },
+    {
+      "index": 2,
+      "description": "duration",
+      "nodata_value": null,
+      "mask_flags": [
+        "1"
+      ],
+      "total_pixels": 6013920,
+      "masked_or_nodata_pixels": 0,
+      "finite_unmasked_pixels": 410464,
+      "nonfinite_unmasked_pixels": 5603456,
+      "finite_fraction_of_total": 0.06825232128129406,
+      "min_finite": 0.0,
+      "max_finite": 18.0,
+      "flooded_value_counts": null
+    },
+    {
+      "index": 3,
+      "description": "clear_views",
+      "nodata_value": null,
+      "mask_flags": [
+        "1"
+      ],
+      "total_pixels": 6013920,
+      "masked_or_nodata_pixels": 0,
+      "finite_unmasked_pixels": 410464,
+      "nonfinite_unmasked_pixels": 5603456,
+      "finite_fraction_of_total": 0.06825232128129406,
+      "min_finite": 25.0,
+      "max_finite": 34.0,
+      "flooded_value_counts": null
+    },
+    {
+      "index": 4,
+      "description": "clear_perc",
+      "nodata_value": null,
+      "mask_flags": [
+        "1"
+      ],
+      "total_pixels": 6013920,
+      "masked_or_nodata_pixels": 0,
+      "finite_unmasked_pixels": 410464,
+      "nonfinite_unmasked_pixels": 5603456,
+      "finite_fraction_of_total": 0.06825232128129406,
+      "min_finite": 0.7352941036224365,
+      "max_finite": 1.0,
+      "flooded_value_counts": null
+    },
+    {
+      "index": 5,
+      "description": "jrc_perm_water",
+      "nodata_value": null,
+      "mask_flags": [
+        "1"
+      ],
+      "total_pixels": 6013920,
+      "masked_or_nodata_pixels": 0,
+      "finite_unmasked_pixels": 965510,
+      "nonfinite_unmasked_pixels": 5048410,
+      "finite_fraction_of_total": 0.16054586692207412,
+      "min_finite": 0.0,
+      "max_finite": 1.0,
+      "flooded_value_counts": null
+    }
+  ],
+  "processing": {
+    "window_size": 512,
+    "full_pixel_scan": true
+  },
+  "interpretation": "Masked/NoData pixels are separated from unmasked NaN/Inf pixels. Finite pixel counts do not establish flood exposure of grid assets."
+}

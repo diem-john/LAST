@@ -1,0 +1,345 @@
+{
+  "source_id": "era5_sfc",
+  "row_count": 147624,
+  "variables": {
+    "u100": {
+      "present": true,
+      "unit": "m s-1",
+      "description": "100 m eastward wind component",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -9.088181,
+      "max": 16.181778,
+      "negative_finite_values": 74474,
+      "screening_range": [
+        -100.0,
+        100.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "v100": {
+      "present": true,
+      "unit": "m s-1",
+      "description": "100 m northward wind component",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -16.430084,
+      "max": 20.548798,
+      "negative_finite_values": 95124,
+      "screening_range": [
+        -100.0,
+        100.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "fg10": {
+      "present": true,
+      "unit": "m s-1",
+      "description": "10 m wind gust",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.5433126,
+      "max": 44.209934,
+      "negative_finite_values": 0,
+      "screening_range": [
+        0.0,
+        150.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "d2m": {
+      "present": true,
+      "unit": "K",
+      "description": "2 m dewpoint temperature",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 271.64807,
+      "max": 301.3189,
+      "negative_finite_values": 0,
+      "screening_range": [
+        180.0,
+        340.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "t2m": {
+      "present": true,
+      "unit": "K",
+      "description": "2 m air temperature",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 277.57675,
+      "max": 305.66248,
+      "negative_finite_values": 0,
+      "screening_range": [
+        180.0,
+        340.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "blh": {
+      "present": true,
+      "unit": "m",
+      "description": "Boundary layer height",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 12.173353,
+      "max": 1808.3584,
+      "negative_finite_values": 0,
+      "screening_range": [
+        0.0,
+        10000.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "cbh": {
+      "present": true,
+      "unit": "m",
+      "description": "Cloud base height",
+      "rows": 147624,
+      "missing_or_unparseable": 7259,
+      "nonfinite": 0,
+      "finite_count": 140365,
+      "min": 29.952347,
+      "max": 15722.044,
+      "negative_finite_values": 0,
+      "screening_range": [
+        0.0,
+        30000.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "msl": {
+      "present": true,
+      "unit": "Pa",
+      "description": "Mean sea-level pressure",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 97109.19,
+      "max": 103147.25,
+      "negative_finite_values": 0,
+      "screening_range": [
+        50000.0,
+        120000.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "skt": {
+      "present": true,
+      "unit": "K",
+      "description": "Skin temperature",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 276.89618,
+      "max": 313.8059,
+      "negative_finite_values": 0,
+      "screening_range": [
+        180.0,
+        350.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "slhf": {
+      "present": true,
+      "unit": "J m-2",
+      "description": "Surface latent heat flux; signed accumulated energy",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -2000165.0,
+      "max": 47033.0,
+      "negative_finite_values": 138958,
+      "screening_range": null,
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Signed accumulated flux; negative values are not automatically invalid."
+    },
+    "sp": {
+      "present": true,
+      "unit": "Pa",
+      "description": "Surface pressure",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 92528.94,
+      "max": 98103.28,
+      "negative_finite_values": 0,
+      "screening_range": [
+        50000.0,
+        120000.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "ssrd": {
+      "present": true,
+      "unit": "J m-2",
+      "description": "Surface solar radiation downwards; accumulated energy",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -1.5969915,
+      "max": 3849344.0,
+      "negative_finite_values": 2,
+      "screening_range": [
+        0.0,
+        5000000.0
+      ],
+      "below_screening_range": 2,
+      "above_screening_range": 0,
+      "review_required": true,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "strd": {
+      "present": true,
+      "unit": "J m-2",
+      "description": "Surface thermal radiation downwards; accumulated energy",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 848367.3,
+      "max": 1598469.8,
+      "negative_finite_values": 0,
+      "screening_range": [
+        0.0,
+        5000000.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "tcc": {
+      "present": true,
+      "unit": "1",
+      "description": "Total cloud cover",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.0,
+      "max": 1.0,
+      "negative_finite_values": 0,
+      "screening_range": [
+        0.0,
+        1.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "tp": {
+      "present": true,
+      "unit": "m",
+      "description": "Total precipitation; accumulated water depth",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.0,
+      "max": 0.03216076,
+      "negative_finite_values": 0,
+      "screening_range": [
+        0.0,
+        0.5
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "fdir": {
+      "present": true,
+      "unit": "J m-2",
+      "description": "Total sky direct solar radiation at surface; accumulated energy",
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.0,
+      "max": 3341184.0,
+      "negative_finite_values": 0,
+      "screening_range": [
+        0.0,
+        5000000.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    },
+    "sst": {
+      "present": true,
+      "unit": "K",
+      "description": "Sea-surface temperature",
+      "rows": 147624,
+      "missing_or_unparseable": 147624,
+      "nonfinite": 0,
+      "finite_count": 0,
+      "min": null,
+      "max": null,
+      "negative_finite_values": 0,
+      "screening_range": [
+        180.0,
+        350.0
+      ],
+      "below_screening_range": 0,
+      "above_screening_range": 0,
+      "review_required": false,
+      "interpretation": "Broad screening range only; review flagged values against source metadata."
+    }
+  },
+  "policy": "Diagnostics only: no clipping, imputation, unit conversion, or row removal.",
+  "important_note": "Accumulated ERA5 variables require the original CDS product, forecast-step, and accumulation-window metadata before conversion to hourly fluxes or rates."
+}
