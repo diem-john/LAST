@@ -80,7 +80,7 @@ def _read_nasa_power_header(path: Path) -> tuple[dict[str, str], int]:
                 continue
             if line.startswith("Parameter(s):"):
                 metadata["parameters"] = ""
-            elif re.match(r"^[A-Z0-9_]+\\s+", line):
+            elif re.match(r"^[A-Z0-9_]+\s+", line):
                 parameter_lines.append(line)
             elif ":" in line:
                 key, value = line.split(":", 1)
