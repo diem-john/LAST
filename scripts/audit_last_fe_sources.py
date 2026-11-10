@@ -126,7 +126,7 @@ def main() -> None:
             except Exception as exc:
                 summary["errors"].append({"source": str(path), "error": str(exc)})
     write_audit_report(summary, args.output_dir / "summary.json")
-    print(json.dumps({"output_dir": str(args.output_dir), "csv_audited": len(summary["csv"]), "ibtracs_instances_audited": summary.get("ibtracs", {}).get("metadata_instance_count", 0), "precipitation_audited": len(summary["precipitation"]), "rasters_audited": len(summary["rasters"]), "errors": summary["errors"]}, indent=2))
+    print(json.dumps({"output_dir": str(args.output_dir), "csv_audited": len([key for key in summary["csv"] if key != "full_record_quality"]), "ibtracs_instances_audited": summary.get("ibtracs", {}).get("metadata_instance_count", 0), "precipitation_audited": len(summary["precipitation"]), "rasters_audited": len(summary["rasters"]), "errors": summary["errors"]}, indent=2))
 
 if __name__ == "__main__":
     main()
