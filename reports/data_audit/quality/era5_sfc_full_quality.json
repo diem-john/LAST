@@ -1,0 +1,190 @@
+{
+  "row_count": 147624,
+  "timestamp_column": "valid_time",
+  "invalid_timestamps": 0,
+  "duplicate_timestamps": 0,
+  "unique_timestamp_count": 147624,
+  "observed_start": "2010-01-01T00:00:00+00:00",
+  "observed_end": "2026-11-03T23:00:00+00:00",
+  "timestamp_timezone": "UTC",
+  "cadence": {
+    "expected_frequency": "1h",
+    "unique_timestamp_count": 147624,
+    "nonconforming_intervals": 0,
+    "largest_gap": "0 days 01:00:00",
+    "smallest_interval": "0 days 01:00:00"
+  },
+  "numeric_columns": {
+    "u100": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -9.088181,
+      "max": 16.181778,
+      "mean": 0.2769514035916421,
+      "std": 1.3356530695328992
+    },
+    "v100": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -16.430084,
+      "max": 20.548798,
+      "mean": -0.5137741559594937,
+      "std": 2.385227665223908
+    },
+    "fg10": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.5433126,
+      "max": 44.209934,
+      "mean": 4.93982347175798,
+      "std": 2.464620475114449
+    },
+    "d2m": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 271.64807,
+      "max": 301.3189,
+      "mean": 291.7998070435701,
+      "std": 4.232901820011414
+    },
+    "t2m": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 277.57675,
+      "max": 305.66248,
+      "mean": 295.5132558579906,
+      "std": 4.5697433719339156
+    },
+    "blh": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 12.173353,
+      "max": 1808.3584,
+      "mean": 279.92923734277286,
+      "std": 263.1550663406688
+    },
+    "cbh": {
+      "rows": 147624,
+      "missing_or_unparseable": 7259,
+      "nonfinite": 0,
+      "finite_count": 140365,
+      "min": 29.952347,
+      "max": 15722.044,
+      "mean": 965.0991194396395,
+      "std": 1431.8509847075177
+    },
+    "msl": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 97109.19,
+      "max": 103147.25,
+      "mean": 101301.38293082424,
+      "std": 536.3012099857617
+    },
+    "sst": {
+      "rows": 147624,
+      "missing_or_unparseable": 147624,
+      "nonfinite": 0,
+      "finite_count": 0,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "std": null
+    },
+    "skt": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 276.89618,
+      "max": 313.8059,
+      "mean": 294.84694139333715,
+      "std": 5.675737824661526
+    },
+    "slhf": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -2000165.0,
+      "max": 47033.0,
+      "mean": -319953.47267382,
+      "std": 432877.9199274513
+    },
+    "sp": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 92528.94,
+      "max": 98103.28,
+      "mean": 96518.95473983906,
+      "std": 491.33903552025214
+    },
+    "ssrd": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": -1.5969915,
+      "max": 3849344.0,
+      "mean": 685404.2169521046,
+      "std": 945169.7158702286
+    },
+    "strd": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 848367.3,
+      "max": 1598469.8,
+      "mean": 1346940.497278085,
+      "std": 120240.11910011244
+    },
+    "tcc": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.6199588911956111,
+      "std": 0.3334357854370801
+    },
+    "tp": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.0,
+      "max": 0.03216076,
+      "mean": 0.00029868698246060966,
+      "std": 0.0010477740878421075
+    },
+    "fdir": {
+      "rows": 147624,
+      "missing_or_unparseable": 0,
+      "nonfinite": 0,
+      "finite_count": 147624,
+      "min": 0.0,
+      "max": 3341184.0,
+      "mean": 442303.77282826643,
+      "std": 693819.6259328907
+    }
+  },
+  "source_id": "era5_sfc"
+}

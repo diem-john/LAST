@@ -1,0 +1,77 @@
+{
+  "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+  "width": 4204,
+  "height": 8796,
+  "crs": "EPSG:4326",
+  "bounds": {
+    "left": 117.1695082959195,
+    "bottom": 5.551588455858642,
+    "right": 126.61080193201568,
+    "top": 25.305541553646922
+  },
+  "flooded_band_indices": [
+    1
+  ],
+  "flooded_band_value_counts": {
+    "0.0": 2160586,
+    "1.0": 148068
+  },
+  "bands": [
+    {
+      "index": 1,
+      "description": "flooded",
+      "finite_pixels": 2308654,
+      "nonfinite_unmasked_pixels": 34669730,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.06413607236077819,
+      "std": 0.24499517665233986
+    },
+    {
+      "index": 2,
+      "description": "duration",
+      "finite_pixels": 2308654,
+      "nonfinite_unmasked_pixels": 34669730,
+      "min": 0.0,
+      "max": 22.0,
+      "mean": 0.396635008970595,
+      "std": 1.8232323990684194
+    },
+    {
+      "index": 3,
+      "description": "clear_views",
+      "finite_pixels": 2308654,
+      "nonfinite_unmasked_pixels": 34669730,
+      "min": 31.0,
+      "max": 47.0,
+      "mean": 41.185658829777005,
+      "std": 1.5346128324644026
+    },
+    {
+      "index": 4,
+      "description": "clear_perc",
+      "finite_pixels": 2308654,
+      "nonfinite_unmasked_pixels": 34669730,
+      "min": 0.7560975551605225,
+      "max": 1.0,
+      "mean": 0.9884479561495161,
+      "std": 0.018832111232743608
+    },
+    {
+      "index": 5,
+      "description": "jrc_perm_water",
+      "finite_pixels": 5296547,
+      "nonfinite_unmasked_pixels": 31681837,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.04156406050961126,
+      "std": 0.19959080485724945
+    }
+  ],
+  "asset_intersection_checked": false,
+  "asset_intersection_note": "No verified grid asset coordinates or geometry were supplied; bounding-box overlap is not treated as asset exposure.",
+  "processing": {
+    "window_size": 512,
+    "full_pixel_scan": true
+  }
+}

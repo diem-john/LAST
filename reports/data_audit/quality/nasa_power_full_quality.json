@@ -1,0 +1,91 @@
+{
+  "row_count": 59400,
+  "timestamp_column": "timestamp_lst",
+  "invalid_timestamps": 0,
+  "duplicate_timestamps": 0,
+  "unique_timestamp_count": 59400,
+  "observed_start": "2020-02-01T00:00:00",
+  "observed_end": "2026-11-10T23:00:00",
+  "timestamp_timezone": "NAIVE",
+  "cadence": {
+    "expected_frequency": "1h",
+    "unique_timestamp_count": 59400,
+    "nonconforming_intervals": 0,
+    "largest_gap": "0 days 01:00:00",
+    "smallest_interval": "0 days 01:00:00"
+  },
+  "numeric_columns": {
+    "ALLSKY_SFC_SW_DWN": {
+      "rows": 59400,
+      "missing_or_unparseable": 1728,
+      "nonfinite": 0,
+      "finite_count": 57672,
+      "min": 0.0,
+      "max": 1021.0,
+      "mean": 189.8171506103482,
+      "std": 260.60001698675615
+    },
+    "CLRSKY_SFC_SW_DWN": {
+      "rows": 59400,
+      "missing_or_unparseable": 1728,
+      "nonfinite": 0,
+      "finite_count": 57672,
+      "min": 0.0,
+      "max": 1026.03,
+      "mean": 256.47220280205295,
+      "std": 331.1353169035836
+    },
+    "T2M": {
+      "rows": 59400,
+      "missing_or_unparseable": 96,
+      "nonfinite": 0,
+      "finite_count": 59304,
+      "min": 4.51,
+      "max": 36.28,
+      "mean": 22.035286152704707,
+      "std": 4.992349116879142
+    },
+    "T2MDEW": {
+      "rows": 59400,
+      "missing_or_unparseable": 96,
+      "nonfinite": 0,
+      "finite_count": 59304,
+      "min": -4.58,
+      "max": 25.44,
+      "mean": 17.141030621880482,
+      "std": 4.949796596480714
+    },
+    "T2MWET": {
+      "rows": 59400,
+      "missing_or_unparseable": 96,
+      "nonfinite": 0,
+      "finite_count": 59304,
+      "min": 2.94,
+      "max": 28.12,
+      "mean": 19.588153918791313,
+      "std": 4.492065712234673
+    },
+    "WS10M": {
+      "rows": 59400,
+      "missing_or_unparseable": 96,
+      "nonfinite": 0,
+      "finite_count": 59304,
+      "min": 0.01,
+      "max": 20.24,
+      "mean": 2.344693106704438,
+      "std": 1.4499104996113241
+    },
+    "WD10M": {
+      "rows": 59400,
+      "missing_or_unparseable": 96,
+      "nonfinite": 0,
+      "finite_count": 59304,
+      "min": 0.0,
+      "max": 359.9,
+      "mean": 168.56200087683797,
+      "std": 105.39332806512822
+    }
+  },
+  "source_id": "nasa_power",
+  "time_convention": "LST; timezone-naive; not converted to UTC"
+}

@@ -1,0 +1,50 @@
+{
+  "row_count": 147624,
+  "timestamp_column": "valid_time",
+  "invalid_timestamps": 0,
+  "duplicate_timestamps": 0,
+  "unique_timestamp_count": 147624,
+  "observed_start": "2010-01-01T00:00:00+00:00",
+  "observed_end": "2026-11-03T23:00:00+00:00",
+  "timestamp_timezone": "UTC",
+  "cadence": {
+    "expected_frequency": "1h",
+    "unique_timestamp_count": 147624,
+    "nonconforming_intervals": 0,
+    "largest_gap": "0 days 01:00:00",
+    "smallest_interval": "0 days 01:00:00"
+  },
+  "numeric_columns": {
+    "mwd": {
+      "rows": 147624,
+      "missing_or_unparseable": 147624,
+      "nonfinite": 0,
+      "finite_count": 0,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "std": null
+    },
+    "mwp": {
+      "rows": 147624,
+      "missing_or_unparseable": 147624,
+      "nonfinite": 0,
+      "finite_count": 0,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "std": null
+    },
+    "swh": {
+      "rows": 147624,
+      "missing_or_unparseable": 147624,
+      "nonfinite": 0,
+      "finite_count": 0,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "std": null
+    }
+  },
+  "source_id": "era5_wav"
+}

@@ -1,0 +1,50 @@
+{
+  "source_id": "TRMM_3B42_V7",
+  "row_count": 29216,
+  "raw_value_profile": {
+    "rows": 29216,
+    "missing_or_unparseable": 17,
+    "nonfinite": 0,
+    "finite_count": 29199,
+    "min": 0.0,
+    "max": 26.4730797,
+    "mean": 0.23034247054856233,
+    "std": 1.0417344401404613
+  },
+  "precipitation_rate_mm_hr": {
+    "rows": 29216,
+    "missing_or_unparseable": 17,
+    "nonfinite": 0,
+    "finite_count": 29199,
+    "min": 0.0,
+    "max": 26.4730797,
+    "mean": 0.23034247054856233,
+    "std": 1.0417344401404613
+  },
+  "precipitation_3h_mm": {
+    "rows": 29216,
+    "missing_or_unparseable": 17,
+    "nonfinite": 0,
+    "finite_count": 29199,
+    "min": 0.0,
+    "max": 79.4192391,
+    "mean": 0.6910274116456869,
+    "std": 3.1252033204213836
+  },
+  "original_unit": "mm hr-1",
+  "time_series": {
+    "rows": 29216,
+    "invalid_timestamps": 0,
+    "duplicate_timestamps": 0,
+    "observed_start": "2009-12-31T22:30:00+00:00",
+    "observed_end": "2019-12-31T19:30:00+00:00",
+    "expected_frequency": "3h",
+    "nonconforming_intervals": 0
+  },
+  "timestamp_convention": "UTC",
+  "observed_start_utc": "2009-12-31T22:30:00+00:00",
+  "observed_end_utc": "2019-12-31T19:30:00+00:00",
+  "source_variable": "TRMM_3B42_7_precipitation",
+  "requested_bbox": "119.9,22.8,121,23.8",
+  "data_bbox": "120.125,22.875,120.875,23.625"
+}

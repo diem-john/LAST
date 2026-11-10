@@ -1,0 +1,77 @@
+{
+  "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+  "width": 1159,
+  "height": 1519,
+  "crs": "EPSG:4326",
+  "bounds": {
+    "left": 119.4063133533771,
+    "bottom": 21.89418926220304,
+    "right": 122.00918188911342,
+    "top": 25.305541553646922
+  },
+  "flooded_band_indices": [
+    1
+  ],
+  "flooded_band_value_counts": {
+    "0.0": 211392,
+    "1.0": 11764
+  },
+  "bands": [
+    {
+      "index": 1,
+      "description": "flooded",
+      "finite_pixels": 223156,
+      "nonfinite_unmasked_pixels": 1537365,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.05271648532864902,
+      "std": 0.22346690471576178
+    },
+    {
+      "index": 2,
+      "description": "duration",
+      "finite_pixels": 223156,
+      "nonfinite_unmasked_pixels": 1537365,
+      "min": 0.0,
+      "max": 6.0,
+      "mean": 0.09077954435462188,
+      "std": 0.403913241744409
+    },
+    {
+      "index": 3,
+      "description": "clear_views",
+      "finite_pixels": 223156,
+      "nonfinite_unmasked_pixels": 1537365,
+      "min": 8.0,
+      "max": 14.0,
+      "mean": 12.948753338471741,
+      "std": 0.6917168525508007
+    },
+    {
+      "index": 4,
+      "description": "clear_perc",
+      "finite_pixels": 223156,
+      "nonfinite_unmasked_pixels": 1537365,
+      "min": 0.6666666865348816,
+      "max": 1.0,
+      "mean": 0.9909012222108305,
+      "std": 0.026602838400187033
+    },
+    {
+      "index": 5,
+      "description": "jrc_perm_water",
+      "finite_pixels": 646978,
+      "nonfinite_unmasked_pixels": 1113543,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.030670285542939636,
+      "std": 0.17242279178708997
+    }
+  ],
+  "asset_intersection_checked": false,
+  "asset_intersection_note": "No verified grid asset coordinates or geometry were supplied; bounding-box overlap is not treated as asset exposure.",
+  "processing": {
+    "window_size": 512,
+    "full_pixel_scan": true
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "source_id": "GLDAS_NOAH025_3H",
+  "row_count": 14608,
+  "raw_value_profile": {
+    "rows": 14608,
+    "missing_or_unparseable": 0,
+    "nonfinite": 0,
+    "finite_count": 14608,
+    "min": 0.0,
+    "max": 0.00112402998,
+    "mean": 6.0254574130314114e-05,
+    "std": 0.0001149928075288512
+  },
+  "precipitation_rate_mm_hr": {
+    "rows": 14608,
+    "missing_or_unparseable": 0,
+    "nonfinite": 0,
+    "finite_count": 14608,
+    "min": 0.0,
+    "max": 4.046507928,
+    "mean": 0.21691646686913083,
+    "std": 0.41397410710386434
+  },
+  "precipitation_3h_mm": {
+    "rows": 14608,
+    "missing_or_unparseable": 0,
+    "nonfinite": 0,
+    "finite_count": 14608,
+    "min": 0.0,
+    "max": 12.139523784,
+    "mean": 0.6507494006073924,
+    "std": 1.241922321311593
+  },
+  "original_unit": "kg m-2 s-1",
+  "time_series": {
+    "rows": 14608,
+    "invalid_timestamps": 0,
+    "duplicate_timestamps": 0,
+    "observed_start": "2010-01-01T00:00:00+00:00",
+    "observed_end": "2014-12-31T21:00:00+00:00",
+    "expected_frequency": "3h",
+    "nonconforming_intervals": 0
+  },
+  "timestamp_convention": "UTC",
+  "observed_start_utc": "2010-01-01T00:00:00+00:00",
+  "observed_end_utc": "2014-12-31T21:00:00+00:00",
+  "source_variable": "GLDAS_NOAH025_3H_2_0_Rainf_f_tavg",
+  "requested_bbox": "119.9,22.8,121,23.8",
+  "data_bbox": "120.125,22.875,120.875,23.625"
+}
