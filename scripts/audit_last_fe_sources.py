@@ -11,7 +11,9 @@ from forecasting.data.quality import (
     audit_precipitation_frame,
     audit_ibtracs_quality,
     audit_raster_full,
+    audit_raster_integrity,
 )
+from forecasting.data.physical_validation import audit_era5_physical_frame
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV_SOURCES = {
@@ -52,6 +54,10 @@ def main() -> None:
             )
             quality["source_id"] = source_id
             summary["csv"].setdefault("full_record_quality", {})[source_id] = quality
+            if source_id == "era5_sfc":
+                physical = audit_era5_physical_frame(full_frame)
+                summary["era5_physical_screening"] = physical
+                write_audit_report(physical, quality_dir / "era5_sfc_physical_screening.json")
             write_audit_report(quality, quality_dir / f"{source_id}_full_quality.json")
         except Exception as exc:
             summary["errors"].append({"source": source_id, "error": str(exc)})
@@ -123,6 +129,9 @@ def main() -> None:
                 full_result = audit_raster_full(path)
                 summary.setdefault("raster_full_quality", {})[key] = full_result
                 write_audit_report(full_result, quality_dir / f"{key}_full_raster_quality.json")
+                integrity = audit_raster_integrity(path)
+                summary.setdefault("raster_integrity", {})[key] = integrity
+                write_audit_report(integrity, quality_dir / f"{key}_raster_integrity.json")
             except Exception as exc:
                 summary["errors"].append({"source": str(path), "error": str(exc)})
     write_audit_report(summary, args.output_dir / "summary.json")

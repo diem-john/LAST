@@ -233,3 +233,74 @@ def audit_raster_full(path: str | Path, *, window_size: int = 512) -> dict[str, 
             "asset_intersection_note": "No verified grid asset coordinates or geometry were supplied; bounding-box overlap is not treated as asset exposure.",
             "processing": {"window_size": window_size, "full_pixel_scan": True},
         }
+
+
+
+def audit_raster_integrity(path: str | Path, *, window_size: int = 512) -> dict[str, Any]:
+    """Separate raster mask/NoData, unmasked non-finite, and finite pixel counts."""
+    try:
+        import rasterio
+        from rasterio.windows import Window
+    except ImportError as exc:
+        raise RuntimeError("Raster integrity audit requires optional dependency rasterio") from exc
+
+    source = Path(path)
+    with rasterio.open(source) as dataset:
+        band_reports = []
+        for band_index in range(1, dataset.count + 1):
+            masked_pixels = finite_pixels = nonfinite_unmasked = 0
+            finite_min = finite_max = None
+            value_counts: Counter[str] = Counter()
+            for row in range(0, dataset.height, window_size):
+                height = min(window_size, dataset.height - row)
+                for col in range(0, dataset.width, window_size):
+                    width = min(window_size, dataset.width - col)
+                    window = Window(col, row, width, height)
+                    values = dataset.read(band_index, window=window, masked=True)
+                    mask = np.ma.getmaskarray(values)
+                    raw = np.asarray(values.data)
+                    unmasked = raw[~mask]
+                    finite = unmasked[np.isfinite(unmasked)]
+                    masked_pixels += int(mask.sum())
+                    finite_pixels += int(finite.size)
+                    nonfinite_unmasked += int(unmasked.size - finite.size)
+                    if finite.size:
+                        low, high = float(finite.min()), float(finite.max())
+                        finite_min = low if finite_min is None else min(finite_min, low)
+                        finite_max = high if finite_max is None else max(finite_max, high)
+                        if (dataset.descriptions[band_index - 1] or "").strip().lower() == "flooded":
+                            values_unique, counts = np.unique(finite, return_counts=True)
+                            for value, count in zip(values_unique, counts):
+                                value_counts[str(float(value))] += int(count)
+            total = dataset.width * dataset.height
+            band_reports.append({
+                "index": band_index,
+                "description": dataset.descriptions[band_index - 1] or None,
+                "nodata_value": dataset.nodatavals[band_index - 1],
+                "mask_flags": [str(flag) for flag in dataset.mask_flag_enums[band_index - 1]],
+                "total_pixels": int(total),
+                "masked_or_nodata_pixels": masked_pixels,
+                "finite_unmasked_pixels": finite_pixels,
+                "nonfinite_unmasked_pixels": nonfinite_unmasked,
+                "finite_fraction_of_total": float(finite_pixels / total) if total else None,
+                "min_finite": finite_min,
+                "max_finite": finite_max,
+                "flooded_value_counts": dict(value_counts) if value_counts else None,
+            })
+        return {
+            "path": str(source),
+            "width": int(dataset.width),
+            "height": int(dataset.height),
+            "crs": str(dataset.crs) if dataset.crs else None,
+            "transform": list(dataset.transform)[:6],
+            "bounds": {
+                "left": dataset.bounds.left, "bottom": dataset.bounds.bottom,
+                "right": dataset.bounds.right, "top": dataset.bounds.top,
+            },
+            "bands": band_reports,
+            "processing": {"window_size": window_size, "full_pixel_scan": True},
+            "interpretation": (
+                "Masked/NoData pixels are separated from unmasked NaN/Inf pixels. "
+                "Finite pixel counts do not establish flood exposure of grid assets."
+            ),
+        }
