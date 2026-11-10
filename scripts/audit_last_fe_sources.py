@@ -3,14 +3,13 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from forecasting.data.audit import audit_csv, audit_raster, write_audit_report
+from forecasting.data.audit import audit_csv, audit_raster, audit_ibtracs_instances, write_audit_report
 from forecasting.data.ingestion import load_area_averaged_precipitation, load_nasa_power
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV_SOURCES = {
     "era5_sfc": ROOT / "data/era5/reanalysis-era5-single-levels-timeseries-sfcnhk6q2bv.csv",
     "era5_wav": ROOT / "data/era5/reanalysis-era5-single-levels-timeseries-wavxnvtuiin.csv",
-    "ibtracs": ROOT / "data/ibtracs/typhoon_data.csv",
     "nasa_power": ROOT / "data/nasapower/nasapow.csv",
 }
 PRECIP_SOURCES = {
@@ -26,7 +25,7 @@ def main() -> None:
     parser.add_argument("--include-rasters", action="store_true")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    summary = {"csv": {}, "precipitation": {}, "rasters": {}, "errors": []}
+    summary = {"csv": {}, "ibtracs": {}, "precipitation": {}, "rasters": {}, "errors": []}
     for source_id, path in CSV_SOURCES.items():
         if source_id == "nasa_power":
             continue  # NASA POWER has a metadata block and a source-specific reader below.
@@ -39,6 +38,16 @@ def main() -> None:
             write_audit_report(result, args.output_dir / f"{source_id}.json")
         except Exception as exc:
             summary["errors"].append({"source": source_id, "error": str(exc)})
+    try:
+        ibtracs = audit_ibtracs_instances(
+            ROOT / "data/ibtracs/metadata",
+            ROOT / "data/ibtracs/image",
+        )
+        summary["ibtracs"] = ibtracs
+        write_audit_report(ibtracs, args.output_dir / "ibtracs_instances.json")
+    except Exception as exc:
+        summary["errors"].append({"source": "ibtracs", "error": str(exc)})
+
     nasa_path = CSV_SOURCES["nasa_power"]
     if not nasa_path.exists():
         summary["errors"].append({"source": "nasa_power", "error": f"Missing file: {nasa_path}"})
@@ -76,7 +85,7 @@ def main() -> None:
             except Exception as exc:
                 summary["errors"].append({"source": str(path), "error": str(exc)})
     write_audit_report(summary, args.output_dir / "summary.json")
-    print(json.dumps({"output_dir": str(args.output_dir), "csv_audited": len(summary["csv"]), "precipitation_audited": len(summary["precipitation"]), "rasters_audited": len(summary["rasters"]), "errors": summary["errors"]}, indent=2))
+    print(json.dumps({"output_dir": str(args.output_dir), "csv_audited": len(summary["csv"]), "ibtracs_instances_audited": summary.get("ibtracs", {}).get("metadata_instance_count", 0), "precipitation_audited": len(summary["precipitation"]), "rasters_audited": len(summary["rasters"]), "errors": summary["errors"]}, indent=2))
 
 if __name__ == "__main__":
     main()
