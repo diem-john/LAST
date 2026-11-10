@@ -85,7 +85,10 @@ def audit_precipitation_frame(
     """Full-series quality report for one precipitation source."""
     normalized = normalize_precipitation(frame, source_id=source_id, fill_value=fill_value)
     time_report = validate_time_series(normalized)
-    raw = _numeric_profile(normalized["value"])
+    raw_values = pd.to_numeric(frame["value"], errors="coerce")
+    if fill_value is not None:
+        raw_values = raw_values.mask(raw_values == fill_value)
+    raw = _numeric_profile(raw_values)
     rate = _numeric_profile(normalized["precipitation_rate_mm_hr"])
     accumulation = _numeric_profile(normalized["precipitation_3h_mm"])
     report: dict[str, Any] = {
