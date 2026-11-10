@@ -48,3 +48,25 @@ From the repository root:
     python -m pytest -q
 
 This change adds the data foundation only. It does not claim model training, forecast accuracy, or end-to-end application integration has been completed.
+
+## Phase 2: schema and raster audit tooling
+
+The branch now includes a schema-first audit utility:
+
+- `forecasting/data/audit.py` samples CSV columns, null counts, parse ratios, sample values, and numeric ranges without assigning unverified units or semantic roles.
+- `scripts/audit_last_fe_sources.py` audits the ERA5, IBTrACS, and NASA POWER CSV files and separately parses the two Giovanni precipitation exports so their metadata rows are not mistaken for a CSV header.
+- Optional Global Flood Database raster inspection reports raster driver, dimensions, CRS, affine transform, bounds, resolution, nodata, and band metadata. Install `rasterio` separately to enable it.
+- Reports are written under `reports/data_audit/` by default and are generated locally; they are not committed as data-derived outputs.
+
+Run from the repository root:
+
+    python scripts/audit_last_fe_sources.py
+
+To include raster metadata:
+
+    python -m pip install rasterio
+    python scripts/audit_last_fe_sources.py --include-rasters
+
+The audit deliberately does not infer units from column names, assign storm-track fields, or interpret flood raster pixel values as water depth. Review the resulting source reports and authoritative product documentation before implementing source-specific feature transforms. Raster bounds alone do not establish overlap with LAST buses; asset coordinates or authoritative grid GIS geometry are still required for that test.
+
+The GitHub connector could not return the contents of the large ERA5, IBTrACS, and NASA POWER CSV files for direct inspection in this session. Consequently, their actual schemas remain unaudited here; the local audit script is provided to inspect them in the repository environment. No source-specific transformation or spatial-overlap result is claimed yet.
