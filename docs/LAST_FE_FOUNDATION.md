@@ -37,7 +37,7 @@ Do not concatenate GLDAS and TRMM as one homogeneous series. Do not claim blendi
 - Historical rainfall products do not provide current rainfall observations or a live flood forecast.
 - LiPAD spatial flood maps alone do not establish time-to-inundation forecasts.
 - Global Flood Database event centroids do not prove overlap with grid assets; inspect georeferenced raster coverage first.
-- ERA5, IBTrACS, and NASA POWER parsers are intentionally not guessed in this phase. Inspect actual headers, units, time zones, and missing-value conventions first.
+- ERA5 source-specific feature parsers are intentionally not guessed in this phase. IBTrACS metadata-to-image association is audited by instance, but semantic track-feature engineering still requires inspection of actual headers, units, time conventions, and missing-value conventions. NASA POWER uses its source-specific reader and retains its LST timestamp convention.
 - No operational switching, islanding feasibility, BESS dispatch, or protection decision is made by this package. Those require deterministic grid analysis and authorized operator action.
 
 ## Local verification
