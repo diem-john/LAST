@@ -7,7 +7,7 @@ LAST-FE is the source-aware historical-data and forecasting layer for Project LA
 ## Current repository data inventory
 
 - ERA5: two single-level time-series CSV exports. Inspect their schemas before source-specific transformations.
-- IBTrACS: data/ibtracs/typhoon_data.csv. Inspect its schema before storm-track features are engineered.
+- IBTrACS: each `data/ibtracs/metadata/<instance_id>.csv` represents one typhoon instance and is paired with `data/ibtracs/image/<instance_id>/`. The filename stem is the association key. `data/ibtracs/typhoon_data.csv` is obsolete and must not be used.
 - NASA POWER: data/nasapower/nasapow.csv. Inspect its schema and units before deriving solar or meteorological features.
 - Global Flood Database: event folders contain raster, properties, and license/readme files. Validate CRS, transform, band meaning, nodata, and spatial overlap with grid assets before extracting labels.
 - GLDAS Noah 0.25-degree 3-hourly precipitation rate: observed records 2010-01-01 00:00 UTC through 2014-12-31 21:00 UTC.
@@ -54,7 +54,9 @@ This change adds the data foundation only. It does not claim model training, for
 The branch now includes a schema-first audit utility:
 
 - `forecasting/data/audit.py` samples CSV columns, null counts, parse ratios, sample values, and numeric ranges without assigning unverified units or semantic roles.
-- `scripts/audit_last_fe_sources.py` audits the ERA5, IBTrACS, and NASA POWER CSV files and separately parses the two Giovanni precipitation exports so their metadata rows are not mistaken for a CSV header.
+- `scripts/audit_last_fe_sources.py` audits ERA5 and NASA POWER sources, audits each IBTrACS instance CSV against its matching image folder, and separately parses the two Giovanni precipitation exports so metadata rows are not mistaken for a CSV header.
+- IBTrACS audit reports metadata row counts, `file_*` image references, missing referenced HDF5 files, unreferenced HDF5 files, metadata instances without image folders, and image folders without metadata. Missing images do not cause metadata rows to be discarded.
+- Raster sample statistics exclude NaN and infinite values; non-finite sample counts are reported separately.
 - Optional Global Flood Database raster inspection reports raster driver, dimensions, CRS, affine transform, bounds, resolution, nodata, and band metadata. Install `rasterio` separately to enable it.
 - Reports are written under `reports/data_audit/` by default and are generated locally; they are not committed as data-derived outputs.
 
@@ -70,3 +72,25 @@ To include raster metadata:
 The audit deliberately does not infer units from column names, assign storm-track fields, or interpret flood raster pixel values as water depth. Review the resulting source reports and authoritative product documentation before implementing source-specific feature transforms. Raster bounds alone do not establish overlap with LAST buses; asset coordinates or authoritative grid GIS geometry are still required for that test.
 
 The GitHub connector could not return the contents of the large ERA5, IBTrACS, and NASA POWER CSV files for direct inspection in this session. Consequently, their actual schemas remain unaudited here; the local audit script is provided to inspect them in the repository environment. No source-specific transformation or spatial-overlap result is claimed yet.
+
+
+### IBTrACS instance structure and validation
+
+The authoritative repository layout is:
+
+```text
+data/ibtracs/
+├── metadata/
+│   └── <instance_id>.csv
+└── image/
+    └── <instance_id>/
+        └── *.h5
+```
+
+Each metadata CSV is one typhoon instance. Its filename stem is matched to the image folder with the same identifier. The CSV may contain one or more `file_*` reference columns. The audit checks referenced files inside that instance folder and reports missing references without dropping metadata records. The image archive may be incomplete in the repository; the audit records that incompleteness rather than assuming the full image collection is present.
+
+Run tests with:
+
+    python -m pytest -v
+
+The raster regression test is skipped automatically when the optional `rasterio` dependency is unavailable. To run it, install rasterio in the project environment.
