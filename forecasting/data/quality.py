@@ -358,7 +358,7 @@ def audit_raster_spatial_coverage(
         ]
         pair_counts = {
             f"{i}:{j}": {"both_finite": 0, "either_finite": 0}
-            for i in range(dataset.count) for j in range(i + 1, dataset.count)
+            for i in range(dataset.count) for j in range(i + 1, dataset.count + 1)
         }
         tiles: list[list[dict[str, Any]]] = []
 
