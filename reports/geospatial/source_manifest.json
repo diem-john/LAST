@@ -26,20 +26,46 @@
     {
       "theme": "administrative_boundaries",
       "provider": "National Land Surveying and Mapping Center (NLSC), Ministry of the Interior",
-      "dataset_title": "Township boundary (TWD97 latitude and longitude); linked archive release 114-03-18 (2025-03-18), pending reconciliation with August 2026 update",
-      "landing_page_url": "https://data.gov.tw/en/datasets/7441",
-      "download_url": "https://www.tgos.tw/tgos/VirtualDir/Product/3fe61d4a-ca23-4f45-8aca-4a536f40f290/%E9%84%89%28%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80%29%E7%95%8C%E7%B7%9A1140318.zip",
+      "dataset_title": "Authoritative project reference: NLSC township/city/district administrative boundaries (TOWN_MOI_1120317)",
+      "landing_page_url": "https://maps.nlsc.gov.tw/pro/download.jsp",
+      "download_url": null,
       "retrieved_at_utc": null,
-      "published_or_updated_at": "Catalogue page updated 2026-06-01; linked archive filename indicates 2025-03-18. MOI/NLSC announced a newer administrative-boundary update in August 2026.",
-      "license": "Open Government Data License, version 1.0",
-      "native_crs": "TWD97 latitude/longitude; confirm EPSG and datum details from archive metadata",
-      "scale_or_resolution": null,
-      "coverage_description": "Taiwan; exact resource and Chiayi candidate coverage pending validation",
-      "file_path": null,
+      "published_or_updated_at": "Source dataset revision: 2023-03-13 (TOWN_MOI_1120317); accepted by the project as the authoritative administrative-boundary reference dataset.",
+      "license": "Open Government Data License, version 1.0 (confirm against the source catalogue record retained with the archive)",
+      "native_crs": "GCS_TWD97[2020] geographic longitude/latitude; retain embedded .prj as source-of-truth and document the explicit transformation to EPSG:3826.",
+      "scale_or_resolution": "Vector administrative boundary polygons; source metadata and archive documentation retained.",
+      "coverage_description": "Nationwide township/city/district administrative boundaries; Chiayi County candidates Taibao (Q12), Minxiong (Q05), Puzi (Q02), and Shuishang (Q13) are present.",
+      "file_path": "data/geospatial/raw/nlsc/boundaries/TOWN_MOI_1120317.shp (with matching .shx, .dbf, .prj and source metadata/archive)",
       "file_sha256": null,
-      "status": "resource_identified_release_reconciliation_pending",
-      "candidate_coverage_checked": false,
-      "limitations": "The exact linked TGOS archive was identified but returned HTTP 403 to automated retrieval. Do not enable or use as final candidate boundary until local download access and currency against the August 2026 MOI/NLSC update are confirmed."
+      "status": "accepted_authoritative_project_reference",
+      "candidate_coverage_checked": true,
+      "limitations": "The source vintage is 2023-03-13. It is accepted as the project's authoritative administrative-boundary ground-truth layer; this designation does not claim that it is the newest 2026 administrative release. The separate Town_Majia_Sanhe shapefile in the archive is unrelated to the Chiayi candidates and is excluded.",
+      "source_validation": {
+        "archive_inspected": true,
+        "total_administrative_features": 368,
+        "chiayi_county_townships": 18,
+        "candidate_township_ids": {
+          "Taibao": "Q12",
+          "Minxiong": "Q05",
+          "Puzi": "Q02",
+          "Shuishang": "Q13"
+        },
+        "candidate_area_km2_approx": {
+          "Taibao": 66.45,
+          "Minxiong": 84.89,
+          "Puzi": 49.96,
+          "Shuishang": 70.05
+        },
+        "missing_geometries": 0,
+        "empty_geometries": 0,
+        "invalid_geometries": 0,
+        "geometry_types": [
+          "Polygon",
+          "MultiPolygon"
+        ],
+        "excluded_archive_layer": "Town_Majia_Sanhe (single unrelated Pingtung feature)",
+        "crs_note": "Embedded .prj identifies GCS_TWD97[2020]; preserve original CRS definition and explicitly document transformation to EPSG:3826 rather than relabeling source coordinates."
+      }
     },
     {
       "theme": "roads_buildings_water_landmarks",
@@ -308,5 +334,5 @@
     "failed_count": 0,
     "candidate_area_metrics_computed": false
   },
-  "next_step": "Reconcile and acquire the August 2026 official township boundary release; obtain authorized official urban-planning polygon vector data for all four candidates; then validate CRS, geometry, legal plan/version date, and comparable coverage before calculating any candidate metrics."
+  "next_step": "Use the accepted NLSC TOWN_MOI_1120317 layer as the authoritative project administrative-boundary reference. Produce the clean four-candidate GeoPackage in EPSG:3826, validate it, then acquire official urban-planning polygons independently."
 }
