@@ -95,3 +95,17 @@ python -m pytest tests/test_geospatial_acquisition.py -v
 \`\`\`
 
 The tests cover dry-run no-write behavior, disabled sources, manifest merging, SHA-256 calculation, and duplicate source-ID rejection. They do not perform live network downloads.
+
+
+## Overpass reliability and partial failures
+
+OSM source entries support:
+
+- `retry_attempts` (default 4)
+- `retry_initial_delay_seconds` (default 15)
+- `retry_max_delay_seconds` (default 90)
+- optional `overpass_url` (only set to a verified, reachable endpoint)
+
+Transient capacity/HTTP gateway/timeout errors use exponential backoff. Permanent configuration errors are not retried. Each source is isolated: a failed source is recorded as `acquisition_failed` and the runner continues with the next enabled source. In live mode the manifest is written with both successful and failed outcomes. The CLI returns exit code 2 if any source failed, even if other sources succeeded.
+
+The runner does not automatically switch to an unverified third-party Overpass endpoint. If the default public endpoint remains overloaded, configure a documented alternative or retry later. Avoid repeated rapid requests to public Overpass infrastructure.
