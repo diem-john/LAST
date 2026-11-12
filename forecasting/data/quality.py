@@ -304,3 +304,175 @@ def audit_raster_integrity(path: str | Path, *, window_size: int = 512) -> dict[
                 "Finite pixel counts do not establish flood exposure of grid assets."
             ),
         }
+
+
+def audit_raster_spatial_coverage(
+    path: str | Path,
+    *,
+    window_size: int = 512,
+    overview_rows: int = 16,
+    overview_cols: int = 16,
+    properties_path: str | Path | None = None,
+) -> dict[str, Any]:
+    """Map finite/non-finite coverage by band and coarse spatial tile.
+
+    Values are never reclassified. The overview records counts and finite
+    fractions only; unmasked NaN/Inf remains an unknown observation state.
+    Pairwise overlap is computed from finite masks, not from flood values.
+    """
+    import json
+
+    try:
+        import rasterio
+        from rasterio.windows import Window
+    except ImportError as exc:
+        raise RuntimeError("Spatial raster coverage audit requires optional dependency rasterio") from exc
+
+    if window_size < 1 or overview_rows < 1 or overview_cols < 1:
+        raise ValueError("window_size and overview dimensions must be positive")
+
+    source = Path(path)
+    props_file = Path(properties_path) if properties_path else next(
+        iter(sorted(source.parent.glob("*_properties.json"))), None
+    )
+    event_properties: dict[str, Any] | None = None
+    properties_status = "not_found"
+    if props_file is not None and props_file.is_file():
+        try:
+            event_properties = json.loads(props_file.read_text(encoding="utf-8"))
+            properties_status = "loaded"
+        except (OSError, json.JSONDecodeError) as exc:
+            properties_status = f"unreadable: {exc}"
+
+    with rasterio.open(source) as dataset:
+        height, width = dataset.height, dataset.width
+        row_edges = np.linspace(0, height, overview_rows + 1, dtype=int)
+        col_edges = np.linspace(0, width, overview_cols + 1, dtype=int)
+        band_names = [
+            (description or f"band_{index}").strip()
+            for index, description in enumerate(dataset.descriptions, start=1)
+        ]
+        global_counts = [
+            {"finite": 0, "nonfinite_unmasked": 0, "masked": 0}
+            for _ in range(dataset.count)
+        ]
+        pair_counts = {
+            f"{i}:{j}": {"both_finite": 0, "either_finite": 0}
+            for i in range(dataset.count) for j in range(i + 1, dataset.count)
+        }
+        tiles: list[list[dict[str, Any]]] = []
+
+        for tile_row in range(overview_rows):
+            tile_cells = []
+            r0, r1 = int(row_edges[tile_row]), int(row_edges[tile_row + 1])
+            for tile_col in range(overview_cols):
+                c0, c1 = int(col_edges[tile_col]), int(col_edges[tile_col + 1])
+                tile_counts = [
+                    {"finite": 0, "nonfinite_unmasked": 0, "masked": 0}
+                    for _ in range(dataset.count)
+                ]
+                # Process each overview tile in bounded windows.
+                for row in range(r0, r1, window_size):
+                    win_h = min(window_size, r1 - row)
+                    for col in range(c0, c1, window_size):
+                        win_w = min(window_size, c1 - col)
+                        window = Window(col, row, win_w, win_h)
+                        finite_masks = []
+                        for band_index in range(1, dataset.count + 1):
+                            values = dataset.read(band_index, window=window, masked=True)
+                            mask = np.ma.getmaskarray(values)
+                            raw = np.asarray(values.data)
+                            unmasked = raw[~mask]
+                            finite = np.isfinite(unmasked)
+                            counts = tile_counts[band_index - 1]
+                            counts["masked"] += int(mask.sum())
+                            counts["finite"] += int(finite.sum())
+                            counts["nonfinite_unmasked"] += int((~finite).sum())
+                            finite_mask = (~mask) & np.isfinite(raw)
+                            finite_masks.append(finite_mask)
+                        for i in range(dataset.count):
+                            for j in range(i + 1, dataset.count):
+                                both = finite_masks[i] & finite_masks[j]
+                                either = finite_masks[i] | finite_masks[j]
+                                pair = pair_counts[f"{i + 1}:{j + 1}"]
+                                pair["both_finite"] += int(both.sum())
+                                pair["either_finite"] += int(either.sum())
+
+                tile_total = max((r1 - r0) * (c1 - c0), 0)
+                band_tile_results = []
+                for index, counts in enumerate(tile_counts):
+                    for key in counts:
+                        global_counts[index][key] += counts[key]
+                    band_tile_results.append({
+                        "band_index": index + 1,
+                        "band": band_names[index],
+                        **counts,
+                        "tile_pixels": tile_total,
+                        "finite_fraction": (
+                            float(counts["finite"] / tile_total) if tile_total else None
+                        ),
+                    })
+                tile_cells.append({
+                    "tile_row": tile_row,
+                    "tile_col": tile_col,
+                    "pixel_window": {"row_start": r0, "row_end": r1, "col_start": c0, "col_end": c1},
+                    "bands": band_tile_results,
+                })
+            tiles.append(tile_cells)
+
+        pairwise = []
+        for key, counts in pair_counts.items():
+            i, j = (int(value) for value in key.split(":"))
+            union = counts["either_finite"]
+            pairwise.append({
+                "band_a": {"index": i, "name": band_names[i - 1]},
+                "band_b": {"index": j, "name": band_names[j - 1]},
+                **counts,
+                "finite_mask_jaccard": float(counts["both_finite"] / union) if union else None,
+            })
+
+        band_summary = []
+        total_pixels = height * width
+        for index, counts in enumerate(global_counts):
+            band_summary.append({
+                "index": index + 1,
+                "name": band_names[index],
+                **counts,
+                "total_pixels": total_pixels,
+                "finite_fraction": float(counts["finite"] / total_pixels) if total_pixels else None,
+            })
+
+        transform = dataset.transform
+        bounds = dataset.bounds
+        return {
+            "path": str(source),
+            "event_properties_path": str(props_file) if props_file else None,
+            "event_properties_status": properties_status,
+            "event_properties": event_properties,
+            "width": width,
+            "height": height,
+            "crs": str(dataset.crs) if dataset.crs else None,
+            "transform": list(transform)[:6],
+            "bounds": {
+                "left": bounds.left, "bottom": bounds.bottom,
+                "right": bounds.right, "top": bounds.top,
+            },
+            "band_summaries": band_summary,
+            "pairwise_finite_mask_overlap": pairwise,
+            "spatial_overview": {
+                "rows": overview_rows,
+                "columns": overview_cols,
+                "tiles": tiles,
+            },
+            "interpretation": (
+                "Finite-mask coverage diagnostics only. Unmasked NaN/Inf and masked "
+                "pixels remain distinct unknown/NoData states. Pairwise overlap does "
+                "not establish observation quality, flood status, or asset exposure."
+            ),
+            "processing": {
+                "window_size": window_size,
+                "full_pixel_scan": True,
+                "overview_is_aggregate": True,
+                "values_reclassified": False,
+            },
+        }
