@@ -67,9 +67,22 @@ def create_map(
     metrics = pd.read_csv(metrics_path)
     if "cluster_id" not in metrics.columns:
         raise ValueError("Metrics CSV must contain cluster_id")
-    clusters = clusters.merge(metrics, on="cluster_id", how="left", validate="one_to_one")
-    if clusters["area_km2"].isna().any():
-        raise ValueError("Some cluster IDs have no matching screening metrics")
+    if metrics["cluster_id"].astype(str).duplicated().any():
+        raise ValueError("Metrics CSV contains duplicate cluster_id values")
+
+    # The frozen cluster GeoPackage already contains area_km2. Avoid merging
+    # the full metrics table, which would create area_km2_x/area_km2_y and
+    # make the original field name unavailable. The map only needs to verify
+    # that the screening CSV covers exactly the same nine cluster IDs.
+    cluster_ids = set(clusters["cluster_id"].astype(str))
+    metric_ids = set(metrics["cluster_id"].astype(str))
+    if cluster_ids != metric_ids:
+        missing_metrics = sorted(cluster_ids - metric_ids)
+        unexpected_metrics = sorted(metric_ids - cluster_ids)
+        raise ValueError(
+            "Screening CSV cluster IDs do not match the frozen cluster layer. "
+            f"Missing metrics: {missing_metrics}; unexpected metrics: {unexpected_metrics}"
+        )
 
     # Restrict context layers to the Minxiong extent plus a modest map margin.
     minx, miny, maxx, maxy = clusters.total_bounds
