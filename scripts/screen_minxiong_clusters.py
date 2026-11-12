@@ -73,7 +73,7 @@ def screen_clusters(
         raise ValueError(f"Expected the frozen nine Minxiong clusters (Q05); found {len(clusters)}")
     if clusters["cluster_id"].astype(str).duplicated().any():
         raise ValueError("Minxiong cluster_id values must be unique")
-    if roads.geometry.geom_type.isin(["LineString", "MultiLineString"]).all() is False:
+    if not roads.geometry.geom_type.isin(["LineString", "MultiLineString"]).all():
         raise ValueError("Road layer must contain only LineString/MultiLineString geometries")
     if not hospitals.geometry.geom_type.isin(["Polygon", "MultiPolygon"]).all():
         raise ValueError("Hospital layer must contain only Polygon/MultiPolygon geometries")
