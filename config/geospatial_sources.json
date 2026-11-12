@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "description": "LAST Phase 4A source acquisition registry. Official sources stay disabled until a concrete verified resource URL/layer is configured. OSM sources are enabled for initial contextual acquisition.",
+  "description": "LAST Phase 4A source acquisition registry. OSM sources are enabled for contextual acquisition. Official administrative and planning layers remain disabled until current release/version and access route are confirmed.",
   "sources": [
     {
       "source_id": "osm_chiayi_roads",
@@ -117,6 +117,35 @@
       "download_url": null,
       "output_dir": "data/geospatial/raw/terrain",
       "limitations": "Disabled until exact DEM resource, resolution, coverage, and license are verified."
+    },
+    {
+      "source_id": "nlsc_township_boundaries",
+      "adapter": "http",
+      "enabled": false,
+      "provider": "National Land Surveying and Mapping Center (NLSC), Ministry of the Interior",
+      "dataset_title": "Township boundary (TWD97 latitude and longitude)",
+      "landing_page_url": "https://data.gov.tw/en/datasets/7441",
+      "download_url": "https://www.tgos.tw/tgos/VirtualDir/Product/3fe61d4a-ca23-4f45-8aca-4a536f40f290/%E9%84%89%28%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80%29%E7%95%8C%E7%B7%9A1140318.zip",
+      "filename": "nlsc_township_boundaries_1140318.zip",
+      "extract_zip": true,
+      "extract_dir": "nlsc_township_boundaries_1140318",
+      "output_dir": "data/geospatial/raw/nlsc/boundaries",
+      "native_crs": "TWD97 latitude/longitude; confirm exact EPSG from archive metadata before reprojection",
+      "license": "Open Government Data License, version 1.0",
+      "coverage_description": "Nationwide township/town/city/district boundaries; Chiayi County candidates expected but must be verified from archive attributes.",
+      "published_or_updated_at": "Dataset page updated 2026-06-01; linked archive filename indicates ROC year 114-03-18 (2025-03-18).",
+      "limitations": "Disabled pending confirmation against NLSC/MOI August 2026 administrative-boundary update. TGOS direct resource returned HTTP 403 to automated web retrieval; test access from local environment. Do not treat the dataset-page update date as the archive publication date."
+    },
+    {
+      "source_id": "ngis_urban_planning_zoning",
+      "adapter": "http",
+      "enabled": false,
+      "provider": "Urban and Rural Development Branch, Construction and Planning Agency, Ministry of the Interior",
+      "dataset_title": "Official urban planning boundaries and land-use zoning polygons",
+      "landing_page_url": "https://ngis.nlma.gov.tw/",
+      "download_url": null,
+      "output_dir": "data/geospatial/raw/ngis/urban_planning",
+      "limitations": "No verified public direct vector download URL established. The national land-use zoning WMTS network service has been fee-based for private applicants since 2026-01-01. Public map viewers support visual query but are not a substitute for downloadable vector polygons. Obtain an authorized export or a county-government planning GIS dataset before analysis."
     }
   ]
 }
