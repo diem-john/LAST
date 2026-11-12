@@ -70,3 +70,84 @@ def test_config_load_rejects_duplicate_ids(tmp_path: Path) -> None:
         assert "unique" in str(exc)
     else:
         raise AssertionError("Duplicate source IDs should be rejected")
+
+
+
+def test_exponential_backoff_retries_transient_error_without_waiting() -> None:
+    from forecasting.geospatial.acquisition import _with_exponential_backoff
+
+    calls = {"count": 0}
+    waits: list[float] = []
+
+    def operation():
+        calls["count"] += 1
+        if calls["count"] < 3:
+            raise RuntimeError("502 Bad Gateway: Overpass API at capacity")
+        return "ok"
+
+    result, attempts = _with_exponential_backoff(
+        operation, attempts=4, initial_delay=2, max_delay=10, sleep=waits.append
+    )
+    assert result == "ok"
+    assert attempts == 3
+    assert waits == [2, 4]
+
+
+def test_exponential_backoff_does_not_retry_permanent_error() -> None:
+    from forecasting.geospatial.acquisition import _with_exponential_backoff
+
+    calls = {"count": 0}
+
+    def operation():
+        calls["count"] += 1
+        raise ValueError("invalid configuration")
+
+    try:
+        _with_exponential_backoff(
+            operation, attempts=4, initial_delay=1, max_delay=4, sleep=lambda _: None
+        )
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Permanent errors should propagate")
+    assert calls["count"] == 1
+
+
+def test_live_runner_records_failure_and_continues(tmp_path: Path) -> None:
+    from forecasting.geospatial import acquisition
+
+    class FailingAdapter:
+        def __init__(self, source, root, timeout=60):
+            self.source = source
+            self.source_id = source["source_id"]
+            self.output_dir = root / source["output_dir"]
+
+        def acquire(self):
+            raise RuntimeError("502 Bad Gateway")
+
+        def _result(self, status, **kwargs):
+            return AcquisitionResult(
+                source_id=self.source_id, provider="test", dataset_title=self.source_id,
+                adapter="test", status=status, **kwargs
+            )
+
+    class PassingAdapter(FailingAdapter):
+        def acquire(self):
+            return self._result("acquired_unvalidated")
+
+    original = acquisition.ADAPTERS.copy()
+    try:
+        acquisition.ADAPTERS["test_fail"] = FailingAdapter
+        acquisition.ADAPTERS["test_pass"] = PassingAdapter
+        results = acquisition.run_acquisition(
+            {"sources": [
+                {"source_id": "one", "adapter": "test_fail", "enabled": True, "output_dir": "one"},
+                {"source_id": "two", "adapter": "test_pass", "enabled": True, "output_dir": "two"},
+            ]},
+            root=tmp_path, dry_run=False,
+        )
+    finally:
+        acquisition.ADAPTERS.clear()
+        acquisition.ADAPTERS.update(original)
+
+    assert [item.status for item in results] == ["acquisition_failed", "acquired_unvalidated"]
