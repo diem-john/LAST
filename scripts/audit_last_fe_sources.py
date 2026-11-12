@@ -15,6 +15,7 @@ from forecasting.data.quality import (
     audit_raster_spatial_coverage,
 )
 from forecasting.data.physical_validation import audit_era5_physical_frame
+from forecasting.data.raster_consistency import audit_raster_collection_consistency
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV_SOURCES = {
@@ -121,7 +122,8 @@ def main() -> None:
         except Exception as exc:
             summary["errors"].append({"source": report_id, "error": str(exc)})
     if args.include_rasters:
-        for path in sorted((ROOT / "data/globalflooddb").rglob("*.tif")):
+        raster_paths = sorted((ROOT / "data/globalflooddb").rglob("*.tif"))
+        for path in raster_paths:
             try:
                 result = audit_raster(path)
                 key = path.parent.name
@@ -147,6 +149,19 @@ def main() -> None:
                 )
             except Exception as exc:
                 summary["errors"].append({"source": str(path), "error": str(exc)})
+        try:
+            consistency = audit_raster_collection_consistency(raster_paths)
+            summary["raster_collection_consistency"] = {
+                "raster_count": consistency["raster_count"],
+                "exact_duplicate_pairs": consistency["exact_duplicate_pairs"],
+                "pairwise_comparison_count": len(consistency["pairwise_comparisons"]),
+            }
+            write_audit_report(
+                consistency,
+                quality_dir / "raster_collection_consistency.json",
+            )
+        except Exception as exc:
+            summary["errors"].append({"source": "raster_collection_consistency", "error": str(exc)})
     write_audit_report(summary, args.output_dir / "summary.json")
     print(json.dumps({"output_dir": str(args.output_dir), "csv_audited": len([key for key in summary["csv"] if key != "full_record_quality"]), "ibtracs_instances_audited": summary.get("ibtracs", {}).get("metadata_instance_count", 0), "precipitation_audited": len(summary["precipitation"]), "rasters_audited": len(summary["rasters"]), "errors": summary["errors"]}, indent=2))
 
