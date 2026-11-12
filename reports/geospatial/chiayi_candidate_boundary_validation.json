@@ -1,0 +1,88 @@
+{
+  "generated_at_utc": "2026-11-12T06:14:13.116790+00:00",
+  "source": {
+    "path": "data\\geospatial\\raw\\nlsc\\boundaries\\extracted\\TOWN_MOI_1120317.shp",
+    "dataset": "TOWN_MOI_1120317",
+    "revision": "2023-03-13",
+    "sha256": "46ed31c1bd1ab963c34c068fcb82593506d0dfcf6ddd367198213fc4c47aca3a",
+    "encoding_requested": "UTF-8",
+    "crs_wkt": "GEOGCRS[\"GCS_TWD97[2020]\",DATUM[\"Taiwan_Datum_1997\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",1026]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"Degree\",0.0174532925199433]],CS[ellipsoidal,2],AXIS[\"longitude\",east,ORDER[1],ANGLEUNIT[\"Degree\",0.0174532925199433]],AXIS[\"latitude\",north,ORDER[2],ANGLEUNIT[\"Degree\",0.0174532925199433]]]",
+    "epsg_identified_by_pyproj": null,
+    "note": "Source CRS is retained from the embedded .prj. Reprojection uses GeoPandas.to_crs(EPSG:3826); no CRS relabelling is performed."
+  },
+  "candidates": [
+    {
+      "town_id": "Q12",
+      "name_en": "Taibao City",
+      "name_zh": "太保市",
+      "towncode": "10010010"
+    },
+    {
+      "town_id": "Q05",
+      "name_en": "Minxiong Township",
+      "name_zh": "民雄鄉",
+      "towncode": "10010050"
+    },
+    {
+      "town_id": "Q02",
+      "name_en": "Puzi City",
+      "name_zh": "朴子市",
+      "towncode": "10010020"
+    },
+    {
+      "town_id": "Q13",
+      "name_en": "Shuishang Township",
+      "name_zh": "水上鄉",
+      "towncode": "10010120"
+    }
+  ],
+  "output": {
+    "path": "data\\geospatial\\processed\\chiayi_candidate_boundaries.gpkg",
+    "sha256": "6799c6b591eee28043e748643d7b1f2b99cf36df57e4775be1147b8640053a1e",
+    "bytes": 671744,
+    "layers": {
+      "candidate_boundaries_source_crs": {
+        "crs": "GEOGCRS[\"GCS_TWD97[2020]\",DATUM[\"Taiwan_Datum_1997\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",1026]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"Degree\",0.0174532925199433]],CS[ellipsoidal,2],AXIS[\"longitude\",east,ORDER[1],ANGLEUNIT[\"Degree\",0.0174532925199433]],AXIS[\"latitude\",north,ORDER[2],ANGLEUNIT[\"Degree\",0.0174532925199433]]]",
+        "feature_count": 4,
+        "geometry_types": [
+          "Polygon"
+        ],
+        "missing_geometry_count": 0,
+        "empty_geometry_count": 0,
+        "invalid_geometry_count": 0
+      },
+      "candidate_boundaries_epsg3826": {
+        "crs": "EPSG:3826",
+        "feature_count": 4,
+        "geometry_types": [
+          "Polygon"
+        ],
+        "missing_geometry_count": 0,
+        "empty_geometry_count": 0,
+        "invalid_geometry_count": 0,
+        "area_km2": {
+          "Taibao City": 66.4491,
+          "Shuishang Township": 70.0548,
+          "Puzi City": 49.9618,
+          "Minxiong Township": 84.8927
+        }
+      }
+    }
+  },
+  "validation": {
+    "candidate_count_expected": 4,
+    "candidate_count_source_layer": 4,
+    "candidate_count_projected_layer": 4,
+    "all_candidate_ids_present": true,
+    "source_geometry_valid": true,
+    "projected_geometry_valid": true,
+    "projected_crs_epsg3826": true,
+    "passed": true,
+    "limitations": [
+      "This product contains administrative township boundaries, not urban-planning polygons.",
+      "Area values are administrative polygon areas and must not be used as urban built-up area.",
+      "Chinese source DBF text is read as UTF-8 where supported; canonical candidate names are added from the project's approved candidate list. Original source fields are retained.",
+      "Technical geometry validation does not establish positional accuracy or current administrative status beyond the project's accepted 2023 source reference."
+    ]
+  }
+}

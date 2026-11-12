@@ -337,5 +337,26 @@
     "failed_count": 0,
     "candidate_area_metrics_computed": false
   },
-  "next_step": "Use the accepted NLSC TOWN_MOI_1120317 layer as the authoritative project administrative-boundary reference. Produce the clean four-candidate GeoPackage in EPSG:3826, validate it, then acquire official urban-planning polygons independently."
+  "next_step": "Use the accepted NLSC TOWN_MOI_1120317 layer as the authoritative project administrative-boundary reference. Produce the clean four-candidate GeoPackage in EPSG:3826, validate it, then acquire official urban-planning polygons independently.",
+  "processed_products": [
+    {
+      "product_id": "chiayi_candidate_boundaries",
+      "path": "data\\geospatial\\processed\\chiayi_candidate_boundaries.gpkg",
+      "sha256": "6799c6b591eee28043e748643d7b1f2b99cf36df57e4775be1147b8640053a1e",
+      "validation_report": "reports\\geospatial\\chiayi_candidate_boundary_validation.json",
+      "status": "processed_and_technically_validated",
+      "candidate_count": 4,
+      "crs_layers": {
+        "candidate_boundaries_source_crs": "embedded source CRS",
+        "candidate_boundaries_epsg3826": "EPSG:3826"
+      },
+      "generated_at_utc": "2026-11-12T06:14:13.116790+00:00",
+      "limitations": [
+        "This product contains administrative township boundaries, not urban-planning polygons.",
+        "Area values are administrative polygon areas and must not be used as urban built-up area.",
+        "Chinese source DBF text is read as UTF-8 where supported; canonical candidate names are added from the project's approved candidate list. Original source fields are retained.",
+        "Technical geometry validation does not establish positional accuracy or current administrative status beyond the project's accepted 2023 source reference."
+      ]
+    }
+  ]
 }
