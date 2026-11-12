@@ -1,0 +1,60 @@
+{
+  "generated_at_utc": "2026-11-12T06:27:20.744923+00:00",
+  "status": "technical_validation_only",
+  "inputs": {
+    "candidate_boundaries": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\processed\\chiayi_candidate_boundaries.gpkg",
+      "sha256": "6799c6b591eee28043e748643d7b1f2b99cf36df57e4775be1147b8640053a1e"
+    },
+    "osm_buildings": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\buildings\\osm_chiayi_buildings.gpkg",
+      "sha256": "ec31b4847b4a097a190f68130cd6462b1567c144cffefad9140706a82a6eec10"
+    }
+  },
+  "parameters": {
+    "grid_cell_m": 250,
+    "min_polygon_footprints_per_cell": 3,
+    "min_union_building_coverage": 0.015,
+    "min_cluster_equivalent_full_cells": 4,
+    "connectivity": "polygon shared edge or vertex via unary_union"
+  },
+  "candidates": {
+    "Q02": {
+      "status": "derived",
+      "qualifying_cells": 60,
+      "retained_clusters": 5,
+      "mapped_polygon_buildings_intersecting_township": 490
+    },
+    "Q05": {
+      "status": "derived",
+      "qualifying_cells": 114,
+      "retained_clusters": 9,
+      "mapped_polygon_buildings_intersecting_township": 1593
+    },
+    "Q12": {
+      "status": "derived",
+      "qualifying_cells": 45,
+      "retained_clusters": 3,
+      "mapped_polygon_buildings_intersecting_township": 636
+    },
+    "Q13": {
+      "status": "derived",
+      "qualifying_cells": 28,
+      "retained_clusters": 2,
+      "mapped_polygon_buildings_intersecting_township": 273
+    }
+  },
+  "output": {
+    "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\processed\\chiayi_analytical_urban_clusters.gpkg",
+    "sha256": "a997845111cafb034e14df1ebc1754216ef38249d71475eaeef26bb525244a0a",
+    "feature_count": 19,
+    "crs": "EPSG:3826"
+  },
+  "limitations": [
+    "Derived OSM building-density clusters, not official urban planning boundaries.",
+    "Mapped building completeness is unverified and varies spatially.",
+    "No road connectivity, critical facilities, flood or terrain criteria included in delineation.",
+    "Clusters are not township rankings or evidence of electrical feasibility.",
+    "Touching cells may connect at a single point; inspect geometry before grid placement."
+  ]
+}
