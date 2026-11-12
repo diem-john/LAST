@@ -12,6 +12,7 @@ from forecasting.data.quality import (
     audit_ibtracs_quality,
     audit_raster_full,
     audit_raster_integrity,
+    audit_raster_spatial_coverage,
 )
 from forecasting.data.physical_validation import audit_era5_physical_frame
 
@@ -132,6 +133,18 @@ def main() -> None:
                 integrity = audit_raster_integrity(path)
                 summary.setdefault("raster_integrity", {})[key] = integrity
                 write_audit_report(integrity, quality_dir / f"{key}_raster_integrity.json")
+                spatial_coverage = audit_raster_spatial_coverage(path)
+                summary.setdefault("raster_spatial_coverage", {})[key] = {
+                    "event_properties_status": spatial_coverage["event_properties_status"],
+                    "band_summaries": spatial_coverage["band_summaries"],
+                    "pairwise_finite_mask_overlap": spatial_coverage["pairwise_finite_mask_overlap"],
+                    "overview_rows": spatial_coverage["spatial_overview"]["rows"],
+                    "overview_columns": spatial_coverage["spatial_overview"]["columns"],
+                }
+                write_audit_report(
+                    spatial_coverage,
+                    quality_dir / f"{key}_raster_spatial_coverage.json",
+                )
             except Exception as exc:
                 summary["errors"].append({"source": str(path), "error": str(exc)})
     write_audit_report(summary, args.output_dir / "summary.json")
