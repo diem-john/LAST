@@ -212,6 +212,8 @@ class OSMnxAdapter(SourceAdapter):
         except ImportError as exc:
             raise RuntimeError("OSM acquisition requires the optional package: pip install -r requirements-geospatial.txt") from exc
 
+        # Bound Overpass request waits; OSMnx settings are process-global.
+        ox.settings.requests_timeout = self.timeout
         place = str(self.source.get("place", "Chiayi County, Taiwan"))
         tags = self.source.get("tags")
         feature_kind = str(self.source.get("feature_kind", "roads"))
@@ -222,11 +224,12 @@ class OSMnxAdapter(SourceAdapter):
             graph = ox.graph_from_place(place, network_type=str(self.source.get("network_type", "drive")), simplify=True)
             nodes, edges = ox.graph_to_gdfs(graph)
             graph_path = self.output_dir / f"{self.source_id}.graphml"
-            vector_path = self.output_dir / f"{self.source_id}.gpkg"
+            edges_path = self.output_dir / f"{self.source_id}_edges.gpkg"
+            nodes_path = self.output_dir / f"{self.source_id}_nodes.gpkg"
             ox.save_graphml(graph, graph_path)
-            edges.to_file(vector_path, layer="edges", driver="GPKG")
-            nodes.to_file(vector_path, layer="nodes", driver="GPKG", mode="a")
-            outputs.extend([graph_path, vector_path])
+            edges.to_file(edges_path, driver="GPKG")
+            nodes.to_file(nodes_path, driver="GPKG")
+            outputs.extend([graph_path, edges_path, nodes_path])
             details.update({"node_count": len(nodes), "edge_count": len(edges)})
         elif feature_kind == "features":
             if not isinstance(tags, dict) or not tags:
