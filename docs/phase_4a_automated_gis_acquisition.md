@@ -129,3 +129,44 @@ python -m forecasting.geospatial.validation
 The validator checks file existence and SHA-256 hashes, reads vector layers, checks geometry validity and CRS transformation to EPSG:3826, and checks road GraphML node/edge structure and coordinates. It writes `reports/geospatial/validation_report.json` and merges technical validation outcomes into the source manifest.
 
 A `validated` status is limited to technical integrity. It does not certify completeness, positional accuracy, facility operational status, or official utility status. Candidate-level metrics remain blocked until comparable official urban-planning polygons for Taibao, Minxiong, Puzi, and Shuishang are acquired and validated. See `docs/phase_4a_gis_validation.md`.
+
+
+## Accepted Chiayi candidate administrative boundaries
+
+The project accepts the archived NLSC/MOI `TOWN_MOI_1120317` township boundary dataset (source revision 2023-03-13) as its authoritative **project reference** for administrative candidate boundaries. This is a project ground-truth designation and does not claim the archive is the newest administrative release.
+
+The archive and extracted source files are retained under:
+
+`data/geospatial/raw/nlsc/boundaries/original/`
+
+`data/geospatial/raw/nlsc/boundaries/extracted/`
+
+The four candidate records are identified by stable source IDs:
+
+| Candidate | TOWNID | TOWNCODE |
+|---|---|---|
+| Taibao City | Q12 | 10010010 |
+| Minxiong Township | Q05 | 10010050 |
+| Puzi City | Q02 | 10010020 |
+| Shuishang Township | Q13 | 10010120 |
+
+Prepare the two-layer GeoPackage from the repository root:
+
+```powershell
+python scripts/prepare_chiayi_candidate_boundaries.py
+```
+
+The script writes:
+
+- `data/geospatial/processed/chiayi_candidate_boundaries.gpkg`
+  - `candidate_boundaries_source_crs`: selected source geometries with the embedded source CRS preserved.
+  - `candidate_boundaries_epsg3826`: the same four features transformed to EPSG:3826, with projected area in km².
+- `reports/geospatial/chiayi_candidate_boundary_validation.json`: source/output hashes, CRS metadata, feature counts, geometry checks, and candidate areas.
+
+The script selects by `TOWNID`, checks that exactly four unique candidates are present, rejects missing/empty/invalid candidate geometries, transforms with `to_crs(EPSG:3826)`, and reopens both output layers for read-back validation. It never modifies the original source files. It also records the generated product and hash in `reports/geospatial/source_manifest.json`.
+
+The source CRS is represented by the embedded `.prj` WKT (`GCS_TWD97[2020]`). Its automatic EPSG identification may return `None`; this is not a reason to relabel the source coordinates. Preserve the WKT and use the explicit PyProj/GeoPandas transformation to EPSG:3826.
+
+Canonical Chinese candidate names are added as project attributes; original source fields are retained. The source DBF's Chinese text encoding may vary by GDAL/DBF interpretation, so the script requests UTF-8 and records the selected read mode. English names and TOWNIDs are used for deterministic feature selection.
+
+**Scope limit:** these are administrative township boundaries, not urban-planning polygons. Their areas must not be interpreted as urban built-up area, and they do not replace official planning polygons needed for candidate suitability scoring.
