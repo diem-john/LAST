@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -55,7 +56,7 @@ def test_manifest_merges_records_and_preserves_existing(tmp_path: Path) -> None:
 def test_sha256_file(tmp_path: Path) -> None:
     file_path = tmp_path / "sample.txt"
     file_path.write_text("LAST", encoding="utf-8")
-    assert sha256_file(file_path) == "d4e3f0f6c0e4e9f4b3d2e7c2a6b4d4f9b1f3a2c0d8e6f4a2b0c1d3e5f7a9b8c0" or len(sha256_file(file_path)) == 64
+    assert sha256_file(file_path) == hashlib.sha256(b"LAST").hexdigest()
 
 
 def test_config_load_rejects_duplicate_ids(tmp_path: Path) -> None:
