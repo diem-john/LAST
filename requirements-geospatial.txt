@@ -1,0 +1,8 @@
+# Optional Phase 4A GIS acquisition dependencies.
+# Install in the LAST environment: pip install -r requirements-geospatial.txt
+osmnx>=2.0,<3.0
+geopandas>=1.0,<2.0
+shapely>=2.0,<3.0
+pyproj>=3.6,<4.0
+rasterio>=1.3,<2.0
+owslib>=0.31,<1.0
