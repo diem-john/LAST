@@ -16,7 +16,10 @@
       "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
       "native_crs": "EPSG:4326 (OSM source coordinates; output CRS follows OSMnx/GeoPandas defaults)",
       "coverage_description": "OpenStreetMap features returned for the Chiayi County place boundary",
-      "limitations": "Community-mapped context only; completeness varies. Not a Taipower asset or verified utility corridor."
+      "limitations": "Community-mapped context only; completeness varies. Not a Taipower asset or verified utility corridor.",
+      "retry_attempts": 4,
+      "retry_initial_delay_seconds": 15,
+      "retry_max_delay_seconds": 90
     },
     {
       "source_id": "osm_chiayi_buildings",
@@ -33,7 +36,10 @@
       },
       "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
       "coverage_description": "Mapped building features returned for the Chiayi County place boundary",
-      "limitations": "OpenStreetMap building coverage may be incomplete and must not be treated as a complete building inventory."
+      "limitations": "OpenStreetMap building coverage may be incomplete and must not be treated as a complete building inventory.",
+      "retry_attempts": 4,
+      "retry_initial_delay_seconds": 15,
+      "retry_max_delay_seconds": 90
     },
     {
       "source_id": "osm_chiayi_hospitals",
@@ -50,7 +56,10 @@
       },
       "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
       "coverage_description": "Mapped hospital amenity features returned for the Chiayi County place boundary",
-      "limitations": "Discovery only; verify facility identity, operational status, and coordinates with official registries."
+      "limitations": "Discovery only; verify facility identity, operational status, and coordinates with official registries.",
+      "retry_attempts": 4,
+      "retry_initial_delay_seconds": 15,
+      "retry_max_delay_seconds": 90
     },
     {
       "source_id": "nlsc_admin_boundaries",
