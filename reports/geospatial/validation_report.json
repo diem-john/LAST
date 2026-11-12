@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.0",
+  "project": "LAST Phase 4A — GIS acquisition validation",
+  "generated_at_utc": "2026-11-12T05:45:19.060796+00:00",
+  "target_crs": "EPSG:3826",
+  "source_count": 3,
+  "passed_count": 3,
+  "failed_count": 0,
+  "candidate_area_metrics_computed": false,
+  "candidate_area_metrics_reason": "Official comparable urban-planning polygons are not yet acquired and validated.",
+  "sources": [
+    {
+      "source_id": "osm_chiayi_roads",
+      "acquisition_status": "acquired_unvalidated",
+      "validation_status": "passed",
+      "technical_valid": true,
+      "files": [
+        {
+          "path": "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads.graphml",
+          "exists": true,
+          "bytes": 14220398,
+          "expected_sha256": "fa478df9c7abf3055dd6ff360bb4c660a5174f208c350821e7641ff8697cb522",
+          "actual_sha256": "fa478df9c7abf3055dd6ff360bb4c660a5174f208c350821e7641ff8697cb522",
+          "sha256_matches": true,
+          "graph_validation": {
+            "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads.graphml",
+            "node_count": 10374,
+            "edge_count": 26180,
+            "directed": true,
+            "component_count": 1,
+            "graph_crs_metadata": "epsg:4326",
+            "nodes_missing_xy": 0,
+            "nodes_invalid_xy": 0,
+            "technical_valid": true,
+            "notes": [
+              "Component count is descriptive; disconnected components are not automatically errors.",
+              "Coordinate checks do not establish routing quality."
+            ]
+          }
+        },
+        {
+          "path": "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_edges.gpkg",
+          "exists": true,
+          "bytes": 9318400,
+          "expected_sha256": "e59d0996dc5147fe053e04b435330bcc241e9be7bb1579a2a04514c6bf0f57e5",
+          "actual_sha256": "e59d0996dc5147fe053e04b435330bcc241e9be7bb1579a2a04514c6bf0f57e5",
+          "sha256_matches": true,
+          "spatial_validation": {
+            "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_edges.gpkg",
+            "layers": [
+              {
+                "layer": "osm_chiayi_roads_edges",
+                "feature_count": 26180,
+                "geometry_types": [
+                  "LineString"
+                ],
+                "missing_geometry_count": 0,
+                "empty_geometry_count": 0,
+                "invalid_geometry_count": 0,
+                "source_crs": "EPSG:4326",
+                "bounds_source_crs": [
+                  120.1192331,
+                  23.2217074,
+                  120.7945835,
+                  23.6344578
+                ],
+                "target_crs": "EPSG:3826",
+                "transform_to_target_crs_ok": true,
+                "transform_error": null,
+                "technical_valid": true
+              }
+            ],
+            "errors": [],
+            "technical_valid": true
+          }
+        },
+        {
+          "path": "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_nodes.gpkg",
+          "exists": true,
+          "bytes": 1388544,
+          "expected_sha256": "b93749898e9d058c1e7feb4e6e18fdeee05a3d7a24b28054b1e37d6f3b77de65",
+          "actual_sha256": "b93749898e9d058c1e7feb4e6e18fdeee05a3d7a24b28054b1e37d6f3b77de65",
+          "sha256_matches": true,
+          "spatial_validation": {
+            "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_nodes.gpkg",
+            "layers": [
+              {
+                "layer": "osm_chiayi_roads_nodes",
+                "feature_count": 10374,
+                "geometry_types": [
+                  "Point"
+                ],
+                "missing_geometry_count": 0,
+                "empty_geometry_count": 0,
+                "invalid_geometry_count": 0,
+                "source_crs": "EPSG:4326",
+                "bounds_source_crs": [
+                  120.1280011,
+                  23.2217074,
+                  120.7938084,
+                  23.6343939
+                ],
+                "target_crs": "EPSG:3826",
+                "transform_to_target_crs_ok": true,
+                "transform_error": null,
+                "technical_valid": true
+              }
+            ],
+            "errors": [],
+            "technical_valid": true
+          }
+        }
+      ],
+      "errors": [],
+      "scope_limitations": [
+        "Technical validity is not a completeness, positional-accuracy, or official-status certification.",
+        "Candidate coverage is not computed until comparable official urban-planning polygons are validated.",
+        "OSM roads are not Taipower conductor or cable geometry."
+      ]
+    },
+    {
+      "source_id": "osm_chiayi_buildings",
+      "acquisition_status": "acquired_unvalidated",
+      "validation_status": "passed",
+      "technical_valid": true,
+      "files": [
+        {
+          "path": "data\\geospatial\\raw\\osm\\buildings\\osm_chiayi_buildings.gpkg",
+          "exists": true,
+          "bytes": 7684096,
+          "expected_sha256": "ec31b4847b4a097a190f68130cd6462b1567c144cffefad9140706a82a6eec10",
+          "actual_sha256": "ec31b4847b4a097a190f68130cd6462b1567c144cffefad9140706a82a6eec10",
+          "sha256_matches": true,
+          "spatial_validation": {
+            "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\buildings\\osm_chiayi_buildings.gpkg",
+            "layers": [
+              {
+                "layer": "osm_chiayi_buildings",
+                "feature_count": 15169,
+                "geometry_types": [
+                  "MultiPolygon",
+                  "Point",
+                  "Polygon"
+                ],
+                "missing_geometry_count": 0,
+                "empty_geometry_count": 0,
+                "invalid_geometry_count": 0,
+                "source_crs": "EPSG:4326",
+                "bounds_source_crs": [
+                  120.1243904,
+                  23.2276902,
+                  120.9499714,
+                  23.6208377
+                ],
+                "target_crs": "EPSG:3826",
+                "transform_to_target_crs_ok": true,
+                "transform_error": null,
+                "technical_valid": true
+              }
+            ],
+            "errors": [],
+            "technical_valid": true
+          }
+        }
+      ],
+      "errors": [],
+      "scope_limitations": [
+        "Technical validity is not a completeness, positional-accuracy, or official-status certification.",
+        "Candidate coverage is not computed until comparable official urban-planning polygons are validated.",
+        "OSM roads are not Taipower conductor or cable geometry."
+      ]
+    },
+    {
+      "source_id": "osm_chiayi_hospitals",
+      "acquisition_status": "acquired_unvalidated",
+      "validation_status": "passed",
+      "technical_valid": true,
+      "files": [
+        {
+          "path": "data\\geospatial\\raw\\osm\\facilities\\osm_chiayi_hospitals.gpkg",
+          "exists": true,
+          "bytes": 98304,
+          "expected_sha256": "c9e2b0547f32a9582a43036eb6b330bfcc236053f728c77a5032fbf8f8759c96",
+          "actual_sha256": "c9e2b0547f32a9582a43036eb6b330bfcc236053f728c77a5032fbf8f8759c96",
+          "sha256_matches": true,
+          "spatial_validation": {
+            "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\facilities\\osm_chiayi_hospitals.gpkg",
+            "layers": [
+              {
+                "layer": "osm_chiayi_hospitals",
+                "feature_count": 6,
+                "geometry_types": [
+                  "MultiPolygon"
+                ],
+                "missing_geometry_count": 0,
+                "empty_geometry_count": 0,
+                "invalid_geometry_count": 0,
+                "source_crs": "EPSG:4326",
+                "bounds_source_crs": [
+                  120.2342266,
+                  23.4611102,
+                  120.5539819,
+                  23.5974817
+                ],
+                "target_crs": "EPSG:3826",
+                "transform_to_target_crs_ok": true,
+                "transform_error": null,
+                "technical_valid": true
+              }
+            ],
+            "errors": [],
+            "technical_valid": true
+          }
+        }
+      ],
+      "errors": [],
+      "scope_limitations": [
+        "Technical validity is not a completeness, positional-accuracy, or official-status certification.",
+        "Candidate coverage is not computed until comparable official urban-planning polygons are validated.",
+        "OSM roads are not Taipower conductor or cable geometry."
+      ]
+    }
+  ],
+  "interpretation": [
+    "Passed means applicable file integrity, geometry, CRS, and graph-structure checks passed.",
+    "Missing expected hashes are reported as unavailable, not assumed to match.",
+    "No candidate suitability scores or rankings are generated."
+  ]
+}

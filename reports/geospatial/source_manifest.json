@@ -2,7 +2,7 @@
   "schema_version": "1.1",
   "project": "LAST Phase 4A — Chiayi County study-area suitability assessment",
   "branch": "last-fe-foundation",
-  "status": "source_entry_points_verified_resources_not_acquired",
+  "status": "acquisition_and_technical_validation_complete",
   "candidates": [
     {
       "name": "Taibao City",
@@ -190,7 +190,7 @@
       "provider": "OpenStreetMap contributors",
       "dataset_title": "Chiayi County driveable road network",
       "adapter": "osmnx",
-      "status": "acquired_unvalidated",
+      "status": "validated",
       "retrieved_at_utc": "2026-11-12T05:33:52.580221+00:00",
       "landing_page_url": "https://www.openstreetmap.org/",
       "download_url": "https://www.openstreetmap.org/",
@@ -219,14 +219,17 @@
         "edge_count": 26180
       },
       "error": null,
-      "theme": "osm_chiayi_roads"
+      "theme": "osm_chiayi_roads",
+      "validation_status": "passed",
+      "validation_report": "reports\\geospatial\\validation_report.json",
+      "validated_at_utc": "2026-11-12T05:45:19.060796+00:00"
     },
     {
       "source_id": "osm_chiayi_buildings",
       "provider": "OpenStreetMap contributors",
       "dataset_title": "Chiayi County building footprints",
       "adapter": "osmnx",
-      "status": "acquired_unvalidated",
+      "status": "validated",
       "retrieved_at_utc": "2026-11-12T05:35:54.563741+00:00",
       "landing_page_url": "https://www.openstreetmap.org/",
       "download_url": "https://www.openstreetmap.org/",
@@ -253,14 +256,17 @@
         }
       },
       "error": null,
-      "theme": "osm_chiayi_buildings"
+      "theme": "osm_chiayi_buildings",
+      "validation_status": "passed",
+      "validation_report": "reports\\geospatial\\validation_report.json",
+      "validated_at_utc": "2026-11-12T05:45:19.060796+00:00"
     },
     {
       "source_id": "osm_chiayi_hospitals",
       "provider": "OpenStreetMap contributors",
       "dataset_title": "Chiayi County mapped hospital features",
       "adapter": "osmnx",
-      "status": "acquired_unvalidated",
+      "status": "validated",
       "retrieved_at_utc": "2026-11-12T05:37:34.079902+00:00",
       "landing_page_url": "https://www.openstreetmap.org/",
       "download_url": "https://www.openstreetmap.org/",
@@ -287,10 +293,19 @@
         }
       },
       "error": null,
-      "theme": "osm_chiayi_hospitals"
+      "theme": "osm_chiayi_hospitals",
+      "validation_status": "passed",
+      "validation_report": "reports\\geospatial\\validation_report.json",
+      "validated_at_utc": "2026-11-12T05:45:19.060796+00:00"
     }
   ],
   "acceptance_rule": "Do not calculate candidate metrics or scores until all required layers have validated metadata, CRS, geometry/raster integrity, and comparable coverage across all four candidates.",
-  "updated_at_utc": "2026-11-12T05:37:34.081900+00:00",
-  "acquisition_mode": "live"
+  "updated_at_utc": "2026-11-12T05:45:19.060796+00:00",
+  "acquisition_mode": "live",
+  "validation_summary": {
+    "report_path": "reports\\geospatial\\validation_report.json",
+    "passed_count": 3,
+    "failed_count": 0,
+    "candidate_area_metrics_computed": false
+  }
 }
