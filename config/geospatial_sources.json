@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "description": "LAST Phase 4A source acquisition registry. Official sources stay disabled until a concrete verified resource URL/layer is configured. OSM sources are enabled for initial contextual acquisition.",
+  "sources": [
+    {
+      "source_id": "osm_chiayi_roads",
+      "adapter": "osmnx",
+      "enabled": true,
+      "provider": "OpenStreetMap contributors",
+      "dataset_title": "Chiayi County driveable road network",
+      "landing_page_url": "https://www.openstreetmap.org/",
+      "output_dir": "data/geospatial/raw/osm/roads",
+      "place": "Chiayi County, Taiwan",
+      "feature_kind": "roads",
+      "network_type": "drive",
+      "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
+      "native_crs": "EPSG:4326 (OSM source coordinates; output CRS follows OSMnx/GeoPandas defaults)",
+      "coverage_description": "OpenStreetMap features returned for the Chiayi County place boundary",
+      "limitations": "Community-mapped context only; completeness varies. Not a Taipower asset or verified utility corridor."
+    },
+    {
+      "source_id": "osm_chiayi_buildings",
+      "adapter": "osmnx",
+      "enabled": true,
+      "provider": "OpenStreetMap contributors",
+      "dataset_title": "Chiayi County building footprints",
+      "landing_page_url": "https://www.openstreetmap.org/",
+      "output_dir": "data/geospatial/raw/osm/buildings",
+      "place": "Chiayi County, Taiwan",
+      "feature_kind": "features",
+      "tags": {
+        "building": true
+      },
+      "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
+      "coverage_description": "Mapped building features returned for the Chiayi County place boundary",
+      "limitations": "OpenStreetMap building coverage may be incomplete and must not be treated as a complete building inventory."
+    },
+    {
+      "source_id": "osm_chiayi_hospitals",
+      "adapter": "osmnx",
+      "enabled": true,
+      "provider": "OpenStreetMap contributors",
+      "dataset_title": "Chiayi County mapped hospital features",
+      "landing_page_url": "https://www.openstreetmap.org/",
+      "output_dir": "data/geospatial/raw/osm/facilities",
+      "place": "Chiayi County, Taiwan",
+      "feature_kind": "features",
+      "tags": {
+        "amenity": "hospital"
+      },
+      "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
+      "coverage_description": "Mapped hospital amenity features returned for the Chiayi County place boundary",
+      "limitations": "Discovery only; verify facility identity, operational status, and coordinates with official registries."
+    },
+    {
+      "source_id": "nlsc_admin_boundaries",
+      "adapter": "http",
+      "enabled": false,
+      "provider": "National Land Surveying and Mapping Center (NLSC)",
+      "dataset_title": "Administrative boundaries",
+      "landing_page_url": "https://maps.nlsc.gov.tw/pro/download.jsp",
+      "download_url": null,
+      "output_dir": "data/geospatial/raw/nlsc/boundaries",
+      "limitations": "Disabled until exact official downloadable resource URL, release, and license are verified."
+    },
+    {
+      "source_id": "nlsc_roads",
+      "adapter": "wfs",
+      "enabled": false,
+      "provider": "NLSC",
+      "dataset_title": "Official road centerlines",
+      "landing_page_url": "https://maps.nlsc.gov.tw/pro/009_layer_en.html",
+      "service_url": null,
+      "type_name": null,
+      "output_dir": "data/geospatial/raw/nlsc/roads",
+      "limitations": "Disabled until the official WFS endpoint and exact layer identifier are verified."
+    },
+    {
+      "source_id": "nlsc_buildings",
+      "adapter": "wfs",
+      "enabled": false,
+      "provider": "NLSC",
+      "dataset_title": "Official building footprints",
+      "landing_page_url": "https://www.nlsc.gov.tw/en/cp.aspx?n=2149",
+      "service_url": null,
+      "type_name": null,
+      "output_dir": "data/geospatial/raw/nlsc/buildings",
+      "limitations": "Disabled until the official WFS endpoint and exact layer identifier are verified."
+    },
+    {
+      "source_id": "wra_flood_potential",
+      "adapter": "http",
+      "enabled": false,
+      "provider": "Water Resources Agency (WRA)",
+      "dataset_title": "Flood potential map scenario data for Chiayi",
+      "landing_page_url": "https://www.wra.gov.tw/cp.aspx?n=6244",
+      "download_url": null,
+      "output_dir": "data/geospatial/raw/flood",
+      "limitations": "Disabled until an exact official downloadable GIS resource, scenario/version, and license are verified."
+    },
+    {
+      "source_id": "nlsc_dem",
+      "adapter": "http",
+      "enabled": false,
+      "provider": "NLSC",
+      "dataset_title": "Digital elevation model",
+      "landing_page_url": "https://maps.nlsc.gov.tw/pro/download.jsp",
+      "download_url": null,
+      "output_dir": "data/geospatial/raw/terrain",
+      "limitations": "Disabled until exact DEM resource, resolution, coverage, and license are verified."
+    }
+  ]
+}
