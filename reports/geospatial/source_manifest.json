@@ -26,20 +26,20 @@
     {
       "theme": "administrative_boundaries",
       "provider": "National Land Surveying and Mapping Center (NLSC), Ministry of the Interior",
-      "dataset_title": "Current county/city and township administrative boundaries",
-      "landing_page_url": "https://maps.nlsc.gov.tw/pro/download.jsp",
-      "download_url": null,
+      "dataset_title": "Township boundary (TWD97 latitude and longitude); linked archive release 114-03-18 (2025-03-18), pending reconciliation with August 2026 update",
+      "landing_page_url": "https://data.gov.tw/en/datasets/7441",
+      "download_url": "https://www.tgos.tw/tgos/VirtualDir/Product/3fe61d4a-ca23-4f45-8aca-4a536f40f290/%E9%84%89%28%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80%29%E7%95%8C%E7%B7%9A1140318.zip",
       "retrieved_at_utc": null,
-      "published_or_updated_at": "NLSC notice: August 2026 boundary update",
-      "license": null,
-      "native_crs": null,
+      "published_or_updated_at": "Catalogue page updated 2026-06-01; linked archive filename indicates 2025-03-18. MOI/NLSC announced a newer administrative-boundary update in August 2026.",
+      "license": "Open Government Data License, version 1.0",
+      "native_crs": "TWD97 latitude/longitude; confirm EPSG and datum details from archive metadata",
       "scale_or_resolution": null,
       "coverage_description": "Taiwan; exact resource and Chiayi candidate coverage pending validation",
       "file_path": null,
       "file_sha256": null,
-      "status": "portal_verified_resource_pending",
+      "status": "resource_identified_release_reconciliation_pending",
       "candidate_coverage_checked": false,
-      "limitations": "Select exact release and resource; do not infer CRS or license from portal landing page."
+      "limitations": "The exact linked TGOS archive was identified but returned HTTP 403 to automated retrieval. Do not enable or use as final candidate boundary until local download access and currency against the August 2026 MOI/NLSC update are confirmed."
     },
     {
       "theme": "roads_buildings_water_landmarks",
@@ -66,16 +66,16 @@
       "landing_page_url": "https://ngis.nlma.gov.tw/",
       "download_url": null,
       "retrieved_at_utc": null,
-      "published_or_updated_at": null,
+      "published_or_updated_at": "NGIS announcement: national land-use zoning WMTS network service fee-based for private applicants from 2026-01-01.",
       "license": null,
       "native_crs": null,
       "scale_or_resolution": null,
       "coverage_description": "Candidate-level official planning polygons not yet resolved",
       "file_path": null,
       "file_sha256": null,
-      "status": "portal_identified_resource_pending",
+      "status": "access_route_identified_vector_resource_pending",
       "candidate_coverage_checked": false,
-      "limitations": "Confirm planning-area legal/version date and exact downloadable layer."
+      "limitations": "Public planning viewer supports visual querying; no verified public direct vector download was identified. Obtain authorized vector export or county-government planning GIS data. Do not substitute township boundaries or rasterized map screenshots for planning polygons."
     },
     {
       "theme": "flood_potential",
@@ -300,12 +300,13 @@
     }
   ],
   "acceptance_rule": "Do not calculate candidate metrics or scores until all required layers have validated metadata, CRS, geometry/raster integrity, and comparable coverage across all four candidates.",
-  "updated_at_utc": "2026-11-12T05:45:19.060796+00:00",
+  "updated_at_utc": "2026-11-12T00:00:00Z",
   "acquisition_mode": "live",
   "validation_summary": {
     "report_path": "reports\\geospatial\\validation_report.json",
     "passed_count": 3,
     "failed_count": 0,
     "candidate_area_metrics_computed": false
-  }
+  },
+  "next_step": "Reconcile and acquire the August 2026 official township boundary release; obtain authorized official urban-planning polygon vector data for all four candidates; then validate CRS, geometry, legal plan/version date, and comparable coverage before calculating any candidate metrics."
 }
