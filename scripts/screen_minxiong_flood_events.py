@@ -19,6 +19,7 @@ import pandas as pd
 import rasterio
 from rasterio.features import geometry_mask
 from rasterio.windows import from_bounds
+from shapely.geometry import box
 
 ROOT = Path(__file__).resolve().parents[1]
 CLUSTERS = ROOT / "data/geospatial/processed/chiayi_analytical_urban_clusters.gpkg"
@@ -67,7 +68,7 @@ def summarize_event_cluster(dataset: rasterio.io.DatasetReader, polygon: Any) ->
     if dataset.count < 5:
         raise ValueError(f"Expected five GFD bands in {dataset.name}; found {dataset.count}")
     geom = gpd.GeoSeries([polygon], crs="EPSG:4326").to_crs(dataset.crs).iloc[0]
-    if not geom.intersects(gpd.GeoSeries.from_bbox(dataset.bounds).iloc[0]):
+    if not geom.intersects(box(*dataset.bounds)):
         return {"raster_grid_pixels_in_cluster": 0, "event_finite_pixels": 0,
                 "flooded_pixels": None, "flooded_share_of_finite_pixels": None,
                 "event_observation_coverage_share": 0.0,
