@@ -58,3 +58,25 @@ Therefore:
 5. Only then design event/pixel labels that retain clear-view and permanent-water context.
 
 A completed audit still does not certify predictive skill or live flood-forecast capability.
+
+
+## Phase 3D: spatial raster coverage diagnostics
+
+Phase 3D adds `audit_raster_spatial_coverage()` to `forecasting/data/quality.py` and integrates it into `python -m scripts.audit_last_fe_sources --include-rasters`.
+
+For each event GeoTIFF, the new report `reports/data_audit/quality/*_raster_spatial_coverage.json` includes:
+- Full-raster finite, unmasked non-finite, and masked counts for every band.
+- A coarse 16 × 16 overview of those counts and finite fractions, preserving tile row/column and pixel-window positions.
+- Pairwise finite-mask intersection, union, and Jaccard overlap across bands. These are coverage comparisons, not flood-class comparisons.
+- Raster CRS, transform, bounds, band descriptions, and the sibling DFO event properties JSON when available.
+- An explicit processing policy that no raster values are reclassified.
+
+Interpretation:
+- A tile with zero finite pixels is an area with no finite values in that band; this audit does not determine why.
+- Similar finite masks across bands do not establish that observations are scientifically valid.
+- Different band coverage is reported rather than harmonized or filled.
+- Event properties are metadata context only; their centroid is not used as a grid asset coordinate.
+- NaN/Inf remains unknown, not dry land, flood water, or confirmed outside-footprint.
+- No asset exposure, flood labels, spatial interpolation, or resampling is performed.
+
+The overview is an aggregate diagnostic grid, not a replacement raster and not a map at the source pixel resolution. Its dimensions can be adjusted through the Python function arguments for controlled tests or future use.
