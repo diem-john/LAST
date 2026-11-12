@@ -18986,5 +18986,10 @@
       "overview_rows": 16,
       "overview_columns": 16
     }
+  },
+  "raster_collection_consistency": {
+    "raster_count": 8,
+    "exact_duplicate_pairs": [],
+    "pairwise_comparison_count": 28
   }
 }

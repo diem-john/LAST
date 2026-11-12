@@ -1,0 +1,1353 @@
+{
+  "raster_count": 8,
+  "window_size": 512,
+  "rasters": [
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone",
+        "gfd_country_name": "['CHINA', 'PHILIPPINES', 'Taiwan', 'SOUTH KOREA', 'Korean islands under UN jurisdiction', 'NORTH KOREA']",
+        "dfo_centroid_x": 121.410242,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 2,
+        "threshold_b1b2": 1.01,
+        "otsu_sample_res": 231.66,
+        "dfo_displaced": 385000,
+        "id": 2516,
+        "cc": "PHL, KOR, PRK, TWN",
+        "began": "2004-06-29",
+        "dfo_validation_type": "News",
+        "composite_type": "3Day",
+        "dfo_country": "Philippines",
+        "countries": "Philippines, Korea, Republic of, North Korea, Taiwan",
+        "dfo_other_country": "Taiwan",
+        "dfo_dead": 54,
+        "gfd_country_code": "['CH', 'RP', 'TW', 'KS', 'UU', 'KN']",
+        "ended": "2004-07-13",
+        "threshold_type": "otsu",
+        "threshold_b7": 648.97
+      },
+      "geometry": {
+        "width": 5610,
+        "height": 14848,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          117.1695082959195,
+          0.0,
+          -0.002245788210298804,
+          41.3045367638156
+        ],
+        "bounds": {
+          "left": 117.1695082959195,
+          "bottom": 7.95907341729896,
+          "right": 129.76838015569578,
+          "top": 41.3045367638156
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "876c035146254da6906421778c83d5c3704f87468f2342daebceaf93d226902b",
+          "mask_sha256": "ca26be5d92d6d061ead7e3e282e5d9cd0d3a9d343b434d428abbe01ef4a15e13"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "419dfea2f171655af387f0f858128090f684097a8efc5a3403637b478d8c6fd7",
+          "mask_sha256": "ca26be5d92d6d061ead7e3e282e5d9cd0d3a9d343b434d428abbe01ef4a15e13"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "e280a6463d45fec8324aeb3d924771e79351f22ed6dd232cfd9154df10060582",
+          "mask_sha256": "ca26be5d92d6d061ead7e3e282e5d9cd0d3a9d343b434d428abbe01ef4a15e13"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "a7aa767dda9786c0d619915f175165822c531abfc8d29e47bffe317c5af2cdaf",
+          "mask_sha256": "ca26be5d92d6d061ead7e3e282e5d9cd0d3a9d343b434d428abbe01ef4a15e13"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "1d869b961bdd12de93d4a2a3f74b172d923efef35bbdfa7145d5edbded9a51db",
+          "mask_sha256": "ca26be5d92d6d061ead7e3e282e5d9cd0d3a9d343b434d428abbe01ef4a15e13"
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone",
+        "gfd_country_name": "['CHINA', 'PHILIPPINES', 'Taiwan', 'SOUTH KOREA', 'Korean islands under UN jurisdiction', 'NORTH KOREA']",
+        "dfo_centroid_x": 121.410242,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 2,
+        "threshold_b1b2": 1.01,
+        "otsu_sample_res": 231.66,
+        "dfo_displaced": 385000,
+        "id": 2516,
+        "cc": "PHL, KOR, PRK, TWN",
+        "began": "2004-06-29",
+        "dfo_validation_type": "News",
+        "composite_type": "3Day",
+        "dfo_country": "Philippines",
+        "countries": "Philippines, Korea, Republic of, North Korea, Taiwan",
+        "dfo_other_country": "Taiwan",
+        "dfo_dead": 54,
+        "gfd_country_code": "['CH', 'RP', 'TW', 'KS', 'UU', 'KN']",
+        "ended": "2004-07-13",
+        "threshold_type": "otsu",
+        "threshold_b7": 648.97
+      },
+      "geometry": {
+        "width": 5610,
+        "height": 1072,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          117.1695082959195,
+          0.0,
+          -0.002245788210298804,
+          7.95907341729896
+        ],
+        "bounds": {
+          "left": 117.1695082959195,
+          "bottom": 5.551588455858642,
+          "right": 129.76838015569578,
+          "top": 7.95907341729896
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "06e14f7bff557ad1b2d3d108be96b776e4342fab02008cf7d302073f8de907cf",
+          "mask_sha256": "946c829d775831c143f9e9b4daf86702d2ee22feb9f82d95ce402f641dbecbf9"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "67a52776d8a55eda8c79b6730114a27a3b176e8226b2c098f87c48016528adfa",
+          "mask_sha256": "946c829d775831c143f9e9b4daf86702d2ee22feb9f82d95ce402f641dbecbf9"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "f1c7f83469f61b9385208dff46865408146e210927dc2c6e44e7b6dc9d944759",
+          "mask_sha256": "946c829d775831c143f9e9b4daf86702d2ee22feb9f82d95ce402f641dbecbf9"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "e7e7901279873505d5b49afb5e39d1d4ae209e7a2801dfe1db0327cf88e2fabe",
+          "mask_sha256": "946c829d775831c143f9e9b4daf86702d2ee22feb9f82d95ce402f641dbecbf9"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "04c8548a93a5da0380421c0673f668a650768bbad394512e174c22b74e4d3be1",
+          "mask_sha256": "946c829d775831c143f9e9b4daf86702d2ee22feb9f82d95ce402f641dbecbf9"
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone",
+        "gfd_country_name": "['PHILIPPINES', 'Taiwan']",
+        "dfo_centroid_x": 120.754097,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 2,
+        "threshold_b1b2": 0.7,
+        "dfo_displaced": 1058849,
+        "id": 2554,
+        "cc": "PHL, TWN",
+        "began": "2004-08-24",
+        "dfo_validation_type": "News",
+        "composite_type": "3Day",
+        "dfo_country": "Philippines",
+        "countries": "Philippines, Taiwan",
+        "dfo_other_country": "Taiwan",
+        "dfo_dead": 67,
+        "gfd_country_code": "['RP', 'TW']",
+        "ended": "2004-09-12",
+        "threshold_type": "standard",
+        "threshold_b7": 675
+      },
+      "geometry": {
+        "width": 4204,
+        "height": 8796,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          117.1695082959195,
+          0.0,
+          -0.002245788210298804,
+          25.305541553646922
+        ],
+        "bounds": {
+          "left": 117.1695082959195,
+          "bottom": 5.551588455858642,
+          "right": 126.61080193201568,
+          "top": 25.305541553646922
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "0333b024ac23fe0e387959565c398918edd45ab73129a3f5ca1a2b3f1fb958c0",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "0db61ae23c367327ad057be9a74456004e4921c1c623a5e912e980635c33492c",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "7d32ac6ff727644c561543a1710b4438e33ecbfa06c8e316ca74bb90e04917ec",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "91272700a128192f028cc690cf6450514ccbe29be1f786e43096e807ea297a43",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "6d47ecddfa92a34e62515cc6324a74f4afb2997fb49264956786a8de9cd22a4a",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain",
+        "gfd_country_name": "['Taiwan']",
+        "dfo_centroid_x": 120.344936,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 2,
+        "threshold_b1b2": 1.107,
+        "otsu_sample_res": 231.66,
+        "dfo_displaced": 2700,
+        "id": 2669,
+        "cc": "TWN",
+        "began": "2005-06-11",
+        "dfo_validation_type": "News",
+        "composite_type": "3Day",
+        "dfo_country": "Taiwan",
+        "countries": "Taiwan",
+        "dfo_other_country": "NA",
+        "dfo_dead": 16,
+        "gfd_country_code": "['TW']",
+        "ended": "2005-06-17",
+        "threshold_type": "otsu",
+        "threshold_b7": 888.85
+      },
+      "geometry": {
+        "width": 1159,
+        "height": 1519,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          119.4063133533771,
+          0.0,
+          -0.002245788210298804,
+          25.305541553646922
+        ],
+        "bounds": {
+          "left": 119.4063133533771,
+          "bottom": 21.89418926220304,
+          "right": 122.00918188911342,
+          "top": 25.305541553646922
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "83bcf1c033830ee6eab07f2767e9cca92195a7d1ca1b07d484c8388a46b92eac",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "e5faa9d647a9d10dbb271e1d2f8803a21f372b853d8be98f7fbcbda1630c7776",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "1baa51d1660f32608dad8ccb6f5ad20ac0cf9ababac72530e28aa8e779cf60d9",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "c96f9ad069f5ee99f3bab6e4b8a198a67b54c162d8d4eab2d61ea6fa1557eefb",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "d90e15dece7ff6e00466282c109d8c8a4dea518037eba32b915f2abc8d14aecc",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone",
+        "gfd_country_name": "['CHINA', 'Taiwan']",
+        "dfo_centroid_x": 120.855737,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 1,
+        "threshold_b1b2": 0.7,
+        "dfo_displaced": 0,
+        "id": 2694,
+        "cc": "CHN, TWN",
+        "began": "2005-07-16",
+        "dfo_validation_type": "News",
+        "composite_type": "3Day",
+        "dfo_country": "Taiwan",
+        "countries": "China, Taiwan",
+        "dfo_other_country": "China",
+        "dfo_dead": 17,
+        "gfd_country_code": "['CH', 'TW']",
+        "ended": "2005-07-20",
+        "threshold_type": "standard",
+        "threshold_b7": 675
+      },
+      "geometry": {
+        "width": 2738,
+        "height": 4562,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          116.399202939787,
+          0.0,
+          -0.002245788210298804,
+          32.139475077586184
+        ],
+        "bounds": {
+          "left": 116.399202939787,
+          "bottom": 21.894189262203042,
+          "right": 122.54817105958513,
+          "top": 32.139475077586184
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "7d1e422d0fd9e74dd72d50a77f9885ef00075da3d409e10980fedffcb87ace1e",
+          "mask_sha256": "196a07342e2303e685d0659ab1a1e81852e5b80d4ac92a831c6146fc64f0a274"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "0570a5b2c785c19b938d1935f88c62749eb507467f3a6c54acd59e6cc2c82bbf",
+          "mask_sha256": "196a07342e2303e685d0659ab1a1e81852e5b80d4ac92a831c6146fc64f0a274"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "9c80faef9c90578cd6468ae1d842bd99ae1871b724e676b158ce65f86ba74490",
+          "mask_sha256": "196a07342e2303e685d0659ab1a1e81852e5b80d4ac92a831c6146fc64f0a274"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "75af559884d060cbd9c0b52291c481100b3f64123ad1cf194b9d9609318fc6e0",
+          "mask_sha256": "196a07342e2303e685d0659ab1a1e81852e5b80d4ac92a831c6146fc64f0a274"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "eb41790c95a929aada42b0d5728385e241f8ad39c8fa930dae18992e695077a5",
+          "mask_sha256": "196a07342e2303e685d0659ab1a1e81852e5b80d4ac92a831c6146fc64f0a274"
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone",
+        "gfd_country_name": "['CHINA', 'Taiwan']",
+        "dfo_centroid_x": 118.553658,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 1,
+        "threshold_b1b2": 0.7,
+        "dfo_displaced": 1840000,
+        "id": 2722,
+        "cc": "CHN, TWN",
+        "began": "2005-09-01",
+        "dfo_validation_type": "News",
+        "composite_type": "3Day",
+        "dfo_country": "Taiwan",
+        "countries": "China, Taiwan",
+        "dfo_other_country": "China",
+        "dfo_dead": 129,
+        "gfd_country_code": "['CH', 'TW']",
+        "ended": "2005-09-04",
+        "threshold_type": "standard",
+        "threshold_b7": 675
+      },
+      "geometry": {
+        "width": 4716,
+        "height": 5804,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          111.95703385981597,
+          0.0,
+          -0.002245788210298804,
+          34.928744034777296
+        ],
+        "bounds": {
+          "left": 111.95703385981597,
+          "bottom": 21.89418926220304,
+          "right": 122.54817105958513,
+          "top": 34.928744034777296
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "90febaacca74935660a53aa6b9c688c941a74b5dad0c6eb636e78a5a0b688b8f",
+          "mask_sha256": "b39c27b31ad4b23a6bd0b0796b3fa67dcb309c638bb39e6c25b2864b0ade1d95"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "eec6ddb5ca14732a850f01452bf4eef0812ac39cd78849f97b6bb6cd8ee51950",
+          "mask_sha256": "b39c27b31ad4b23a6bd0b0796b3fa67dcb309c638bb39e6c25b2864b0ade1d95"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "0b3238946252823c28d7a70ac8320471d5ee90889ccd12d2f562b3b675500dba",
+          "mask_sha256": "b39c27b31ad4b23a6bd0b0796b3fa67dcb309c638bb39e6c25b2864b0ade1d95"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "1d3871971114148711a5ab4add246d76a3e9fd01bd1aaa132fa768a46c4610af",
+          "mask_sha256": "b39c27b31ad4b23a6bd0b0796b3fa67dcb309c638bb39e6c25b2864b0ade1d95"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "9d1293ecad0712485d11f92522e57dce18edeb49ea826b0a7e1179b4ac1b1f5b",
+          "mask_sha256": "b39c27b31ad4b23a6bd0b0796b3fa67dcb309c638bb39e6c25b2864b0ade1d95"
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\"",
+        "gfd_country_name": "['PHILIPPINES', 'Taiwan']",
+        "dfo_centroid_x": 120.975437,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 2,
+        "threshold_b1b2": 0.7,
+        "dfo_displaced": 76000,
+        "id": 3339,
+        "cc": "PHL, TWN",
+        "began": "2008-07-28",
+        "dfo_validation_type": "News",
+        "composite_type": "3Day",
+        "dfo_country": "Philippines",
+        "countries": "Philippines, Taiwan",
+        "dfo_other_country": "",
+        "dfo_dead": 4,
+        "gfd_country_code": "['RP', 'TW']",
+        "ended": "2008-07-29",
+        "threshold_type": "standard",
+        "threshold_b7": 675
+      },
+      "geometry": {
+        "width": 4204,
+        "height": 8796,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          117.1695082959195,
+          0.0,
+          -0.002245788210298804,
+          25.305541553646922
+        ],
+        "bounds": {
+          "left": 117.1695082959195,
+          "bottom": 5.551588455858642,
+          "right": 126.61080193201568,
+          "top": 25.305541553646922
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "8a55dd741a70870ca7550fae671d15613834c88c4134d97368a2b88572ef2c6f",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "07c6c19dc5fea2d65def92c5b1d5268361ba8f9f814d53f04b6173dccef3983f",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "b732b19a748fb529e34db831af619da773a0a91392e0bc05a728785435e63575",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "44c9f954357772344a39c38ab125d656e68f7165a4619219e9342da59644141d",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "6d47ecddfa92a34e62515cc6324a74f4afb2997fb49264956786a8de9cd22a4a",
+          "mask_sha256": "91a1af90b38a0f367b80b3f7a36bdec790ce5576e298946e82237256e6bec4e3"
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "event_properties_status": "loaded",
+      "event_properties": {
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain",
+        "gfd_country_name": "['Taiwan']",
+        "dfo_centroid_x": 121.605799,
+        "glide_index": "NA",
+        "slope_threshold": 5,
+        "dfo_severity": 1,
+        "threshold_b1b2": 0.7,
+        "dfo_displaced": 0,
+        "id": 3668,
+        "cc": "TWN",
+        "began": "2010-06-25",
+        "dfo_validation_type": "0",
+        "composite_type": "3Day",
+        "dfo_country": "Taiwan",
+        "countries": "Taiwan",
+        "dfo_other_country": "NA",
+        "dfo_dead": 0,
+        "gfd_country_code": "['TW']",
+        "ended": "2010-06-27",
+        "threshold_type": "standard",
+        "threshold_b7": 675
+      },
+      "geometry": {
+        "width": 1159,
+        "height": 1519,
+        "count": 5,
+        "crs": "EPSG:4326",
+        "transform": [
+          0.002245788210298804,
+          0.0,
+          119.4063133533771,
+          0.0,
+          -0.002245788210298804,
+          25.305541553646922
+        ],
+        "bounds": {
+          "left": 119.4063133533771,
+          "bottom": 21.89418926220304,
+          "right": 122.00918188911342,
+          "top": 25.305541553646922
+        },
+        "descriptions": [
+          "flooded",
+          "duration",
+          "clear_views",
+          "clear_perc",
+          "jrc_perm_water"
+        ]
+      },
+      "band_digests": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "values_sha256": "42551b7622aaaf8af8608395f4f892a2d3a578b8c90202f475ae028ddcf43dae",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "values_sha256": "ecd0edb26fd5a7820ebe0b3b833ab867c0acd567b69f3d14cfbb88ab5854ed78",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "values_sha256": "93fd9f53e050eb7bc015d7a5b19a2501bbddb63a1e42872ed02f6a119e300abe",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "values_sha256": "5ec5bdf04142a177be72c2cb002161bc7924f5f22620542df5a00983889615ed",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "values_sha256": "d90e15dece7ff6e00466282c109d8c8a4dea518037eba32b915f2abc8d14aecc",
+          "mask_sha256": "952e02e7e942c1aea8447f01998303adb4f784bc999ba9bff2c83fac7b9989fc"
+        }
+      ]
+    }
+  ],
+  "pairwise_comparisons": [
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2554,
+        "began": "2004-08-24",
+        "ended": "2004-09-12",
+        "dfo_centroid_x": 120.754097,
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2669,
+        "began": "2005-06-11",
+        "ended": "2005-06-17",
+        "dfo_centroid_x": 120.344936,
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2694,
+        "began": "2005-07-16",
+        "ended": "2005-07-20",
+        "dfo_centroid_x": 120.855737,
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2722,
+        "began": "2005-09-01",
+        "ended": "2005-09-04",
+        "dfo_centroid_x": 118.553658,
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3339,
+        "began": "2008-07-28",
+        "ended": "2008-07-29",
+        "dfo_centroid_x": 120.975437,
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\""
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3668,
+        "began": "2010-06-25",
+        "ended": "2010-06-27",
+        "dfo_centroid_x": 121.605799,
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2554,
+        "began": "2004-08-24",
+        "ended": "2004-09-12",
+        "dfo_centroid_x": 120.754097,
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2669,
+        "began": "2005-06-11",
+        "ended": "2005-06-17",
+        "dfo_centroid_x": 120.344936,
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2694,
+        "began": "2005-07-16",
+        "ended": "2005-07-20",
+        "dfo_centroid_x": 120.855737,
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2722,
+        "began": "2005-09-01",
+        "ended": "2005-09-04",
+        "dfo_centroid_x": 118.553658,
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3339,
+        "began": "2008-07-28",
+        "ended": "2008-07-29",
+        "dfo_centroid_x": 120.975437,
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\""
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2516,
+        "began": "2004-06-29",
+        "ended": "2004-07-13",
+        "dfo_centroid_x": 121.410242,
+        "dfo_centroid_y": 17.503304,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3668,
+        "began": "2010-06-25",
+        "ended": "2010-06-27",
+        "dfo_centroid_x": 121.605799,
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2554,
+        "began": "2004-08-24",
+        "ended": "2004-09-12",
+        "dfo_centroid_x": 120.754097,
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2669,
+        "began": "2005-06-11",
+        "ended": "2005-06-17",
+        "dfo_centroid_x": 120.344936,
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2554,
+        "began": "2004-08-24",
+        "ended": "2004-09-12",
+        "dfo_centroid_x": 120.754097,
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2694,
+        "began": "2005-07-16",
+        "ended": "2005-07-20",
+        "dfo_centroid_x": 120.855737,
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2554,
+        "began": "2004-08-24",
+        "ended": "2004-09-12",
+        "dfo_centroid_x": 120.754097,
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2722,
+        "began": "2005-09-01",
+        "ended": "2005-09-04",
+        "dfo_centroid_x": 118.553658,
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "same_grid_and_metadata": true,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2554,
+        "began": "2004-08-24",
+        "ended": "2004-09-12",
+        "dfo_centroid_x": 120.754097,
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3339,
+        "began": "2008-07-28",
+        "ended": "2008-07-29",
+        "dfo_centroid_x": 120.975437,
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\""
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2554,
+        "began": "2004-08-24",
+        "ended": "2004-09-12",
+        "dfo_centroid_x": 120.754097,
+        "dfo_centroid_y": 15.547408,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3668,
+        "began": "2010-06-25",
+        "ended": "2010-06-27",
+        "dfo_centroid_x": 121.605799,
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2669,
+        "began": "2005-06-11",
+        "ended": "2005-06-17",
+        "dfo_centroid_x": 120.344936,
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain"
+      },
+      "event_b": {
+        "id": 2694,
+        "began": "2005-07-16",
+        "ended": "2005-07-20",
+        "dfo_centroid_x": 120.855737,
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2669,
+        "began": "2005-06-11",
+        "ended": "2005-06-17",
+        "dfo_centroid_x": 120.344936,
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain"
+      },
+      "event_b": {
+        "id": 2722,
+        "began": "2005-09-01",
+        "ended": "2005-09-04",
+        "dfo_centroid_x": 118.553658,
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2669,
+        "began": "2005-06-11",
+        "ended": "2005-06-17",
+        "dfo_centroid_x": 120.344936,
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain"
+      },
+      "event_b": {
+        "id": 3339,
+        "began": "2008-07-28",
+        "ended": "2008-07-29",
+        "dfo_centroid_x": 120.975437,
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\""
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "same_grid_and_metadata": true,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2669,
+        "began": "2005-06-11",
+        "ended": "2005-06-17",
+        "dfo_centroid_x": 120.344936,
+        "dfo_centroid_y": 22.802656,
+        "dfo_main_cause": "Heavy rain"
+      },
+      "event_b": {
+        "id": 3668,
+        "began": "2010-06-25",
+        "ended": "2010-06-27",
+        "dfo_centroid_x": 121.605799,
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2694,
+        "began": "2005-07-16",
+        "ended": "2005-07-20",
+        "dfo_centroid_x": 120.855737,
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 2722,
+        "began": "2005-09-01",
+        "ended": "2005-09-04",
+        "dfo_centroid_x": 118.553658,
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2694,
+        "began": "2005-07-16",
+        "ended": "2005-07-20",
+        "dfo_centroid_x": 120.855737,
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3339,
+        "began": "2008-07-28",
+        "ended": "2008-07-29",
+        "dfo_centroid_x": 120.975437,
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\""
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2694,
+        "began": "2005-07-16",
+        "ended": "2005-07-20",
+        "dfo_centroid_x": 120.855737,
+        "dfo_centroid_y": 28.120285,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3668,
+        "began": "2010-06-25",
+        "ended": "2010-06-27",
+        "dfo_centroid_x": 121.605799,
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2722,
+        "began": "2005-09-01",
+        "ended": "2005-09-04",
+        "dfo_centroid_x": 118.553658,
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3339,
+        "began": "2008-07-28",
+        "ended": "2008-07-29",
+        "dfo_centroid_x": 120.975437,
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\""
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 2722,
+        "began": "2005-09-01",
+        "ended": "2005-09-04",
+        "dfo_centroid_x": 118.553658,
+        "dfo_centroid_y": 28.58392,
+        "dfo_main_cause": "Tropical cyclone"
+      },
+      "event_b": {
+        "id": 3668,
+        "began": "2010-06-25",
+        "ended": "2010-06-27",
+        "dfo_centroid_x": 121.605799,
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain"
+      }
+    },
+    {
+      "raster_a": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "raster_b": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "same_grid_and_metadata": false,
+      "same_band_values_and_masks": false,
+      "exact_duplicate": false,
+      "event_a": {
+        "id": 3339,
+        "began": "2008-07-28",
+        "ended": "2008-07-29",
+        "dfo_centroid_x": 120.975437,
+        "dfo_centroid_y": 23.346289,
+        "dfo_main_cause": "Tropical Storm \"Fung-wong\""
+      },
+      "event_b": {
+        "id": 3668,
+        "began": "2010-06-25",
+        "ended": "2010-06-27",
+        "dfo_centroid_x": 121.605799,
+        "dfo_centroid_y": 24.949065,
+        "dfo_main_cause": "Torrential Rain"
+      }
+    }
+  ],
+  "exact_duplicate_pairs": [],
+  "interpretation": "Exact duplicates require matching grid metadata, per-band values, and masks. Matching footprints alone are not duplicates. Event metadata differences are reported for review; no event is removed or merged automatically."
+}
