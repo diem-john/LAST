@@ -187,6 +187,10 @@ def run_validation(manifest_path: Path = DEFAULT_MANIFEST, root: Path = ROOT,
     }
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    try:
+        report_reference = str(report_path.resolve().relative_to(root.resolve()))
+    except ValueError:
+        report_reference = str(report_path)
 
     outcomes = {r["source_id"]: r for r in results}
     for record in manifest.get("sources", []):
@@ -194,7 +198,7 @@ def run_validation(manifest_path: Path = DEFAULT_MANIFEST, root: Path = ROOT,
         if key in outcomes:
             outcome = outcomes[key]
             record["validation_status"] = outcome["validation_status"]
-            record["validation_report"] = str(report_path)
+            record["validation_report"] = report_reference
             record["validated_at_utc"] = summary["generated_at_utc"]
             record["status"] = "validated" if outcome["technical_valid"] else "validation_failed"
     acquired = [r for r in manifest.get("sources", []) if r.get("source_id")
@@ -205,7 +209,7 @@ def run_validation(manifest_path: Path = DEFAULT_MANIFEST, root: Path = ROOT,
         else "acquisition_complete_validation_incomplete_or_failed"
     )
     manifest["validation_summary"] = {
-        "report_path": str(report_path), "passed_count": summary["passed_count"],
+        "report_path": report_reference, "passed_count": summary["passed_count"],
         "failed_count": summary["failed_count"], "candidate_area_metrics_computed": False,
     }
     manifest["updated_at_utc"] = summary["generated_at_utc"]
