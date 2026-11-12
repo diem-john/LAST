@@ -220,7 +220,7 @@ def main() -> int:
         args.report.resolve(), args.manifest.resolve(),
     )
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    print("\\nCandidate boundary GeoPackage prepared successfully.")
+    print("\nCandidate boundary GeoPackage prepared successfully.")
     return 0
 
 
