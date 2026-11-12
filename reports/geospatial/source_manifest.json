@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "project": "LAST Phase 4A — Chiayi County study-area suitability assessment",
   "branch": "last-fe-foundation",
   "status": "source_entry_points_verified_resources_not_acquired",
@@ -184,7 +184,113 @@
       "status": "portal_identified_resource_pending",
       "candidate_coverage_checked": false,
       "limitations": "Verify identity, status, coordinates, and date; map symbols alone are not sufficient."
+    },
+    {
+      "source_id": "osm_chiayi_roads",
+      "provider": "OpenStreetMap contributors",
+      "dataset_title": "Chiayi County driveable road network",
+      "adapter": "osmnx",
+      "status": "acquired_unvalidated",
+      "retrieved_at_utc": "2026-11-12T05:33:52.580221+00:00",
+      "landing_page_url": "https://www.openstreetmap.org/",
+      "download_url": "https://www.openstreetmap.org/",
+      "file_paths": [
+        "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads.graphml",
+        "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_edges.gpkg",
+        "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_nodes.gpkg"
+      ],
+      "sha256": {
+        "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads.graphml": "fa478df9c7abf3055dd6ff360bb4c660a5174f208c350821e7641ff8697cb522",
+        "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_edges.gpkg": "e59d0996dc5147fe053e04b435330bcc241e9be7bb1579a2a04514c6bf0f57e5",
+        "data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_nodes.gpkg": "b93749898e9d058c1e7feb4e6e18fdeee05a3d7a24b28054b1e37d6f3b77de65"
+      },
+      "bytes_downloaded": 24927342,
+      "native_crs": "EPSG:4326 (OSM source coordinates; output CRS follows OSMnx/GeoPandas defaults)",
+      "scale_or_resolution": null,
+      "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
+      "coverage_description": "OpenStreetMap features returned for the Chiayi County place boundary",
+      "limitations": "Community-mapped context only; completeness varies. Not a Taipower asset or verified utility corridor.",
+      "details": {
+        "place": "Chiayi County, Taiwan",
+        "feature_kind": "roads",
+        "attribution": "© OpenStreetMap contributors",
+        "attempts_used": 1,
+        "node_count": 10374,
+        "edge_count": 26180
+      },
+      "error": null,
+      "theme": "osm_chiayi_roads"
+    },
+    {
+      "source_id": "osm_chiayi_buildings",
+      "provider": "OpenStreetMap contributors",
+      "dataset_title": "Chiayi County building footprints",
+      "adapter": "osmnx",
+      "status": "acquired_unvalidated",
+      "retrieved_at_utc": "2026-11-12T05:35:54.563741+00:00",
+      "landing_page_url": "https://www.openstreetmap.org/",
+      "download_url": "https://www.openstreetmap.org/",
+      "file_paths": [
+        "data\\geospatial\\raw\\osm\\buildings\\osm_chiayi_buildings.gpkg"
+      ],
+      "sha256": {
+        "data\\geospatial\\raw\\osm\\buildings\\osm_chiayi_buildings.gpkg": "ec31b4847b4a097a190f68130cd6462b1567c144cffefad9140706a82a6eec10"
+      },
+      "bytes_downloaded": 7684096,
+      "native_crs": null,
+      "scale_or_resolution": null,
+      "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
+      "coverage_description": "Mapped building features returned for the Chiayi County place boundary",
+      "limitations": "OpenStreetMap building coverage may be incomplete and must not be treated as a complete building inventory.",
+      "details": {
+        "place": "Chiayi County, Taiwan",
+        "feature_kind": "features",
+        "attribution": "© OpenStreetMap contributors",
+        "attempts_used": 1,
+        "feature_count": 15169,
+        "tags": {
+          "building": true
+        }
+      },
+      "error": null,
+      "theme": "osm_chiayi_buildings"
+    },
+    {
+      "source_id": "osm_chiayi_hospitals",
+      "provider": "OpenStreetMap contributors",
+      "dataset_title": "Chiayi County mapped hospital features",
+      "adapter": "osmnx",
+      "status": "acquired_unvalidated",
+      "retrieved_at_utc": "2026-11-12T05:37:34.079902+00:00",
+      "landing_page_url": "https://www.openstreetmap.org/",
+      "download_url": "https://www.openstreetmap.org/",
+      "file_paths": [
+        "data\\geospatial\\raw\\osm\\facilities\\osm_chiayi_hospitals.gpkg"
+      ],
+      "sha256": {
+        "data\\geospatial\\raw\\osm\\facilities\\osm_chiayi_hospitals.gpkg": "c9e2b0547f32a9582a43036eb6b330bfcc236053f728c77a5032fbf8f8759c96"
+      },
+      "bytes_downloaded": 98304,
+      "native_crs": null,
+      "scale_or_resolution": null,
+      "license": "Open Database License (ODbL); verify applicable attribution and share-alike obligations",
+      "coverage_description": "Mapped hospital amenity features returned for the Chiayi County place boundary",
+      "limitations": "Discovery only; verify facility identity, operational status, and coordinates with official registries.",
+      "details": {
+        "place": "Chiayi County, Taiwan",
+        "feature_kind": "features",
+        "attribution": "© OpenStreetMap contributors",
+        "attempts_used": 1,
+        "feature_count": 6,
+        "tags": {
+          "amenity": "hospital"
+        }
+      },
+      "error": null,
+      "theme": "osm_chiayi_hospitals"
     }
   ],
-  "acceptance_rule": "Do not calculate candidate metrics or scores until all required layers have validated metadata, CRS, geometry/raster integrity, and comparable coverage across all four candidates."
+  "acceptance_rule": "Do not calculate candidate metrics or scores until all required layers have validated metadata, CRS, geometry/raster integrity, and comparable coverage across all four candidates.",
+  "updated_at_utc": "2026-11-12T05:37:34.081900+00:00",
+  "acquisition_mode": "live"
 }
