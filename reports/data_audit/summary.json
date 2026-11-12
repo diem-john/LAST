@@ -16038,7 +16038,40 @@
       "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
     }
   },
-  "errors": [],
+  "errors": [
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
+      "error": "'1:5'"
+    },
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
+      "error": "'1:5'"
+    },
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
+      "error": "'1:5'"
+    },
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
+      "error": "'1:5'"
+    },
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
+      "error": "'1:5'"
+    },
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
+      "error": "'1:5'"
+    },
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
+      "error": "'1:5'"
+    },
+    {
+      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
+      "error": "'1:5'"
+    }
+  ],
   "era5_physical_screening": {
     "source_id": "era5_sfc",
     "row_count": 147624,
