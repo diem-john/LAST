@@ -1,1 +1,6 @@
 /data/ibtracs/image
+
+# Python generated artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
