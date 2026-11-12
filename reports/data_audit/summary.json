@@ -16038,40 +16038,7 @@
       "note": "Raster values are not interpreted as depth or asset exposure without product documentation and spatial validation."
     }
   },
-  "errors": [
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000000000-0000000000.tif",
-      "error": "'1:5'"
-    },
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2516_From_20040629_to_20040713\\DFO_2516_From_20040629_to_200407130000014848-0000000000.tif",
-      "error": "'1:5'"
-    },
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2554_From_20040824_to_20040912\\DFO_2554_From_20040824_to_20040912.tif",
-      "error": "'1:5'"
-    },
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2669_From_20050611_to_20050617\\DFO_2669_From_20050611_to_20050617.tif",
-      "error": "'1:5'"
-    },
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2694_From_20050716_to_20050720\\DFO_2694_From_20050716_to_20050720.tif",
-      "error": "'1:5'"
-    },
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_2722_From_20050901_to_20050904\\DFO_2722_From_20050901_to_20050904.tif",
-      "error": "'1:5'"
-    },
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3339_From_20080728_to_20080729\\DFO_3339_From_20080728_to_20080729.tif",
-      "error": "'1:5'"
-    },
-    {
-      "source": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\globalflooddb\\DFO_3668_From_20100625_to_20100627\\DFO_3668_From_20100625_to_20100627.tif",
-      "error": "'1:5'"
-    }
-  ],
+  "errors": [],
   "era5_physical_screening": {
     "source_id": "era5_sfc",
     "row_count": 147624,
@@ -17728,6 +17695,1296 @@
         "full_pixel_scan": true
       },
       "interpretation": "Masked/NoData pixels are separated from unmasked NaN/Inf pixels. Finite pixel counts do not establish flood exposure of grid assets."
+    }
+  },
+  "raster_spatial_coverage": {
+    "DFO_2516_From_20040629_to_20040713": {
+      "event_properties_status": "loaded",
+      "band_summaries": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "finite": 410464,
+          "nonfinite_unmasked": 5603456,
+          "masked": 0,
+          "total_pixels": 6013920,
+          "finite_fraction": 0.06825232128129406
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "finite": 410464,
+          "nonfinite_unmasked": 5603456,
+          "masked": 0,
+          "total_pixels": 6013920,
+          "finite_fraction": 0.06825232128129406
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "finite": 410464,
+          "nonfinite_unmasked": 5603456,
+          "masked": 0,
+          "total_pixels": 6013920,
+          "finite_fraction": 0.06825232128129406
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "finite": 410464,
+          "nonfinite_unmasked": 5603456,
+          "masked": 0,
+          "total_pixels": 6013920,
+          "finite_fraction": 0.06825232128129406
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "finite": 965510,
+          "nonfinite_unmasked": 5048410,
+          "masked": 0,
+          "total_pixels": 6013920,
+          "finite_fraction": 0.16054586692207412
+        }
+      ],
+      "pairwise_finite_mask_overlap": [
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 2,
+            "name": "duration"
+          },
+          "both_finite": 410464,
+          "either_finite": 410464,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 410464,
+          "either_finite": 410464,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 410464,
+          "either_finite": 410464,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 410464,
+          "either_finite": 965510,
+          "finite_mask_jaccard": 0.42512661702105625
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 410464,
+          "either_finite": 410464,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 410464,
+          "either_finite": 410464,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 410464,
+          "either_finite": 965510,
+          "finite_mask_jaccard": 0.42512661702105625
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 410464,
+          "either_finite": 410464,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 410464,
+          "either_finite": 965510,
+          "finite_mask_jaccard": 0.42512661702105625
+        },
+        {
+          "band_a": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 410464,
+          "either_finite": 965510,
+          "finite_mask_jaccard": 0.42512661702105625
+        }
+      ],
+      "overview_rows": 16,
+      "overview_columns": 16
+    },
+    "DFO_2554_From_20040824_to_20040912": {
+      "event_properties_status": "loaded",
+      "band_summaries": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "finite": 5296547,
+          "nonfinite_unmasked": 31681837,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.1432335983097585
+        }
+      ],
+      "pairwise_finite_mask_overlap": [
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 2,
+            "name": "duration"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        },
+        {
+          "band_a": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        }
+      ],
+      "overview_rows": 16,
+      "overview_columns": 16
+    },
+    "DFO_2669_From_20050611_to_20050617": {
+      "event_properties_status": "loaded",
+      "band_summaries": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "finite": 646978,
+          "nonfinite_unmasked": 1113543,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.36749235027585586
+        }
+      ],
+      "pairwise_finite_mask_overlap": [
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 2,
+            "name": "duration"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        },
+        {
+          "band_a": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        }
+      ],
+      "overview_rows": 16,
+      "overview_columns": 16
+    },
+    "DFO_2694_From_20050716_to_20050720": {
+      "event_properties_status": "loaded",
+      "band_summaries": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "finite": 1573791,
+          "nonfinite_unmasked": 10916965,
+          "masked": 0,
+          "total_pixels": 12490756,
+          "finite_fraction": 0.12599645689980654
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "finite": 1573791,
+          "nonfinite_unmasked": 10916965,
+          "masked": 0,
+          "total_pixels": 12490756,
+          "finite_fraction": 0.12599645689980654
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "finite": 1573791,
+          "nonfinite_unmasked": 10916965,
+          "masked": 0,
+          "total_pixels": 12490756,
+          "finite_fraction": 0.12599645689980654
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "finite": 1573791,
+          "nonfinite_unmasked": 10916965,
+          "masked": 0,
+          "total_pixels": 12490756,
+          "finite_fraction": 0.12599645689980654
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "finite": 4509541,
+          "nonfinite_unmasked": 7981215,
+          "masked": 0,
+          "total_pixels": 12490756,
+          "finite_fraction": 0.3610302691046082
+        }
+      ],
+      "pairwise_finite_mask_overlap": [
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 2,
+            "name": "duration"
+          },
+          "both_finite": 1573791,
+          "either_finite": 1573791,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 1573791,
+          "either_finite": 1573791,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 1573791,
+          "either_finite": 1573791,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 1573791,
+          "either_finite": 4509541,
+          "finite_mask_jaccard": 0.3489913940243586
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 1573791,
+          "either_finite": 1573791,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 1573791,
+          "either_finite": 1573791,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 1573791,
+          "either_finite": 4509541,
+          "finite_mask_jaccard": 0.3489913940243586
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 1573791,
+          "either_finite": 1573791,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 1573791,
+          "either_finite": 4509541,
+          "finite_mask_jaccard": 0.3489913940243586
+        },
+        {
+          "band_a": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 1573791,
+          "either_finite": 4509541,
+          "finite_mask_jaccard": 0.3489913940243586
+        }
+      ],
+      "overview_rows": 16,
+      "overview_columns": 16
+    },
+    "DFO_2722_From_20050901_to_20050904": {
+      "event_properties_status": "loaded",
+      "band_summaries": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "finite": 7307601,
+          "nonfinite_unmasked": 20064063,
+          "masked": 0,
+          "total_pixels": 27371664,
+          "finite_fraction": 0.26697686337228166
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "finite": 7307601,
+          "nonfinite_unmasked": 20064063,
+          "masked": 0,
+          "total_pixels": 27371664,
+          "finite_fraction": 0.26697686337228166
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "finite": 7307601,
+          "nonfinite_unmasked": 20064063,
+          "masked": 0,
+          "total_pixels": 27371664,
+          "finite_fraction": 0.26697686337228166
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "finite": 7307601,
+          "nonfinite_unmasked": 20064063,
+          "masked": 0,
+          "total_pixels": 27371664,
+          "finite_fraction": 0.26697686337228166
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "finite": 12830162,
+          "nonfinite_unmasked": 14541502,
+          "masked": 0,
+          "total_pixels": 27371664,
+          "finite_fraction": 0.46873883882251366
+        }
+      ],
+      "pairwise_finite_mask_overlap": [
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 2,
+            "name": "duration"
+          },
+          "both_finite": 7307601,
+          "either_finite": 7307601,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 7307601,
+          "either_finite": 7307601,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 7307601,
+          "either_finite": 7307601,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 7307601,
+          "either_finite": 12830162,
+          "finite_mask_jaccard": 0.5695642034761526
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 7307601,
+          "either_finite": 7307601,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 7307601,
+          "either_finite": 7307601,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 7307601,
+          "either_finite": 12830162,
+          "finite_mask_jaccard": 0.5695642034761526
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 7307601,
+          "either_finite": 7307601,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 7307601,
+          "either_finite": 12830162,
+          "finite_mask_jaccard": 0.5695642034761526
+        },
+        {
+          "band_a": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 7307601,
+          "either_finite": 12830162,
+          "finite_mask_jaccard": 0.5695642034761526
+        }
+      ],
+      "overview_rows": 16,
+      "overview_columns": 16
+    },
+    "DFO_3339_From_20080728_to_20080729": {
+      "event_properties_status": "loaded",
+      "band_summaries": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "finite": 2308654,
+          "nonfinite_unmasked": 34669730,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.06243252814941832
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "finite": 5296547,
+          "nonfinite_unmasked": 31681837,
+          "masked": 0,
+          "total_pixels": 36978384,
+          "finite_fraction": 0.1432335983097585
+        }
+      ],
+      "pairwise_finite_mask_overlap": [
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 2,
+            "name": "duration"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 2308654,
+          "either_finite": 2308654,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        },
+        {
+          "band_a": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 2308654,
+          "either_finite": 5296547,
+          "finite_mask_jaccard": 0.4358790736681842
+        }
+      ],
+      "overview_rows": 16,
+      "overview_columns": 16
+    },
+    "DFO_3668_From_20100625_to_20100627": {
+      "event_properties_status": "loaded",
+      "band_summaries": [
+        {
+          "index": 1,
+          "name": "flooded",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 2,
+          "name": "duration",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 3,
+          "name": "clear_views",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 4,
+          "name": "clear_perc",
+          "finite": 223156,
+          "nonfinite_unmasked": 1537365,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.12675565926222976
+        },
+        {
+          "index": 5,
+          "name": "jrc_perm_water",
+          "finite": 646978,
+          "nonfinite_unmasked": 1113543,
+          "masked": 0,
+          "total_pixels": 1760521,
+          "finite_fraction": 0.36749235027585586
+        }
+      ],
+      "pairwise_finite_mask_overlap": [
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 2,
+            "name": "duration"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 1,
+            "name": "flooded"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 2,
+            "name": "duration"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "both_finite": 223156,
+          "either_finite": 223156,
+          "finite_mask_jaccard": 1.0
+        },
+        {
+          "band_a": {
+            "index": 3,
+            "name": "clear_views"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        },
+        {
+          "band_a": {
+            "index": 4,
+            "name": "clear_perc"
+          },
+          "band_b": {
+            "index": 5,
+            "name": "jrc_perm_water"
+          },
+          "both_finite": 223156,
+          "either_finite": 646978,
+          "finite_mask_jaccard": 0.344920538256324
+        }
+      ],
+      "overview_rows": 16,
+      "overview_columns": 16
     }
   }
 }
