@@ -42,3 +42,46 @@ def test_raster_integrity_separates_masked_and_unmasked_nonfinite(tmp_path):
     assert band["finite_unmasked_pixels"] == 2
     assert band["nonfinite_unmasked_pixels"] == 1
     assert band["flooded_value_counts"] == {"0.0": 1, "1.0": 1}
+
+
+def test_spatial_raster_coverage_maps_tiles_and_band_overlap(tmp_path):
+    import json
+    from forecasting.data.quality import audit_raster_spatial_coverage
+
+    rasterio = pytest.importorskip("rasterio")
+    from rasterio.transform import from_origin
+
+    path = tmp_path / "DFO_9999_From_20100101_to_20100103.tif"
+    properties = tmp_path / "DFO_9999_properties.json"
+    properties.write_text(
+        json.dumps({"id": 9999, "began": "2010-01-01", "ended": "2010-01-03"}),
+        encoding="utf-8",
+    )
+    data = np.array([
+        [[1.0, 0.0], [np.nan, 1.0]],
+        [[np.nan, 1.0], [np.nan, 1.0]],
+        [[2.0, 2.0], [np.nan, 2.0]],
+        [[100.0, 100.0], [np.nan, 100.0]],
+        [[0.0, 0.0], [np.nan, 0.0]],
+    ], dtype="float32")
+    names = ["flooded", "duration", "clear_views", "clear_perc", "jrc_perm_water"]
+    with rasterio.open(
+        path, "w", driver="GTiff", height=2, width=2, count=5,
+        dtype="float32", crs="EPSG:4326",
+        transform=from_origin(120, 24, 0.1, 0.1),
+    ) as dst:
+        dst.write(data)
+        for index, name in enumerate(names, start=1):
+            dst.set_band_description(index, name)
+
+    report = audit_raster_spatial_coverage(
+        path, window_size=1, overview_rows=2, overview_cols=2
+    )
+    assert report["event_properties_status"] == "loaded"
+    assert report["event_properties"]["id"] == 9999
+    assert report["band_summaries"][0]["finite"] == 3
+    assert report["band_summaries"][1]["finite"] == 2
+    assert report["band_summaries"][1]["nonfinite_unmasked"] == 2
+    assert report["pairwise_finite_mask_overlap"][0]["finite_mask_jaccard"] == pytest.approx(2 / 3)
+    assert report["spatial_overview"]["tiles"][1][0]["bands"][0]["finite"] == 0
+    assert report["processing"]["values_reclassified"] is False
