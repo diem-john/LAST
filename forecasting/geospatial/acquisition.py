@@ -11,6 +11,7 @@ import json
 import os
 import re
 import sys
+import time
 import zipfile
 from abc import ABC, abstractmethod
 from dataclasses import asdict, dataclass
@@ -72,6 +73,38 @@ class AcquisitionResult:
     limitations: str | None = None
     details: dict[str, Any] | None = None
     error: str | None = None
+
+
+
+def _is_transient_service_error(exc: Exception) -> bool:
+    """Identify temporary HTTP/service-capacity failures worth retrying."""
+    message = str(exc).lower()
+    transient_markers = (
+        "429", "500", "502", "503", "504", "gateway", "temporarily",
+        "capacity", "timeout", "timed out", "connection reset",
+        "connection aborted", "remote end closed",
+    )
+    return isinstance(exc, (requests.Timeout, requests.ConnectionError)) or any(
+        marker in message for marker in transient_markers
+    )
+
+
+def _with_exponential_backoff(
+    operation: Any, *, attempts: int, initial_delay: float,
+    max_delay: float, sleep: Any = time.sleep,
+) -> tuple[Any, int]:
+    """Run an operation with bounded retries for transient service errors."""
+    attempts = max(1, int(attempts))
+    delay = max(0.0, float(initial_delay))
+    for attempt in range(1, attempts + 1):
+        try:
+            return operation(), attempt
+        except Exception as exc:
+            if attempt >= attempts or not _is_transient_service_error(exc):
+                raise
+            sleep(min(delay, max_delay))
+            delay = min(max_delay, max(delay * 2, 0.1))
+    raise RuntimeError("Retry loop exited unexpectedly")
 
 
 class SourceAdapter(ABC):
@@ -214,15 +247,27 @@ class OSMnxAdapter(SourceAdapter):
 
         # Bound Overpass request waits; OSMnx settings are process-global.
         ox.settings.requests_timeout = self.timeout
+        if self.source.get("overpass_url"):
+            ox.settings.overpass_url = str(self.source["overpass_url"])
         place = str(self.source.get("place", "Chiayi County, Taiwan"))
+        retry_attempts = int(self.source.get("retry_attempts", 4))
+        retry_initial_delay = float(self.source.get("retry_initial_delay_seconds", 10))
+        retry_max_delay = float(self.source.get("retry_max_delay_seconds", 60))
         tags = self.source.get("tags")
         feature_kind = str(self.source.get("feature_kind", "roads"))
         self.output_dir.mkdir(parents=True, exist_ok=True)
         outputs: list[Path] = []
         details: dict[str, Any] = {"place": place, "feature_kind": feature_kind, "attribution": "© OpenStreetMap contributors"}
         if feature_kind == "roads":
-            graph = ox.graph_from_place(place, network_type=str(self.source.get("network_type", "drive")), simplify=True)
+            graph, attempts_used = _with_exponential_backoff(
+                lambda: ox.graph_from_place(
+                    place, network_type=str(self.source.get("network_type", "drive")), simplify=True
+                ),
+                attempts=retry_attempts, initial_delay=retry_initial_delay,
+                max_delay=retry_max_delay,
+            )
             nodes, edges = ox.graph_to_gdfs(graph)
+            details["attempts_used"] = attempts_used
             graph_path = self.output_dir / f"{self.source_id}.graphml"
             edges_path = self.output_dir / f"{self.source_id}_edges.gpkg"
             nodes_path = self.output_dir / f"{self.source_id}_nodes.gpkg"
@@ -234,7 +279,12 @@ class OSMnxAdapter(SourceAdapter):
         elif feature_kind == "features":
             if not isinstance(tags, dict) or not tags:
                 raise ValueError("OSM feature adapter requires a non-empty 'tags' mapping")
-            frame = ox.features_from_place(place, tags=tags)
+            frame, attempts_used = _with_exponential_backoff(
+                lambda: ox.features_from_place(place, tags=tags),
+                attempts=retry_attempts, initial_delay=retry_initial_delay,
+                max_delay=retry_max_delay,
+            )
+            details["attempts_used"] = attempts_used
             vector_path = self.output_dir / f"{self.source_id}.gpkg"
             frame.to_file(vector_path, driver="GPKG")
             outputs.append(vector_path)
@@ -316,7 +366,16 @@ def run_acquisition(
         if dry_run:
             results.append(adapter.planned())
             continue
-        results.append(adapter.acquire())
+        try:
+            results.append(adapter.acquire())
+        except Exception as exc:
+            # Record this source's failure and continue with independent sources.
+            results.append(adapter._result(
+                "acquisition_failed",
+                retrieved_at_utc=utc_now(),
+                error=f"{type(exc).__name__}: {exc}",
+                details={"output_dir": str(adapter.output_dir)},
+            ))
     return results
 
 
@@ -339,6 +398,10 @@ def main(argv: list[str] | None = None) -> int:
                     results, dry_run=not args.live)
     print(json.dumps([asdict(item) for item in results], indent=2, ensure_ascii=False))
     print(f"Mode: {'LIVE' if args.live else 'DRY RUN (offline; no writes)'}")
+    failed = [item for item in results if item.status == "acquisition_failed"]
+    if failed:
+        print(f"Acquisition failures: {len(failed)}; see the manifest for details.", file=sys.stderr)
+        return 2
     return 0
 
 
