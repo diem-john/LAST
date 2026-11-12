@@ -35,7 +35,7 @@
       "native_crs": "GCS_TWD97[2020] geographic longitude/latitude; retain embedded .prj as source-of-truth and document the explicit transformation to EPSG:3826.",
       "scale_or_resolution": "Vector administrative boundary polygons; source metadata and archive documentation retained.",
       "coverage_description": "Nationwide township/city/district administrative boundaries; Chiayi County candidates Taibao (Q12), Minxiong (Q05), Puzi (Q02), and Shuishang (Q13) are present.",
-      "file_path": "data/geospatial/raw/nlsc/boundaries/TOWN_MOI_1120317.shp (with matching .shx, .dbf, .prj and source metadata/archive)",
+      "file_path": "data/geospatial/raw/nlsc/boundaries/extracted/TOWN_MOI_1120317.shp (with matching .shx, .dbf, .prj and metadata)",
       "file_sha256": null,
       "status": "accepted_authoritative_project_reference",
       "candidate_coverage_checked": true,
@@ -64,8 +64,11 @@
           "MultiPolygon"
         ],
         "excluded_archive_layer": "Town_Majia_Sanhe (single unrelated Pingtung feature)",
-        "crs_note": "Embedded .prj identifies GCS_TWD97[2020]; preserve original CRS definition and explicitly document transformation to EPSG:3826 rather than relabeling source coordinates."
-      }
+        "crs_note": "Embedded .prj identifies GCS_TWD97[2020]; preserve original CRS definition and explicitly document transformation to EPSG:3826 rather than relabeling source coordinates.",
+        "repository_paths_verified": true,
+        "dbf_encoding_note": "Chinese COUNTYNAME/TOWNNAME text was garbled under default and CP950 reads in the user's local environment; deterministic candidate selection uses TOWNID/TOWNENG and canonical Chinese candidate labels are added during processing."
+      },
+      "archive_path": "data/geospatial/raw/nlsc/boundaries/original/鄉鎮市區界線(TWD97經緯度).zip"
     },
     {
       "theme": "roads_buildings_water_landmarks",
