@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0",
+  "project": "LAST — Minxiong analytical urban-cluster screening",
+  "generated_at_utc": "2026-11-12T06:38:07.584406+00:00",
+  "status": "descriptive_screening_metrics_generated",
+  "study_area": {
+    "town_id": "Q05",
+    "township": "Minxiong Township (民雄鄉)",
+    "cluster_count": 9,
+    "crs": "EPSG:3826"
+  },
+  "inputs": {
+    "clusters": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\processed\\chiayi_analytical_urban_clusters.gpkg",
+      "sha256": "a997845111cafb034e14df1ebc1754216ef38249d71475eaeef26bb525244a0a",
+      "layer": "analytical_urban_clusters"
+    },
+    "roads": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\roads\\osm_chiayi_roads_edges.gpkg",
+      "sha256": "e59d0996dc5147fe053e04b435330bcc241e9be7bb1579a2a04514c6bf0f57e5",
+      "layer": "osm_chiayi_roads_edges"
+    },
+    "hospitals": {
+      "path": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\data\\geospatial\\raw\\osm\\facilities\\osm_chiayi_hospitals.gpkg",
+      "sha256": "c9e2b0547f32a9582a43036eb6b330bfcc236053f728c77a5032fbf8f8759c96",
+      "layer": "osm_chiayi_hospitals"
+    }
+  },
+  "metric_definitions": {
+    "area_km2": "Projected polygon area in EPSG:3826.",
+    "perimeter_km": "Projected polygon perimeter in EPSG:3826.",
+    "compactness_4piA_over_P2": "4*pi*area/perimeter^2; approaches 1 for a circle.",
+    "largest_component_area_share": "Largest polygon component area divided by total cluster area.",
+    "clipped_osm_road_length_km": "Sum of OSM road-line lengths after geometric intersection with the cluster; overlapping source features may contribute separately.",
+    "osm_road_length_density_km_per_km2": "Clipped OSM road length divided by cluster area.",
+    "intersecting_osm_hospital_features": "Count of mapped hospital polygon features intersecting the cluster.",
+    "nearest_osm_hospital_polygon_distance_km": "Minimum planar distance from cluster polygon to any mapped hospital polygon."
+  },
+  "outputs": {
+    "csv": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\reports\\geospatial\\minxiong_cluster_screening.csv",
+    "csv_sha256": "ed95faf4987e7aa9f72aaa6fbb84d429e549153d6155740952a3eb04d342c327",
+    "json": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\reports\\geospatial\\minxiong_cluster_screening.json"
+  },
+  "limitations": [
+    "OSM road and hospital coverage/completeness are unverified and may vary spatially.",
+    "Road length density is a geometric context proxy, not travel-time accessibility, graph routing quality, utility-corridor access, or electrical connectivity.",
+    "OSM road features are not Taipower conductors, cables, poles, or verified utility corridors.",
+    "OSM hospital features are discovery data; identity, operating status, service capacity, and official inventory status are not verified.",
+    "Nearest-hospital distance is straight-line polygon-to-polygon distance, not road-network travel distance.",
+    "A hospital count of zero means no mapped OSM hospital polygon intersects the cluster; it does not establish absence of healthcare facilities.",
+    "Compactness is sensitive to boundary geometry and point-touching components; inspect largest_component_area_share before selecting a compact site.",
+    "No flood, terrain, population, official planning, or six-criterion weighted suitability score is calculated.",
+    "These metrics screen the nine frozen Minxiong clusters only; they do not re-rank the four townships or select a final network-placement cluster.",
+    "The enhanced IEEE 33-bus network remains a synthetic Chiayi-georeferenced benchmark, not an actual Taipower feeder."
+  ],
+  "results": [
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_001",
+      "area_km2": 1.875,
+      "perimeter_km": 8.0,
+      "compactness_4piA_over_P2": 0.36815538909255385,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 312,
+      "clipped_osm_road_length_km": 33.31734312865065,
+      "osm_road_length_density_km_per_km2": 17.76924966861368,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 3.563743879311211
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_002",
+      "area_km2": 1.0,
+      "perimeter_km": 7.0,
+      "compactness_4piA_over_P2": 0.2564565431501872,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 197,
+      "clipped_osm_road_length_km": 20.851529158045654,
+      "osm_road_length_density_km_per_km2": 20.851529158045654,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 3.936922321534639
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_003",
+      "area_km2": 0.8125,
+      "perimeter_km": 5.0,
+      "compactness_4piA_over_P2": 0.4084070449666731,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 201,
+      "clipped_osm_road_length_km": 14.436613647661089,
+      "osm_road_length_density_km_per_km2": 17.768139874044415,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 6.40503554729831
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_004",
+      "area_km2": 0.5625,
+      "perimeter_km": 4.5,
+      "compactness_4piA_over_P2": 0.3490658503988659,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 2,
+      "clipped_osm_road_length_km": 0.5762544831617552,
+      "osm_road_length_density_km_per_km2": 1.024452414509787,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 4.977450523069274
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_005",
+      "area_km2": 0.3125,
+      "perimeter_km": 3.0,
+      "compactness_4piA_over_P2": 0.4363323129985824,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 42,
+      "clipped_osm_road_length_km": 4.657958757784439,
+      "osm_road_length_density_km_per_km2": 14.905468024910203,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 6.122132780734657
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_006",
+      "area_km2": 0.3125,
+      "perimeter_km": 3.0,
+      "compactness_4piA_over_P2": 0.4363323129985824,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 12,
+      "clipped_osm_road_length_km": 1.8119936836681665,
+      "osm_road_length_density_km_per_km2": 5.798379787738133,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 5.3733953908228385
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_007",
+      "area_km2": 0.29095490374093846,
+      "perimeter_km": 2.9573116124977683,
+      "compactness_4piA_over_P2": 0.41806264885481687,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 10,
+      "clipped_osm_road_length_km": 1.8583425642640858,
+      "osm_road_length_density_km_per_km2": 6.387046722260175,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 1.8858974326474343
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_008",
+      "area_km2": 0.2578405602227035,
+      "perimeter_km": 2.6409435013596356,
+      "compactness_4piA_over_P2": 0.4645611408607866,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 6,
+      "clipped_osm_road_length_km": 1.4616782350079738,
+      "osm_road_length_density_km_per_km2": 5.668922817052076,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 8.68156570703583
+    },
+    {
+      "town_id": "Q05",
+      "township": "Minxiong Township (民雄鄉)",
+      "cluster_id": "Q05_cluster_009",
+      "area_km2": 0.25,
+      "perimeter_km": 2.5,
+      "compactness_4piA_over_P2": 0.5026548245743668,
+      "largest_component_area_share": 1.0,
+      "intersecting_osm_road_features": 94,
+      "clipped_osm_road_length_km": 8.061903518534189,
+      "osm_road_length_density_km_per_km2": 32.247614074136756,
+      "intersecting_osm_hospital_features": 0,
+      "nearest_osm_hospital_polygon_distance_km": 6.595126003166446
+    }
+  ],
+  "decision_status": "screening_only_no_final_cluster_selected"
+}
