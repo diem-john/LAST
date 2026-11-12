@@ -65,7 +65,15 @@ Edit `config/geospatial_sources.json`. Before enabling an official source:
 4. Set `enabled` to `true` and populate `download_url` (HTTP adapter) or `service_url` + `type_name` (WFS adapter).
 5. Keep the landing page URL separate from the actual download/service URL.
 
-No official NLSC, WRA, or NCDR download endpoint is hard-coded until its exact resource has been verified.
+### Official boundary and planning sources researched (2026-11-12)
+
+- NLSC/MOI township-boundary catalogue: `https://data.gov.tw/en/datasets/7441`. The catalogue describes township/town/city/district boundaries, fields including `COUNTYNAME`, `TOWNNAME`, and `TOWNENG`, and Open Government Data License 1.0. Its linked TGOS archive is registered in the config as `nlsc_township_boundaries`, but remains **disabled** because the linked archive filename indicates 2025-03-18 while MOI/NLSC announced a newer administrative-boundary update in August 2026. The TGOS resource also returned HTTP 403 during automated retrieval. Do not activate it until the archive release is reconciled with the August 2026 update and local access is confirmed.
+- NLSC download catalogue: `https://maps.nlsc.gov.tw/pro/download.jsp`. It lists official county/city, township, and village boundary archives; verify the specific release date and CRS from the selected archive metadata before use.
+- NGIS planning portal: `https://ngis.nlma.gov.tw/`. The national land-use zoning WMTS network service became fee-based for private applicants from 2026-01-01. The public planning map viewer allows visual querying, but a map view is not a downloadable vector dataset. `ngis_urban_planning_zoning` is therefore registered but disabled pending an authorized vector export or county-government GIS release.
+
+The township boundary archive is a candidate source for administrative clipping only; it is **not** an urban-planning polygon. Administrative township boundaries must not be substituted for official urban planning area boundaries in the candidate scoring methodology. The four candidates may contain multiple urban planning districts or non-urban land, so the exact planning polygon coverage must be checked independently.
+
+No official WRA or NCDR download endpoint is enabled until its exact resource has been verified.
 
 ## Output and provenance
 
@@ -83,7 +91,7 @@ ZIP extraction is opt-in per HTTP source via `"extract_zip": true`; archive path
 
 - OSM coverage is community-contributed and can be incomplete. Verify hospitals/shelters with official registries.
 - OSM roads are routing/context proxies, not actual Taipower conductor or cable corridors.
-- The current OSM queries retrieve Chiayi County as an initial source area. The final analysis must clip to comparable official urban planning polygons for Taibao, Minxiong, Puzi, and Shuishang.
+- The current OSM queries retrieve Chiayi County as an initial source area. The final analysis must clip to comparable official urban planning polygons for Taibao, Minxiong, Puzi, and Shuishang. Administrative township boundaries are useful for candidate filtering but are not a substitute for urban planning polygons.
 - Flood potential, DEM, population, and authoritative planning data remain unconfigured until exact official resources are selected.
 - Never interpret modeled flood-potential layers as typhoon-specific forecasts.
 - The module does not select a study area or generate synthetic IEEE 33-bus coordinates.
