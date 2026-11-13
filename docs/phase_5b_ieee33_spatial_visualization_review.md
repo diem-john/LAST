@@ -1,75 +1,50 @@
-# Phase 5B — Synthetic IEEE 33-Bus Spatial Visualization and Review
+# Phase 5B — Split Geographic Placement and Abstract Topology Visualization
 
 ## Objective
-
-Create a reproducible, publication-quality map of the Phase 5A synthetic IEEE 33-bus placement in the frozen Minxiong analytical cluster `Q05_cluster_001`. Generate a machine-readable review report and branch-connector length table to support human inspection before any later electrical modeling.
+Generate two separate publication-quality figures from the Phase 5A synthetic IEEE 33-bus benchmark. Keep all 33 geographic coordinates and the standard 32-branch radial topology unchanged. The coordinates and abstract branch adjacency were generated independently; overlaying straight lines between them produced dense intersections that could be mistaken for actual feeder routes.
 
 ## Inputs
+- `data/geospatial/processed/minxiong_cluster_001_ieee33_synthetic.gpkg`: layers `synthetic_bus_locations` and `synthetic_topology_connectors`.
+- Frozen `Q05_cluster_001` from `chiayi_analytical_urban_clusters.gpkg`.
+- OSM roads from `osm_chiayi_roads_edges.gpkg`.
 
-- `data/geospatial/processed/minxiong_cluster_001_ieee33_synthetic.gpkg`
-  - `synthetic_bus_locations`
-  - `synthetic_topology_connectors`
-- `data/geospatial/processed/chiayi_analytical_urban_clusters.gpkg`, layer `analytical_urban_clusters`
-- `data/geospatial/raw/osm/roads/osm_chiayi_roads_edges.gpkg`, layer `osm_chiayi_roads_edges`
+No bus coordinates, branch endpoints, cluster boundaries, or Phase 5A placement parameters are changed.
 
-The selected cluster and Phase 5A bus coordinates are treated as frozen inputs. This phase does not relocate buses, modify branch endpoints, or change the IEEE 33-bus topology.
+## Figure A — Geographic placement
+Output: `reports/geospatial/minxiong_cluster_001_ieee33_geographic_placement.png`.
+Shows the frozen cluster boundary, contextual OSM roads, and all 33 synthetic bus markers/IDs. It deliberately omits topology connectors. This figure communicates the location of synthetic benchmark points, not electrical connectivity.
 
-## Review procedure
+## Figure B — Abstract IEEE 33-bus topology
+Output: `reports/geospatial/ieee33_abstract_radial_topology.png`.
+Shows all 33 bus IDs and 32 standard radial branches using a deterministic breadth-first layered schematic rooted at bus 1. Horizontal position indicates topological depth only. Node positions and edge lengths have no geographic or electrical meaning.
 
-1. Validate 33 unique bus IDs (1–33), 32 topology connectors, declared coordinate reference systems, and containment of every bus point within the selected cluster.
-2. Reproject the layers to EPSG:3826 for metric display.
-3. Draw the cluster boundary, contextual clipped OSM roads, bus points with IDs, and straight-line topology connectors.
-4. Detect geometric intersections between connector pairs that do not share a bus endpoint. These are cartographic flags for visual inspection only.
-5. Export a branch table with straight-line connector lengths, explicitly labelled as visualization geometry rather than conductor lengths.
-6. Export a JSON report containing validation checks, crossing details, outputs, and limitations.
+## Additional outputs
+- `reports/geospatial/minxiong_cluster_001_ieee33_spatial_review.json`: validation results and figure semantics.
+- `reports/geospatial/minxiong_cluster_001_ieee33_branch_review.csv`: branch endpoints and straight-line distances between synthetic geographic coordinates. These are not conductor lengths or impedances.
 
 ## Run locally
-
 From the repository root in the `agentic_ai` environment:
-
 ```powershell
 python scripts/visualize_ieee33_minxiong_placement.py
-```
-
-Run focused tests:
-
-```powershell
 python -m pytest tests/test_ieee33_spatial_visualization.py -q
 ```
 
-## Outputs
-
-- `reports/geospatial/minxiong_cluster_001_ieee33_network_map.png` — 300-DPI map.
-- `reports/geospatial/minxiong_cluster_001_ieee33_spatial_review.json` — structural checks and nonincident connector-intersection flags.
-- `reports/geospatial/minxiong_cluster_001_ieee33_branch_review.csv` — branch endpoint IDs and straight-line map-connector lengths.
-
-## How to interpret the map and diagnostics
-
-- Bus markers are synthetic benchmark locations generated on sampled OSM road geometry. They are not actual electrical assets, customers, or verified load points.
-- Bus 1 is a geographic slack-reference anchor only, not a verified substation.
+## Interpretation and limitations
+- Bus coordinates are synthetic research locations, not actual Taipower assets, customers, verified loads, or substations. Bus 1 is a geographic slack-reference anchor only.
 - OSM roads are context only and are not electrical corridors.
-- Blue connectors encode abstract IEEE 33-bus topology using straight lines. They are not conductor routes, line lengths, or impedance estimates.
-- A nonincident connector crossing is a geometric review flag. It is not an electrical fault or proof of physical conductor crossing.
-- The minimum bus separation is descriptive only, not an engineering siting threshold.
+- The abstract topology figure is a schematic of standard IEEE benchmark adjacency.
+- The previous 158 nonincident connector crossings are cartographic diagnostics, not an electrical metric. They do not justify relocating buses or changing the benchmark topology.
+- No electrical parameterization, power flow, voltage, losses, protection, reliability, islanding, BESS feasibility, or operational feasibility is evaluated.
 
 ## Human acceptance checklist
+- [ ] Geographic map shows all 33 bus labels clearly within the frozen cluster.
+- [ ] Road context is visible but does not overwhelm the bus markers.
+- [ ] Abstract topology contains 33 buses and 32 branches.
+- [ ] Bus 1 is the root of the schematic.
+- [ ] Branch adjacency matches the Phase 5A standard IEEE branch list.
+- [ ] Captions distinguish synthetic geographic placement from abstract benchmark topology.
 
-Review the generated map at full resolution and record the outcome separately:
-
-- [ ] All 33 bus labels are legible and no marker is unintentionally obscured.
-- [ ] Bus points appear inside the selected cluster boundary.
-- [ ] The spatial distribution is understandable and does not create misleading visual clustering.
-- [ ] The topology connectors are visually traceable; dense intersections are reviewed against the branch table.
-- [ ] Every nonincident connector crossing reported in the JSON has been visually inspected.
-- [ ] Any proposed coordinate correction is justified and versioned; do not silently change the frozen Phase 5A placement.
-- [ ] The synthetic nature of the network and visualization-only connector semantics are retained in figures and captions.
-
-Acceptance is a human research-design decision. The script intentionally leaves `decision_status` as `visual_review_required_no_placement_acceptance_inferred`; a successful run does not accept the placement automatically.
-
-## Explicit exclusions
-
-This phase does not infer actual Taipower assets, load locations, substation positions, electrical corridors, or conductor routes. It does not calculate electrical impedances, power flow, voltage, losses, protection, reliability, islanding, BESS feasibility, or operational actions. The LAST LLM remains advisory only; operational decisions require deterministic engineering validation and authorized operator action.
+The script sets `decision_status` to `split_figures_generated_human_acceptance_pending`. It does not automatically accept the placement.
 
 ## Next gate
-
-Do not begin electrical parameterization or power-flow analysis until the map and review report have been inspected and the synthetic placement has been explicitly accepted or revised.
+After inspecting both figures and confirming the checklist, explicitly accept or request revision. Only then proceed to Phase 5C electrical benchmark parameterization and deterministic power-flow validation.
