@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+from tqdm.auto import tqdm
 
 from forecasting.data.ingestion import load_area_averaged_precipitation, load_nasa_power
 
@@ -96,14 +97,23 @@ def normalize_era5(path: Path, source_id: str, unit_overrides: dict[str, str]) -
         if column not in EXCLUDED_COLUMNS and pd.to_numeric(frame[column], errors="coerce").notna().any()
     ]
     if not variables:
-        raise ValueError(f"{source_id}: no numeric weather variables detected")
+        preview = frame.head(3).to_dict(orient="records")
+        schema = {str(column): str(dtype) for column, dtype in frame.dtypes.items()}
+        raise ValueError(
+            f"{source_id}: no numeric weather variables detected. "
+            f"Columns={list(frame.columns)!r}; dtypes={schema!r}; "
+            f"sample_rows={preview!r}. Check the CSV delimiter, header, and source export format."
+        )
     rows: list[dict[str, Any]] = []
-    for variable in variables:
+    for variable in tqdm(variables, desc=f"{source_id} variables", unit="var", leave=False):
         unit = unit_overrides.get(variable, ERA5_UNITS.get(variable))
         if not unit:
             continue
         values = pd.to_numeric(frame[variable], errors="coerce")
-        for index, value in values.items():
+        for index, value in tqdm(
+            values.items(), total=len(values),
+            desc=f"{source_id}:{variable}", unit="rows", leave=False,
+        ):
             _append_rows(
                 rows, timestamp=timestamps.iloc[index].isoformat(), source_id=source_id,
                 variable=variable, value=value, unit=unit, scope="point",
@@ -130,8 +140,12 @@ def normalize_nasa(path: Path, *, latitude: float | None, longitude: float | Non
         )
     rows: list[dict[str, Any]] = []
     calendar = frame["timestamp_lst"]
-    for variable in metadata["measurement_columns"]:
-        for index, value in pd.to_numeric(frame[variable], errors="coerce").items():
+    for variable in tqdm(metadata["measurement_columns"], desc="NASA POWER variables", unit="var", leave=False):
+        values = pd.to_numeric(frame[variable], errors="coerce")
+        for index, value in tqdm(
+            values.items(), total=len(values),
+            desc=f"nasa_power:{variable}", unit="rows", leave=False,
+        ):
             _append_rows(
                 rows, timestamp=calendar.iloc[index].isoformat(), source_id="nasa_power",
                 variable=variable, value=value, unit="source unit not normalized",
@@ -164,7 +178,10 @@ def normalize_giovanni(path: Path, source_id: str) -> list[dict[str, Any]]:
         "data_bbox": metadata.get("data_bbox"),
         "fill_value": metadata.get("fill_value"),
     })
-    for record in frame.to_dict(orient="records"):
+    for record in tqdm(
+        frame.to_dict(orient="records"), total=len(frame),
+        desc=f"{source_id} records", unit="rows", leave=False,
+    ):
         value = record["value"]
         if pd.notna(value) and metadata.get("fill_value") is not None:
             if float(value) == float(metadata["fill_value"]):
@@ -200,7 +217,9 @@ def main() -> int:
     rows: list[dict[str, Any]] = []
     source_counts: dict[str, int] = {}
     if not args.skip_era5:
-        for source_id, path in ERA5_FILES.items():
+        for source_id, path in tqdm(
+            list(ERA5_FILES.items()), desc="ERA5 sources", unit="source",
+        ):
             result = normalize_era5(path, source_id, unit_overrides)
             rows.extend(result)
             source_counts[source_id] = len(result)
@@ -209,7 +228,9 @@ def main() -> int:
         rows.extend(result)
         source_counts["nasa_power"] = len(result)
     if not args.skip_precipitation:
-        for source_id, (path, canonical_id) in GIOVANNI_FILES.items():
+        for source_id, (path, canonical_id) in tqdm(
+            list(GIOVANNI_FILES.items()), desc="Precipitation sources", unit="source",
+        ):
             result = normalize_giovanni(path, canonical_id)
             rows.extend(result)
             source_counts[source_id] = len(result)
