@@ -18,7 +18,6 @@ def build_radial_tree(case):
     buses={int(x["bus_id"]):x for x in case["bus"]}
     if len(buses)!=33 or set(buses)!=set(range(1,34)): raise ValueError("Expected bus IDs 1..33 exactly once")
     closed=[x for x in case["branch"] if x["in_service"]]
-    if len(closed)!=32: raise ValueError("Base case must have exactly 32 in-service branches")
     adj=defaultdict(list)
     for br in closed:
         a,b=int(br["from_bus"]),int(br["to_bus"])
@@ -32,7 +31,7 @@ def build_radial_tree(case):
             if m in parent: raise ValueError("Closed network contains a cycle")
             parent[m]=n; parent_branch[m]=br; q.append(m)
     if set(parent)!=set(buses): raise ValueError("Closed network is disconnected")
-    if len(closed)!=len(buses)-1: raise ValueError("Closed network is not a spanning tree")
+    if len(closed)!=len(buses)-1: raise ValueError("Closed network is not a spanning tree (expected 32 in-service branches)")
     return buses,closed,parent,parent_branch,order
 
 def run_backward_forward_sweep(case,tolerance=1e-10,max_iterations=1000):
