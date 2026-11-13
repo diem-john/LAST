@@ -31,6 +31,10 @@ Output:
 - Retains TRMM 3B42 precipitation rate in `mm h-1`.
 - Both are regional area means, not point observations. They must not be spatially downscaled by this script.
 
+## Progress and diagnostics
+- The normalizer displays source-level progress and row-level progress for long ERA5, NASA POWER, and Giovanni expansions.
+- If an ERA5 file contains no numeric weather variables, the error reports its parsed columns, dtypes, and a short row sample. Use this diagnostic to verify the CSV export schema before changing the variable registry or assigning units.
+
 ## Run
 Start with the sources that can be normalized without additional NASA POWER coordinate/time decisions:
 
