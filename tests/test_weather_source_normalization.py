@@ -22,6 +22,17 @@ def test_era5_normalizer_keeps_grid_coordinates_and_units(tmp_path):
     assert rows[0]["latitude"] == 23.5
 
 
+def test_era5_no_numeric_variables_reports_source_schema(tmp_path):
+    path = tmp_path / "era5_wave.csv"
+    pd.DataFrame({
+        "valid_time": ["2026-11-12T00:00:00"],
+        "latitude": [23.5], "longitude": [120.4],
+        "unexpected_wave_field": ["not-numeric"],
+    }).to_csv(path, index=False)
+    with pytest.raises(ValueError, match="Columns=.*unexpected_wave_field"):
+        normalize_era5(path, "era5_wav", {})
+
+
 def test_era5_unknown_variable_requires_explicit_unit(tmp_path):
     path = tmp_path / "era5.csv"
     pd.DataFrame({
