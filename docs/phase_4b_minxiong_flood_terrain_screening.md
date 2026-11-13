@@ -2,9 +2,9 @@
 
 ## Scope
 
-This phase screens the nine frozen analytical urban clusters in Minxiong Township (Q05). It does not regenerate clusters, alter the 250 m cluster derivation, change suitability weights, or select a final network-placement cluster.
+This phase screens the nine frozen analytical urban clusters in Minxiong Township (Q05). It does not regenerate clusters, alter the 250 m cluster derivation, or change suitability weights. The subsequent cluster selection is documented separately in `docs/phase_4b_minxiong_cluster_selection_decision.md`.
 
-Flood screening uses the seven Global Flood Database (GFD) event GeoTIFFs already checked into `data/globalflooddb/`. Terrain screening is deliberately reported as pending because no verified DEM/DTM raster is currently checked into the repository.
+Flood screening uses the Global Flood Database (GFD) event GeoTIFFs checked into `data/globalflooddb/`. The successful local run processed eight raster records for nine clusters. Terrain evidence is available only as a manually selected regional MOI slope summary; no verified cluster-level DEM/DTM raster is checked into the repository.
 
 ## Flood screening
 
@@ -49,15 +49,25 @@ The GFD bands are not interchangeable:
 
 Unmasked NaNs remain unknown and are excluded from denominators; they are never converted to zero. The coverage share is a raster-grid-center diagnostic, not proof of complete satellite observation. A low coverage share or weak clear-view context makes a zero flooded share inconclusive.
 
-### Existing event coverage to expect
+### Executed screening results and event inventory caveat
 
-The repository contains seven event rasters. Their metadata bounds indicate that six have geographic bounds overlapping the Minxiong area; DFO event 2516 has bounds south of Taiwan and should produce no Minxiong raster overlap. Geographic bounds overlap is only a preliminary locator check. The script's per-cluster finite-pixel and quality-band outputs determine whether any usable observation is actually present.
+The successful local run generated eight raster records per cluster. The committed CSV shows event ID `2516` twice: one record has finite Minxiong observations, while another has `no_raster_bounds_overlap`. This is a source-inventory/provenance discrepancy that must be resolved from the JSON event inventory, raster paths, and hashes before counting independent events or publishing event-level summaries. Do not count the duplicate ID as two independent events.
+
+Across the seven raster records with finite observations, all nine clusters have zero detected flooded pixels. The CSV reports the following cumulative pixel diagnostics for the shortlisted clusters:
+
+| Cluster | Finite event pixels summed across records | Grid-center pixels summed across overlapping records | Coverage per overlapping raster record | Flooded pixels |
+|---|---:|---:|---:|---:|
+| Q05_cluster_001 | 182 | 196 | 92.86% | 0 |
+| Q05_cluster_002 | 105 | 105 | 100% | 0 |
+| Q05_cluster_009 | 35 | 35 | 100% | 0 |
+
+These are repeated raster observations, not unique spatial pixels. The zero detections apply only to finite pixels in this limited event collection; they do not establish flood safety or absence of historical flooding. The GFD collection is not exhaustive and its pixels are coarse relative to the analytical cluster areas.
 
 The event collection is not an exhaustive Minxiong flood history. Event rasters are retrospective event maxima, not forecasts, return-period maps, hydraulic simulations, or hourly flood labels.
 
 ## Terrain data acquisition gate
 
-The repository currently has no verified DEM/DTM raster suitable for computing cluster elevation or slope metrics. Do not substitute ERA5, a basemap, contour visualization, or a DSM for a terrain elevation raster without documenting the distinction.
+The MOI DTM Value-added Application Service was accessible when TGOS returned 403. A manually selected regional slope analysis around the Chiayi study region reported a selected area of 5.6951 km², with 83.3937% in slope class 1 (≤5%), 13.6794% in class 2 (5–15%), and 2.9268% in class 3 (15–30%); no selected area was reported in classes 4–7. This is regional context only: the polygon was manually selected, not uploaded from a Q05 cluster, and these percentages must not be represented as cluster-specific metrics. No verified DTM raster/export and no per-cluster elevation/slope statistics are currently checked into the repository. Do not substitute ERA5, a basemap, contour visualization, or a DSM for a terrain elevation raster without documenting the distinction.
 
 A suitable official candidate source is the Taiwan Ministry of the Interior Department of Land Administration's **2026 20 m grid DTM dataset** on the Government Open Data Platform:
 
@@ -84,7 +94,8 @@ After a verified terrain raster is available, compute per-cluster elevation mini
 ## Current status
 
 - Frozen nine-cluster geometries: available.
-- Historical GFD event raster screening: implemented; local execution and outputs pending user run.
-- Verified 20 m DTM/DEM raster for Minxiong: not yet acquired.
-- Terrain statistics and slope screening: pending.
-- Final cluster selection: pending flood/terrain interpretation and remaining suitability evidence.
+- Historical GFD event raster screening: locally executed; CSV output committed. Eight raster records were processed, with a duplicate event-ID 2516 inventory issue requiring audit.
+- Regional MOI DTM slope summary: manually obtained; contextual only, not cluster-specific.
+- Verified 20 m DTM/DEM raster for Minxiong and cluster-level terrain statistics: not acquired.
+- Lead cluster selection: Q05_cluster_001 selected for the next synthetic benchmark placement stage; Q05_cluster_002 retained as the principal alternative and Q05_cluster_009 as an additional alternative. See the separate decision record.
+- No complete six-criterion weighted score is calculated; weights remain unchanged.
