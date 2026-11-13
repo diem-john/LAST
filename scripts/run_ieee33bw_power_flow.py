@@ -92,8 +92,7 @@ def run_backward_forward_sweep(case,tolerance=1e-10,max_iterations=1000):
           "voltage_limit_ok":float(row["v_min_pu"])-1e-9<=vm<=float(row["v_max_pu"])+1e-9})
     p_load=sum(x["p_load_mw"] for x in bus_rows); q_load=sum(x["q_load_mvar"] for x in bus_rows)
     p_loss=total_loss.real*sbase; q_loss=total_loss.imag*sbase
-    return {"converged":True,"iterations":iteration,"max_voltage_change_pu":err,"bus_results":bus_rows,
-      "branch_results":branch_rows,"summary":{"bus_count":len(buses),"closed_branch_count":len(branches),
+    summary={"bus_count":len(buses),"closed_branch_count":len(branches),
       "normally_open_tie_count":sum(1 for x in case["branch"] if not x["in_service"]),
       "total_load_mw":p_load,"total_load_mvar":q_load,"slack_p_mw":slack_s.real,
       "slack_q_mvar":slack_s.imag,"active_loss_mw":p_loss,"reactive_loss_mvar":q_loss,
@@ -102,7 +101,24 @@ def run_backward_forward_sweep(case,tolerance=1e-10,max_iterations=1000):
       "maximum_voltage_pu":max(x["vm_pu"] for x in bus_rows),
       "voltage_limit_violations":sum(not x["voltage_limit_ok"] for x in bus_rows),
       "active_power_balance_residual_mw":slack_s.real-p_load-p_loss,
-      "reactive_power_balance_residual_mvar":slack_s.imag-q_load-q_loss}}
+      "reactive_power_balance_residual_mvar":slack_s.imag-q_load-q_loss}
+    ref=case.get("expected_checks",{}).get("published_nominal_reference",{})
+    if ref:
+        loss_error=abs(p_loss-float(ref["active_loss_mw"]))
+        voltage_error=abs(summary["minimum_voltage_pu"]-float(ref["minimum_voltage_pu"]))
+        summary["published_reference_comparison"]={
+          "reference_active_loss_mw":float(ref["active_loss_mw"]),
+          "computed_active_loss_mw":p_loss,"absolute_active_loss_error_mw":loss_error,
+          "active_loss_within_tolerance":loss_error<=float(ref["active_loss_abs_tolerance_mw"]),
+          "reference_minimum_voltage_pu":float(ref["minimum_voltage_pu"]),
+          "computed_minimum_voltage_pu":summary["minimum_voltage_pu"],
+          "absolute_minimum_voltage_error_pu":voltage_error,
+          "minimum_voltage_within_tolerance":voltage_error<=float(ref["minimum_voltage_abs_tolerance_pu"]),
+          "reference_minimum_voltage_bus":int(ref["minimum_voltage_bus"]),
+          "computed_minimum_voltage_bus":summary["minimum_voltage_bus"],
+          "reference_source":ref["source_url"]}
+    return {"converged":True,"iterations":iteration,"max_voltage_change_pu":err,
+      "bus_results":bus_rows,"branch_results":branch_rows,"summary":summary}
 
 def write_outputs(case,result,outdir):
     outdir.mkdir(parents=True,exist_ok=True)
