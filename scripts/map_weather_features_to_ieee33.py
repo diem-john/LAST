@@ -116,6 +116,7 @@ def map_observations(weather_csv: Path, bus_csv: Path) -> tuple[list[dict[str, A
                 "source_id": str(obs["source_id"]),
                 "variable": str(obs["variable"]),
                 "value": None if pd.isna(obs["value"]) else float(obs["value"]),
+                "unit": str(obs.get("unit", "unspecified")),
                 "asset_type": asset["asset_type"], "asset_id": asset["asset_id"],
                 "bus_id": asset["bus_id"], "branch_id": asset["branch_id"],
                 "spatial_scope": scope, "mapping_method": method,
