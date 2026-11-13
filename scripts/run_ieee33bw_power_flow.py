@@ -82,7 +82,7 @@ def run_backward_forward_sweep(case,tolerance=1e-10,max_iterations=1000):
         branch_rows.append({"branch_id":bid,"from_bus":a,"to_bus":b,"p_from_mw":s_from.real,
           "q_from_mvar":s_from.imag,"current_pu":abs(current),"loss_p_mw":loss.real*sbase,
           "loss_q_mvar":loss.imag*sbase,"in_service":True})
-    slack_s=(sp_load[1]+subtree[1])*sbase
+    slack_s=v[1]*subtree[1].conjugate()*sbase
     bus_rows=[]
     for n in sorted(buses):
         row=buses[n]; vm=abs(v[n]); va=math.degrees(math.atan2(v[n].imag,v[n].real))
