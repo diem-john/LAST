@@ -1,0 +1,1457 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-11-13T05:28:00.820950+00:00",
+  "status": "phase_5b_spatial_review_generated",
+  "study_area": {
+    "cluster_id": "Q05_cluster_001",
+    "crs": "EPSG:3826"
+  },
+  "validation": {
+    "bus_count": 33,
+    "branch_count": 32,
+    "bus_ids_complete_1_to_33": true,
+    "all_bus_points_within_cluster": true,
+    "unique_bus_coordinates": 33,
+    "minimum_pairwise_bus_separation_m": 181.3187499478266
+  },
+  "connector_geometry_review": {
+    "nonincident_crossing_count": 158,
+    "nonincident_crossings": [
+      {
+        "branch_a": 1,
+        "branch_b": 6,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 6,
+        "to_b": 7,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 7,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 7,
+        "to_b": 8,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 13,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 13,
+        "to_b": 14,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 15,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 16,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 19,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 23,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 30,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 1,
+        "branch_b": 31,
+        "from_a": 1,
+        "to_a": 2,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 4,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 4,
+        "to_b": 5,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 5,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 5,
+        "to_b": 6,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 6,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 6,
+        "to_b": 7,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 7,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 7,
+        "to_b": 8,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 9,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 9,
+        "to_b": 10,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 11,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 11,
+        "to_b": 12,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 12,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 12,
+        "to_b": 13,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 13,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 13,
+        "to_b": 14,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 17,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 19,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 23,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 28,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 29,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 30,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 2,
+        "branch_b": 31,
+        "from_a": 2,
+        "to_a": 3,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 8,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 8,
+        "to_b": 9,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 9,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 9,
+        "to_b": 10,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 10,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 10,
+        "to_b": 11,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 11,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 11,
+        "to_b": 12,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 12,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 12,
+        "to_b": 13,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 13,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 13,
+        "to_b": 14,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 14,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 14,
+        "to_b": 15,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 15,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 16,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 17,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 18,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 19,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 4,
+        "branch_b": 22,
+        "from_a": 4,
+        "to_a": 5,
+        "from_b": 3,
+        "to_b": 23,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 8,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 8,
+        "to_b": 9,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 9,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 9,
+        "to_b": 10,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 10,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 10,
+        "to_b": 11,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 13,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 13,
+        "to_b": 14,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 14,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 14,
+        "to_b": 15,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 15,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 16,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 17,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 18,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 19,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 21,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 21,
+        "to_b": 22,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 23,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 24,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 24,
+        "to_b": 25,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 26,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 26,
+        "to_b": 27,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 28,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 29,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 5,
+        "branch_b": 30,
+        "from_a": 5,
+        "to_a": 6,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 8,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 8,
+        "to_b": 9,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 15,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 16,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 18,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 19,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 20,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 20,
+        "to_b": 21,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 26,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 26,
+        "to_b": 27,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 6,
+        "branch_b": 31,
+        "from_a": 6,
+        "to_a": 7,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 7,
+        "branch_b": 15,
+        "from_a": 7,
+        "to_a": 8,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 7,
+        "branch_b": 16,
+        "from_a": 7,
+        "to_a": 8,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 7,
+        "branch_b": 18,
+        "from_a": 7,
+        "to_a": 8,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 7,
+        "branch_b": 19,
+        "from_a": 7,
+        "to_a": 8,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 7,
+        "branch_b": 20,
+        "from_a": 7,
+        "to_a": 8,
+        "from_b": 20,
+        "to_b": 21,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 11,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 11,
+        "to_b": 12,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 12,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 12,
+        "to_b": 13,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 16,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 23,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 28,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 29,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 30,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 31,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 8,
+        "branch_b": 32,
+        "from_a": 8,
+        "to_a": 9,
+        "from_b": 32,
+        "to_b": 33,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 11,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 11,
+        "to_b": 12,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 12,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 12,
+        "to_b": 13,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 13,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 13,
+        "to_b": 14,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 14,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 14,
+        "to_b": 15,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 15,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 18,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 19,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 9,
+        "branch_b": 24,
+        "from_a": 9,
+        "to_a": 10,
+        "from_b": 24,
+        "to_b": 25,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 10,
+        "branch_b": 17,
+        "from_a": 10,
+        "to_a": 11,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 13,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 13,
+        "to_b": 14,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 14,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 14,
+        "to_b": 15,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 15,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 16,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 17,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 18,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 19,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 21,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 21,
+        "to_b": 22,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 23,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 11,
+        "branch_b": 28,
+        "from_a": 11,
+        "to_a": 12,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 14,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 14,
+        "to_b": 15,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 15,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 16,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 16,
+        "to_b": 17,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 17,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 18,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 19,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 23,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 12,
+        "branch_b": 28,
+        "from_a": 12,
+        "to_a": 13,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 15,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 15,
+        "to_b": 16,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 17,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 18,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 23,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 24,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 24,
+        "to_b": 25,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 28,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 29,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 13,
+        "branch_b": 30,
+        "from_a": 13,
+        "to_a": 14,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 14,
+        "branch_b": 17,
+        "from_a": 14,
+        "to_a": 15,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 14,
+        "branch_b": 19,
+        "from_a": 14,
+        "to_a": 15,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 14,
+        "branch_b": 22,
+        "from_a": 14,
+        "to_a": 15,
+        "from_b": 3,
+        "to_b": 23,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 14,
+        "branch_b": 23,
+        "from_a": 14,
+        "to_a": 15,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 14,
+        "branch_b": 28,
+        "from_a": 14,
+        "to_a": 15,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 14,
+        "branch_b": 29,
+        "from_a": 14,
+        "to_a": 15,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 14,
+        "branch_b": 30,
+        "from_a": 14,
+        "to_a": 15,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 17,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 17,
+        "to_b": 18,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 19,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 22,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 3,
+        "to_b": 23,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 23,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 28,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 29,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 30,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 15,
+        "branch_b": 31,
+        "from_a": 15,
+        "to_a": 16,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 19,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 21,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 21,
+        "to_b": 22,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 22,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 3,
+        "to_b": 23,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 23,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 28,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 29,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 30,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 31,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 16,
+        "branch_b": 32,
+        "from_a": 16,
+        "to_a": 17,
+        "from_b": 32,
+        "to_b": 33,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 17,
+        "branch_b": 18,
+        "from_a": 17,
+        "to_a": 18,
+        "from_b": 2,
+        "to_b": 19,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 17,
+        "branch_b": 19,
+        "from_a": 17,
+        "to_a": 18,
+        "from_b": 19,
+        "to_b": 20,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 17,
+        "branch_b": 22,
+        "from_a": 17,
+        "to_a": 18,
+        "from_b": 3,
+        "to_b": 23,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 18,
+        "branch_b": 23,
+        "from_a": 2,
+        "to_a": 19,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 18,
+        "branch_b": 28,
+        "from_a": 2,
+        "to_a": 19,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 18,
+        "branch_b": 29,
+        "from_a": 2,
+        "to_a": 19,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 18,
+        "branch_b": 30,
+        "from_a": 2,
+        "to_a": 19,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 18,
+        "branch_b": 31,
+        "from_a": 2,
+        "to_a": 19,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 19,
+        "branch_b": 23,
+        "from_a": 19,
+        "to_a": 20,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 19,
+        "branch_b": 28,
+        "from_a": 19,
+        "to_a": 20,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 19,
+        "branch_b": 29,
+        "from_a": 19,
+        "to_a": 20,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 19,
+        "branch_b": 30,
+        "from_a": 19,
+        "to_a": 20,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 19,
+        "branch_b": 31,
+        "from_a": 19,
+        "to_a": 20,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 19,
+        "branch_b": 32,
+        "from_a": 19,
+        "to_a": 20,
+        "from_b": 32,
+        "to_b": 33,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 20,
+        "branch_b": 31,
+        "from_a": 20,
+        "to_a": 21,
+        "from_b": 31,
+        "to_b": 32,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 20,
+        "branch_b": 32,
+        "from_a": 20,
+        "to_a": 21,
+        "from_b": 32,
+        "to_b": 33,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 21,
+        "branch_b": 23,
+        "from_a": 21,
+        "to_a": 22,
+        "from_b": 23,
+        "to_b": 24,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 21,
+        "branch_b": 29,
+        "from_a": 21,
+        "to_a": 22,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 21,
+        "branch_b": 30,
+        "from_a": 21,
+        "to_a": 22,
+        "from_b": 30,
+        "to_b": 31,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 22,
+        "branch_b": 27,
+        "from_a": 3,
+        "to_a": 23,
+        "from_b": 27,
+        "to_b": 28,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 23,
+        "branch_b": 29,
+        "from_a": 23,
+        "to_a": 24,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 24,
+        "branch_b": 28,
+        "from_a": 24,
+        "to_a": 25,
+        "from_b": 28,
+        "to_b": 29,
+        "intersection_type": "nonincident_point_crossing"
+      },
+      {
+        "branch_a": 24,
+        "branch_b": 29,
+        "from_a": 24,
+        "to_a": 25,
+        "from_b": 29,
+        "to_b": 30,
+        "intersection_type": "nonincident_point_crossing"
+      }
+    ],
+    "interpretation": "Geometric intersections are cartographic review flags only; they do not imply electrical faults or physical conductor crossings."
+  },
+  "outputs": {
+    "map": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\reports\\geospatial\\minxiong_cluster_001_ieee33_network_map.png",
+    "branch_review_csv": "C:\\Users\\Diem\\Documents\\GitHub\\LAST\\reports\\geospatial\\minxiong_cluster_001_ieee33_branch_review.csv"
+  },
+  "limitations": [
+    "The 33 bus points are synthetic research coordinates, not actual Taipower assets or verified load locations.",
+    "OSM roads provide geographic context only and are not electrical corridors.",
+    "Straight-line connectors represent abstract IEEE 33-bus adjacency only; connector lengths are not conductor lengths or electrical impedances.",
+    "This phase does not validate voltage, power flow, protection, reliability, islanding, BESS placement, or operational feasibility.",
+    "Any crossing flag requires visual review and is not an automatic reason to move a bus or alter the benchmark topology."
+  ],
+  "decision_status": "visual_review_required_no_placement_acceptance_inferred"
+}
