@@ -24,7 +24,7 @@ The base values are 12.66 kV and 10 MVA. No GIS distance or OSM road geometry is
 The script uses a balanced three-phase equivalent backward/forward-sweep solver. The five normally open tie branches are excluded from the base radial solve. It exports bus voltage/angle, branch current/loss, slack injection, convergence and balance diagnostics.
 
 ## 5C.5 Validation
-Automated checks validate bus/branch counts, radial connected tree structure, total loads, convergence, voltage limits and active/reactive power balance. The solver's numerical outputs must be compared with a separately executed MATPOWER/pandapower implementation before describing them as cross-tool validated. The script's own tests are regression checks, not independent validation.
+Automated checks validate bus/branch counts, radial connected tree structure, total loads, convergence, voltage limits and active/reactive power balance. The report also compares nominal active losses and minimum voltage against a published IEEE 33-bus base-case table (202.67 kW and 0.9131 pu; minimum at Bus 18), using explicit tolerances. This is a literature-reference comparison, not an independent execution of MATPOWER. For stronger cross-tool validation, run the same source case in MATPOWER or pandapower and compare bus voltages, branch flows and losses. The script's own tests are regression checks, not independent validation. Reference comparison source: https://beei.org/index.php/EEI/article/download/509/346.
 
 ## Run
 ```powershell
