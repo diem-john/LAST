@@ -1,0 +1,73 @@
+﻿cluster_id,event_id,event_start,event_end,event_cause,raster_grid_pixels_in_cluster,event_finite_pixels,event_observation_coverage_share,flooded_pixels,flooded_share_of_finite_pixels,mean_flood_duration_composite_days,mean_clear_views,mean_clear_perc,permanent_water_finite_pixels,permanent_water_pixels,status
+Q05_cluster_001,2516,2004-06-29,2004-07-13,Tropical cyclone,28,26,0.9285714285714286,0.0,0.0,0.0,35.57692307692308,0.9882478576440078,28,0.0,observed_pixels_available
+Q05_cluster_001,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_001,2554,2004-08-24,2004-09-12,Tropical cyclone,28,26,0.9285714285714286,0.0,0.0,0.0,44.0,1.0,28,0.0,observed_pixels_available
+Q05_cluster_001,2669,2005-06-11,2005-06-17,Heavy rain,28,26,0.9285714285714286,0.0,0.0,0.0,21.0,1.0,28,0.0,observed_pixels_available
+Q05_cluster_001,2694,2005-07-16,2005-07-20,Tropical cyclone,28,26,0.9285714285714286,0.0,0.0,0.0,16.576923076923077,0.9751131236553192,28,0.0,observed_pixels_available
+Q05_cluster_001,2722,2005-09-01,2005-09-04,Tropical cyclone,28,26,0.9285714285714286,0.0,0.0,0.0,15.692307692307692,0.9807692307692307,28,0.0,observed_pixels_available
+Q05_cluster_001,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",28,26,0.9285714285714286,0.0,0.0,0.0,11.0,1.0,28,0.0,observed_pixels_available
+Q05_cluster_001,3668,2010-06-25,2010-06-27,Torrential Rain,28,26,0.9285714285714286,0.0,0.0,0.0,12.538461538461538,0.9644970435362595,28,0.0,observed_pixels_available
+Q05_cluster_002,2516,2004-06-29,2004-07-13,Tropical cyclone,15,15,1.0,0.0,0.0,0.0,35.46666666666667,0.985185178120931,15,0.0,observed_pixels_available
+Q05_cluster_002,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_002,2554,2004-08-24,2004-09-12,Tropical cyclone,15,15,1.0,0.0,0.0,0.0,43.13333333333333,0.9803030411402385,15,0.0,observed_pixels_available
+Q05_cluster_002,2669,2005-06-11,2005-06-17,Heavy rain,15,15,1.0,0.0,0.0,0.0,21.0,1.0,15,0.0,observed_pixels_available
+Q05_cluster_002,2694,2005-07-16,2005-07-20,Tropical cyclone,15,15,1.0,0.0,0.0,0.0,16.933333333333334,0.9960784316062927,15,0.0,observed_pixels_available
+Q05_cluster_002,2722,2005-09-01,2005-09-04,Tropical cyclone,15,15,1.0,0.0,0.0,0.0,15.4,0.9625,15,0.0,observed_pixels_available
+Q05_cluster_002,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",15,15,1.0,0.0,0.0,0.0,10.933333333333334,0.9939393957455953,15,0.0,observed_pixels_available
+Q05_cluster_002,3668,2010-06-25,2010-06-27,Torrential Rain,15,15,1.0,0.0,0.0,0.0,12.733333333333333,0.9794871807098389,15,0.0,observed_pixels_available
+Q05_cluster_003,2516,2004-06-29,2004-07-13,Tropical cyclone,10,10,1.0,0.0,0.0,0.0,35.2,0.9777777671813965,10,0.0,observed_pixels_available
+Q05_cluster_003,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_003,2554,2004-08-24,2004-09-12,Tropical cyclone,10,10,1.0,0.0,0.0,0.0,43.7,0.9931818246841431,10,0.0,observed_pixels_available
+Q05_cluster_003,2669,2005-06-11,2005-06-17,Heavy rain,10,10,1.0,0.0,0.0,0.0,21.0,1.0,10,0.0,observed_pixels_available
+Q05_cluster_003,2694,2005-07-16,2005-07-20,Tropical cyclone,10,10,1.0,0.0,0.0,0.0,16.9,0.9941176474094391,10,0.0,observed_pixels_available
+Q05_cluster_003,2722,2005-09-01,2005-09-04,Tropical cyclone,10,10,1.0,0.0,0.0,0.0,15.7,0.98125,10,0.0,observed_pixels_available
+Q05_cluster_003,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",10,10,1.0,0.0,0.0,0.0,11.0,1.0,10,0.0,observed_pixels_available
+Q05_cluster_003,3668,2010-06-25,2010-06-27,Torrential Rain,10,10,1.0,0.0,0.0,0.0,12.8,0.9846153855323792,10,0.0,observed_pixels_available
+Q05_cluster_004,2516,2004-06-29,2004-07-13,Tropical cyclone,8,6,0.75,0.0,0.0,0.0,35.833333333333336,0.9953703681627909,8,0.0,observed_pixels_available
+Q05_cluster_004,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_004,2554,2004-08-24,2004-09-12,Tropical cyclone,8,6,0.75,0.0,0.0,0.0,42.5,0.9659090936183929,8,0.0,observed_pixels_available
+Q05_cluster_004,2669,2005-06-11,2005-06-17,Heavy rain,8,6,0.75,0.0,0.0,0.0,21.0,1.0,8,0.0,observed_pixels_available
+Q05_cluster_004,2694,2005-07-16,2005-07-20,Tropical cyclone,8,6,0.75,0.0,0.0,0.0,17.0,1.0,8,0.0,observed_pixels_available
+Q05_cluster_004,2722,2005-09-01,2005-09-04,Tropical cyclone,8,6,0.75,0.0,0.0,0.0,15.333333333333334,0.9583333333333334,8,0.0,observed_pixels_available
+Q05_cluster_004,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",8,6,0.75,0.0,0.0,0.0,11.0,1.0,8,0.0,observed_pixels_available
+Q05_cluster_004,3668,2010-06-25,2010-06-27,Torrential Rain,8,6,0.75,0.0,0.0,0.0,13.0,1.0,8,0.0,observed_pixels_available
+Q05_cluster_005,2516,2004-06-29,2004-07-13,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,36.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_005,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_005,2554,2004-08-24,2004-09-12,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,42.6,0.9681818366050721,5,0.0,observed_pixels_available
+Q05_cluster_005,2669,2005-06-11,2005-06-17,Heavy rain,5,5,1.0,0.0,0.0,0.0,21.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_005,2694,2005-07-16,2005-07-20,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,17.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_005,2722,2005-09-01,2005-09-04,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,15.6,0.975,5,0.0,observed_pixels_available
+Q05_cluster_005,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",5,5,1.0,0.0,0.0,0.0,11.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_005,3668,2010-06-25,2010-06-27,Torrential Rain,5,5,1.0,0.0,0.0,0.0,12.6,0.9692307710647583,5,0.0,observed_pixels_available
+Q05_cluster_006,2516,2004-06-29,2004-07-13,Tropical cyclone,3,3,1.0,0.0,0.0,0.0,36.0,1.0,3,0.0,observed_pixels_available
+Q05_cluster_006,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_006,2554,2004-08-24,2004-09-12,Tropical cyclone,3,3,1.0,0.0,0.0,0.0,41.0,0.9318181872367859,3,0.0,observed_pixels_available
+Q05_cluster_006,2669,2005-06-11,2005-06-17,Heavy rain,3,3,1.0,0.0,0.0,0.0,21.0,1.0,3,0.0,observed_pixels_available
+Q05_cluster_006,2694,2005-07-16,2005-07-20,Tropical cyclone,3,3,1.0,0.0,0.0,0.0,17.0,1.0,3,0.0,observed_pixels_available
+Q05_cluster_006,2722,2005-09-01,2005-09-04,Tropical cyclone,3,3,1.0,0.0,0.0,0.0,15.0,0.9375,3,0.0,observed_pixels_available
+Q05_cluster_006,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",3,3,1.0,0.0,0.0,0.0,11.0,1.0,3,0.0,observed_pixels_available
+Q05_cluster_006,3668,2010-06-25,2010-06-27,Torrential Rain,3,3,1.0,0.0,0.0,0.0,12.0,0.9230769276618958,3,0.0,observed_pixels_available
+Q05_cluster_007,2516,2004-06-29,2004-07-13,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,36.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_007,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_007,2554,2004-08-24,2004-09-12,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,44.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_007,2669,2005-06-11,2005-06-17,Heavy rain,2,2,1.0,0.0,0.0,0.0,20.0,0.9523809552192688,2,0.0,observed_pixels_available
+Q05_cluster_007,2694,2005-07-16,2005-07-20,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,16.0,0.9411764740943909,2,0.0,observed_pixels_available
+Q05_cluster_007,2722,2005-09-01,2005-09-04,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,15.0,0.9375,2,0.0,observed_pixels_available
+Q05_cluster_007,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",2,2,1.0,0.0,0.0,0.0,11.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_007,3668,2010-06-25,2010-06-27,Torrential Rain,2,2,1.0,0.0,0.0,0.0,13.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_008,2516,2004-06-29,2004-07-13,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,36.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_008,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_008,2554,2004-08-24,2004-09-12,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,43.0,0.9772727489471436,2,0.0,observed_pixels_available
+Q05_cluster_008,2669,2005-06-11,2005-06-17,Heavy rain,2,2,1.0,0.0,0.0,0.0,20.0,0.9523809552192688,2,0.0,observed_pixels_available
+Q05_cluster_008,2694,2005-07-16,2005-07-20,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,16.0,0.9411764740943909,2,0.0,observed_pixels_available
+Q05_cluster_008,2722,2005-09-01,2005-09-04,Tropical cyclone,2,2,1.0,0.0,0.0,0.0,16.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_008,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",2,2,1.0,0.0,0.0,0.0,11.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_008,3668,2010-06-25,2010-06-27,Torrential Rain,2,2,1.0,0.0,0.0,0.0,13.0,1.0,2,0.0,observed_pixels_available
+Q05_cluster_009,2516,2004-06-29,2004-07-13,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,35.0,0.9722222089767456,5,0.0,observed_pixels_available
+Q05_cluster_009,2516,2004-06-29,2004-07-13,Tropical cyclone,0,0,0.0,,,,,,0,,no_raster_bounds_overlap
+Q05_cluster_009,2554,2004-08-24,2004-09-12,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,44.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_009,2669,2005-06-11,2005-06-17,Heavy rain,5,5,1.0,0.0,0.0,0.0,21.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_009,2694,2005-07-16,2005-07-20,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,17.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_009,2722,2005-09-01,2005-09-04,Tropical cyclone,5,5,1.0,0.0,0.0,0.0,16.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_009,3339,2008-07-28,2008-07-29,"Tropical Storm ""Fung-wong""",5,5,1.0,0.0,0.0,0.0,11.0,1.0,5,0.0,observed_pixels_available
+Q05_cluster_009,3668,2010-06-25,2010-06-27,Torrential Rain,5,5,1.0,0.0,0.0,0.0,13.0,1.0,5,0.0,observed_pixels_available
