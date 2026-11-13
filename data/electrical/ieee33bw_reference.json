@@ -1,0 +1,787 @@
+{
+  "schema_version": "1.0",
+  "case_id": "ieee33bw_bar an_wu_matpower",
+  "case_name": "Baran-Wu 33-bus radial distribution test feeder",
+  "source": {
+    "publisher": "MATPOWER",
+    "file": "data/case33bw.m",
+    "url": "https://github.com/MATPOWER/matpower/blob/master/data/case33bw.m",
+    "upstream_reference": "M. E. Baran and F. F. Wu, Network reconfiguration in distribution systems for loss reduction and load balancing, IEEE Transactions on Power Delivery, 4(2), 1401–1407, 1989, DOI:10.1109/61.25627",
+    "retrieved_reference": "MATPOWER case33bw data; loads in kW/kVAr and branch impedances in ohms as published in source file."
+  },
+  "base": {
+    "s_base_mva": 10,
+    "v_base_kv_ll": 12.66,
+    "frequency_hz": 60,
+    "phase_model": "balanced_three_phase_equivalent",
+    "slack_bus": 1,
+    "slack_voltage_pu": 1
+  },
+  "bus_data_units": {
+    "p_kw": "kW",
+    "q_kvar": "kVAr"
+  },
+  "branch_data_units": {
+    "r_ohm": "ohm",
+    "x_ohm": "ohm",
+    "b_siemens": "S"
+  },
+  "bus": [
+    {
+      "bus_id": 1,
+      "bus_type": "slack",
+      "p_kw": 0,
+      "q_kvar": 0,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 1,
+      "v_max_pu": 1
+    },
+    {
+      "bus_id": 2,
+      "bus_type": "pq",
+      "p_kw": 100,
+      "q_kvar": 60,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 3,
+      "bus_type": "pq",
+      "p_kw": 90,
+      "q_kvar": 40,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 4,
+      "bus_type": "pq",
+      "p_kw": 120,
+      "q_kvar": 80,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 5,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 30,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 6,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 20,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 7,
+      "bus_type": "pq",
+      "p_kw": 200,
+      "q_kvar": 100,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 8,
+      "bus_type": "pq",
+      "p_kw": 200,
+      "q_kvar": 100,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 9,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 20,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 10,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 20,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 11,
+      "bus_type": "pq",
+      "p_kw": 45,
+      "q_kvar": 30,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 12,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 35,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 13,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 35,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 14,
+      "bus_type": "pq",
+      "p_kw": 120,
+      "q_kvar": 80,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 15,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 10,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 16,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 20,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 17,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 20,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 18,
+      "bus_type": "pq",
+      "p_kw": 90,
+      "q_kvar": 40,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 19,
+      "bus_type": "pq",
+      "p_kw": 90,
+      "q_kvar": 40,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 20,
+      "bus_type": "pq",
+      "p_kw": 90,
+      "q_kvar": 40,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 21,
+      "bus_type": "pq",
+      "p_kw": 90,
+      "q_kvar": 40,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 22,
+      "bus_type": "pq",
+      "p_kw": 90,
+      "q_kvar": 40,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 23,
+      "bus_type": "pq",
+      "p_kw": 90,
+      "q_kvar": 50,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 24,
+      "bus_type": "pq",
+      "p_kw": 420,
+      "q_kvar": 200,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 25,
+      "bus_type": "pq",
+      "p_kw": 420,
+      "q_kvar": 200,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 26,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 25,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 27,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 25,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 28,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 20,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 29,
+      "bus_type": "pq",
+      "p_kw": 120,
+      "q_kvar": 70,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 30,
+      "bus_type": "pq",
+      "p_kw": 200,
+      "q_kvar": 600,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 31,
+      "bus_type": "pq",
+      "p_kw": 150,
+      "q_kvar": 70,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 32,
+      "bus_type": "pq",
+      "p_kw": 210,
+      "q_kvar": 100,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    },
+    {
+      "bus_id": 33,
+      "bus_type": "pq",
+      "p_kw": 60,
+      "q_kvar": 40,
+      "base_kv_ll": 12.66,
+      "v_initial_pu": 1,
+      "v_min_pu": 0.9,
+      "v_max_pu": 1.1
+    }
+  ],
+  "branch": [
+    {
+      "branch_id": 1,
+      "from_bus": 1,
+      "to_bus": 2,
+      "r_ohm": 0.0922,
+      "x_ohm": 0.047,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 2,
+      "from_bus": 2,
+      "to_bus": 3,
+      "r_ohm": 0.493,
+      "x_ohm": 0.2511,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 3,
+      "from_bus": 3,
+      "to_bus": 4,
+      "r_ohm": 0.366,
+      "x_ohm": 0.1864,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 4,
+      "from_bus": 4,
+      "to_bus": 5,
+      "r_ohm": 0.3811,
+      "x_ohm": 0.1941,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 5,
+      "from_bus": 5,
+      "to_bus": 6,
+      "r_ohm": 0.819,
+      "x_ohm": 0.707,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 6,
+      "from_bus": 6,
+      "to_bus": 7,
+      "r_ohm": 0.1872,
+      "x_ohm": 0.6188,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 7,
+      "from_bus": 7,
+      "to_bus": 8,
+      "r_ohm": 0.7114,
+      "x_ohm": 0.2351,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 8,
+      "from_bus": 8,
+      "to_bus": 9,
+      "r_ohm": 1.03,
+      "x_ohm": 0.74,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 9,
+      "from_bus": 9,
+      "to_bus": 10,
+      "r_ohm": 1.044,
+      "x_ohm": 0.74,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 10,
+      "from_bus": 10,
+      "to_bus": 11,
+      "r_ohm": 0.1966,
+      "x_ohm": 0.065,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 11,
+      "from_bus": 11,
+      "to_bus": 12,
+      "r_ohm": 0.3744,
+      "x_ohm": 0.1238,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 12,
+      "from_bus": 12,
+      "to_bus": 13,
+      "r_ohm": 1.468,
+      "x_ohm": 1.155,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 13,
+      "from_bus": 13,
+      "to_bus": 14,
+      "r_ohm": 0.5416,
+      "x_ohm": 0.7129,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 14,
+      "from_bus": 14,
+      "to_bus": 15,
+      "r_ohm": 0.591,
+      "x_ohm": 0.526,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 15,
+      "from_bus": 15,
+      "to_bus": 16,
+      "r_ohm": 0.7463,
+      "x_ohm": 0.545,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 16,
+      "from_bus": 16,
+      "to_bus": 17,
+      "r_ohm": 1.289,
+      "x_ohm": 1.721,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 17,
+      "from_bus": 17,
+      "to_bus": 18,
+      "r_ohm": 0.732,
+      "x_ohm": 0.574,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 18,
+      "from_bus": 2,
+      "to_bus": 19,
+      "r_ohm": 0.164,
+      "x_ohm": 0.1565,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 19,
+      "from_bus": 19,
+      "to_bus": 20,
+      "r_ohm": 1.5042,
+      "x_ohm": 1.3554,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 20,
+      "from_bus": 20,
+      "to_bus": 21,
+      "r_ohm": 0.4095,
+      "x_ohm": 0.4784,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 21,
+      "from_bus": 21,
+      "to_bus": 22,
+      "r_ohm": 0.7089,
+      "x_ohm": 0.9373,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 22,
+      "from_bus": 3,
+      "to_bus": 23,
+      "r_ohm": 0.4512,
+      "x_ohm": 0.3083,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 23,
+      "from_bus": 23,
+      "to_bus": 24,
+      "r_ohm": 0.898,
+      "x_ohm": 0.7091,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 24,
+      "from_bus": 24,
+      "to_bus": 25,
+      "r_ohm": 0.896,
+      "x_ohm": 0.7011,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 25,
+      "from_bus": 6,
+      "to_bus": 26,
+      "r_ohm": 0.203,
+      "x_ohm": 0.1034,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 26,
+      "from_bus": 26,
+      "to_bus": 27,
+      "r_ohm": 0.2842,
+      "x_ohm": 0.1447,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 27,
+      "from_bus": 27,
+      "to_bus": 28,
+      "r_ohm": 1.059,
+      "x_ohm": 0.9337,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 28,
+      "from_bus": 28,
+      "to_bus": 29,
+      "r_ohm": 0.8042,
+      "x_ohm": 0.7006,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 29,
+      "from_bus": 29,
+      "to_bus": 30,
+      "r_ohm": 0.5075,
+      "x_ohm": 0.2585,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 30,
+      "from_bus": 30,
+      "to_bus": 31,
+      "r_ohm": 0.9744,
+      "x_ohm": 0.963,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 31,
+      "from_bus": 31,
+      "to_bus": 32,
+      "r_ohm": 0.3105,
+      "x_ohm": 0.3619,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 32,
+      "from_bus": 32,
+      "to_bus": 33,
+      "r_ohm": 0.341,
+      "x_ohm": 0.5302,
+      "b_siemens": 0,
+      "status": "closed",
+      "in_service": true,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 33,
+      "from_bus": 21,
+      "to_bus": 8,
+      "r_ohm": 2,
+      "x_ohm": 2,
+      "b_siemens": 0,
+      "status": "normally_open_tie",
+      "in_service": false,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 34,
+      "from_bus": 9,
+      "to_bus": 15,
+      "r_ohm": 2,
+      "x_ohm": 2,
+      "b_siemens": 0,
+      "status": "normally_open_tie",
+      "in_service": false,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 35,
+      "from_bus": 12,
+      "to_bus": 22,
+      "r_ohm": 2,
+      "x_ohm": 2,
+      "b_siemens": 0,
+      "status": "normally_open_tie",
+      "in_service": false,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 36,
+      "from_bus": 18,
+      "to_bus": 33,
+      "r_ohm": 0.5,
+      "x_ohm": 0.5,
+      "b_siemens": 0,
+      "status": "normally_open_tie",
+      "in_service": false,
+      "rate_mva": null
+    },
+    {
+      "branch_id": 37,
+      "from_bus": 25,
+      "to_bus": 29,
+      "r_ohm": 0.5,
+      "x_ohm": 0.5,
+      "b_siemens": 0,
+      "status": "normally_open_tie",
+      "in_service": false,
+      "rate_mva": null
+    }
+  ],
+  "expected_checks": {
+    "bus_count": 33,
+    "closed_branch_count": 32,
+    "normally_open_tie_count": 5,
+    "total_p_kw": 3715,
+    "total_q_kvar": 2300,
+    "radial_closed_network": true,
+    "voltage_limits_pu": [
+      0.9,
+      1.1
+    ]
+  },
+  "notes": [
+    "The five normally open tie branches are retained in the canonical dataset but excluded from the base radial power-flow state.",
+    "The canonical MATPOWER case uses baseMVA 10 and converts branch impedances from ohms to per-unit using Vbase^2/Sbase; loads are converted from kW/kVAr to MW/MVAr.",
+    "The synthetic Chiayi coordinates do not define conductor lengths or impedances; canonical IEEE benchmark impedances are retained independently."
+  ]
+}
