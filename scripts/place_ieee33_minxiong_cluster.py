@@ -103,6 +103,34 @@ def select_spread_points(candidates: list[Point], anchor: Point, count: int = 33
     return [candidates[index] for index in selected_indices]
 
 
+def topology_is_tree(edges: tuple[tuple[int, int], ...]) -> bool:
+    """Return True only for a connected, acyclic undirected topology."""
+    adjacency: dict[int, set[int]] = {}
+    for left, right in edges:
+        if left == right:
+            return False
+        adjacency.setdefault(left, set()).add(right)
+        adjacency.setdefault(right, set()).add(left)
+    if not adjacency:
+        return False
+    visited: set[int] = set()
+    parent: dict[int, int] = {}
+    stack = [next(iter(adjacency))]
+    while stack:
+        node = stack.pop()
+        if node in visited:
+            return False
+        visited.add(node)
+        for neighbor in adjacency[node]:
+            if neighbor == parent.get(node):
+                continue
+            if neighbor in visited:
+                return False
+            parent[neighbor] = node
+            stack.append(neighbor)
+    return len(visited) == len(adjacency)
+
+
 def build_placement(cluster_path: Path = CLUSTERS, roads_path: Path = ROADS,
                     output_gpkg: Path = OUT_GPKG, output_csv: Path = OUT_CSV,
                     output_json: Path = OUT_JSON, spacing_m: float = 60.0) -> dict:
@@ -180,6 +208,8 @@ def build_placement(cluster_path: Path = CLUSTERS, roads_path: Path = ROADS,
 
     pair_set = set(IEEE33_BRANCHES)
     node_set = {node for edge in IEEE33_BRANCHES for node in edge}
+    if not topology_is_tree(IEEE33_BRANCHES):
+        raise ValueError("IEEE 33-bus branch list must form a connected acyclic tree")
     report = {
         "schema_version": "1.0",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -205,7 +235,8 @@ def build_placement(cluster_path: Path = CLUSTERS, roads_path: Path = ROADS,
                        "all_bus_points_on_clipped_road_candidates": True,
                        "branch_count_32": len(IEEE33_BRANCHES) == 32,
                        "topology_nodes_1_to_33": node_set == set(range(1, 34)),
-                       "unique_topology_edges": len(pair_set) == 32},
+                       "unique_topology_edges": len(pair_set) == 32,
+                       "topology_is_connected_and_acyclic": topology_is_tree(IEEE33_BRANCHES)},
         "limitations": [
             "The benchmark is synthetic and georeferenced for research visualization; it is not an actual Taipower feeder or service territory.",
             "OSM roads are contextual geometry only. Bus placement on road lines does not imply electrical assets, poles, substations, or utility right-of-way.",
