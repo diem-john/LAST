@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "case_id": "ieee33bw_bar an_wu_matpower",
+  "case_id": "ieee33bw_baran_wu_matpower",
   "case_name": "Baran-Wu 33-bus radial distribution test feeder",
   "source": {
     "publisher": "MATPOWER",
@@ -777,7 +777,16 @@
     "voltage_limits_pu": [
       0.9,
       1.1
-    ]
+    ],
+    "published_nominal_reference": {
+      "active_loss_mw": 0.20267,
+      "minimum_voltage_pu": 0.9131,
+      "minimum_voltage_bus": 18,
+      "active_loss_abs_tolerance_mw": 0.003,
+      "minimum_voltage_abs_tolerance_pu": 0.0015,
+      "source_url": "https://beei.org/index.php/EEI/article/download/509/346",
+      "source_note": "Published nominal-load base-case comparison table; numerical reference target, not proof of identical solver implementation."
+    }
   },
   "notes": [
     "The five normally open tie branches are retained in the canonical dataset but excluded from the base radial power-flow state.",
