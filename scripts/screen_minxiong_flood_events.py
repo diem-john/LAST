@@ -29,6 +29,34 @@ OUTPUT_JSON = ROOT / "reports/geospatial/minxiong_flood_event_screening.json"
 TARGET_CRS = "EPSG:3826"
 
 
+def json_safe(value: Any) -> Any:
+    """Convert pandas/NumPy values to strict JSON-compatible Python values.
+
+    Non-finite numbers and pandas missing sentinels become JSON null; they are
+    never converted to zero because unknown observations are not dry pixels.
+    """
+    if value is None or value is pd.NA or value is pd.NaT:
+        return None
+    if isinstance(value, (str, bool, int)):
+        return value
+    if isinstance(value, (float, np.floating)):
+        number = float(value)
+        return number if math.isfinite(number) else None
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    if isinstance(value, (datetime, pd.Timestamp)):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {str(key): json_safe(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [json_safe(item) for item in value]
+    if isinstance(value, np.ndarray):
+        return json_safe(value.tolist())
+    return value
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as stream:
@@ -186,7 +214,7 @@ def screen(clusters_path: Path = CLUSTERS, flood_dir: Path = FLOOD_DIR,
         "results": result.to_dict(orient="records"),
         "decision_status": "flood_observation_screening_only_terrain_pending_no_final_cluster_selected",
     }
-    output_json.write_text(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+    report = json_safe(report)\n    output_json.write_text(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
     return report
 
 
