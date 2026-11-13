@@ -80,10 +80,17 @@ def map_observations(weather_csv: Path, bus_csv: Path) -> tuple[list[dict[str, A
     if missing:
         raise ValueError(f"Normalized weather CSV missing columns: {sorted(missing)}")
     frame = frame.copy()
-    frame["timestamp"] = pd.to_datetime(frame["timestamp"], errors="coerce", utc=True)
+    parsed_timestamps = []
+    for raw_timestamp in frame["timestamp"]:
+        stamp = pd.Timestamp(raw_timestamp)
+        if pd.isna(stamp) or stamp.tzinfo is None:
+            raise ValueError(
+                "Timestamps must include an explicit UTC offset. Convert source-local/LST "
+                "timestamps using verified source timezone metadata before mapping."
+            )
+        parsed_timestamps.append(stamp.tz_convert("UTC"))
+    frame["timestamp"] = parsed_timestamps
     frame["value"] = pd.to_numeric(frame["value"], errors="coerce")
-    if frame["timestamp"].isna().any():
-        raise ValueError("Invalid timestamps found; preserve source time semantics before conversion")
     if not frame["spatial_scope"].isin(ALLOWED_SCOPES).all():
         raise ValueError(f"spatial_scope must be one of {sorted(ALLOWED_SCOPES)}")
     if frame[["source_id", "variable", "time_basis", "temporal_semantics"]].isna().any().any():
