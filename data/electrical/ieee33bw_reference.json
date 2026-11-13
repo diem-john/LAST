@@ -12,10 +12,10 @@
   "base": {
     "s_base_mva": 10,
     "v_base_kv_ll": 12.66,
-    "frequency_hz": 60,
     "phase_model": "balanced_three_phase_equivalent",
     "slack_bus": 1,
-    "slack_voltage_pu": 1
+    "slack_voltage_pu": 1,
+    "frequency_note": "Not specified in the MATPOWER case file; this steady-state power-flow formulation does not require a system frequency input."
   },
   "bus_data_units": {
     "p_kw": "kW",
