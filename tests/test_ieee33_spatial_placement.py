@@ -40,3 +40,9 @@ def test_farthest_point_selection_rejects_too_few_candidates():
         assert "Need at least 3" in str(exc)
     else:
         raise AssertionError("Expected insufficient-candidate validation to fail")
+
+
+def test_ieee33_topology_is_a_connected_acyclic_tree():
+    assert MODULE.topology_is_tree(MODULE.IEEE33_BRANCHES)
+    assert not MODULE.topology_is_tree(((1, 2), (2, 3), (3, 1)))
+    assert not MODULE.topology_is_tree(((1, 2), (3, 4)))
