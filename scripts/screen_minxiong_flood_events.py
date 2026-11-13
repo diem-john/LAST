@@ -214,7 +214,8 @@ def screen(clusters_path: Path = CLUSTERS, flood_dir: Path = FLOOD_DIR,
         "results": result.to_dict(orient="records"),
         "decision_status": "flood_observation_screening_only_terrain_pending_no_final_cluster_selected",
     }
-    report = json_safe(report)\n    output_json.write_text(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+    report = json_safe(report)
+    output_json.write_text(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
     return report
 
 
