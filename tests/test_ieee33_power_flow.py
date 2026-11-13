@@ -18,6 +18,10 @@ def test_reference_case_structure_and_power_flow():
     assert abs(s["reactive_power_balance_residual_mvar"])<1e-7
     assert 0.90 < s["minimum_voltage_pu"] < 1.0
     assert s["voltage_limit_violations"]==0
+    reference=s["published_reference_comparison"]
+    assert reference["active_loss_within_tolerance"]
+    assert reference["minimum_voltage_within_tolerance"]
+    assert reference["computed_minimum_voltage_bus"]==reference["reference_minimum_voltage_bus"]
 
 def test_radial_validator_rejects_closed_tie_cycle():
     case=M.load_case(CASE)
