@@ -39,7 +39,7 @@ def test_bbox_selects_whole_storm_when_any_point_intersects(tracks):
 def test_taiwan_radius_selection_retains_complete_track(tracks):
     selected = select_storms_within_reference_radius(
         tracks, reference_latitude=23.7, reference_longitude=121.0,
-        radius_km=200, distance_column="distance_to_taiwan_reference_km",
+        radius_km=250, distance_column="distance_to_taiwan_reference_km",
     )
     assert set(selected["storm_instance_id"]) == {1}
     assert len(selected) == 2
