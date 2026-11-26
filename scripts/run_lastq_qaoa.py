@@ -83,7 +83,10 @@ def main():
         "layers": qaoa["qaoa_layers"],
         "optimizer_success": qaoa["optimizer_success"],
         "best_sampled_energy": sampled["best_sampled_energy"],
-        "expected_energy": sampled["expected_qubo_energy"],
+        "sampled_expected_energy": sampled["expected_qubo_energy"],
+        "exact_final_expectation": qaoa["exact_final_expectation"],
+        "optimization_runtime_seconds": qaoa["optimization_runtime_seconds"],
+        "final_sampling_runtime_seconds": qaoa["final_sampling_runtime_seconds"],
         "topology_feasible_probability": qaoa["final_sample"][
             "topology_feasible_probability"
         ],
