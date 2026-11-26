@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "model_status": "demonstration_uncalibrated",
+  "calibration_note": "Illustrative logistic curve parameters for software integration tests only. These are NOT empirical outage probabilities, engineering fragility curves, or validated thresholds. Replace with literature-supported or locally calibrated component-specific curves before scientific interpretation. Rainfall intensity is intentionally not treated as a direct branch-failure driver; it requires a hydrologic/flood or slope-instability transformation first.",
+  "hazards": {
+    "wind_speed": {
+      "variables": [
+        "wind_speed"
+      ],
+      "unit_conversions": {
+        "m s-1": 1,
+        "m/s": 1
+      },
+      "fragility": {
+        "midpoint": 25,
+        "scale": 5
+      },
+      "component_class": "overhead_distribution_branch"
+    },
+    "flood_depth": {
+      "variables": [
+        "flood_depth"
+      ],
+      "unit_conversions": {
+        "m": 1
+      },
+      "fragility": {
+        "midpoint": 0.5,
+        "scale": 0.2
+      },
+      "component_class": "distribution_branch_sample"
+    }
+  }
+}
