@@ -1,0 +1,32 @@
+name: IBTrACS track processing tests
+
+on:
+  push:
+    branches:
+      - feature/lastq-ibtracs-track-pipeline
+    paths:
+      - "forecasting/data/ibtracs_tracks.py"
+      - "scripts/process_ibtracs_tracks.py"
+      - "tests/test_ibtracs_track_processing.py"
+      - ".github/workflows/ibtracs-track-tests.yml"
+  pull_request:
+    paths:
+      - "forecasting/data/ibtracs_tracks.py"
+      - "scripts/process_ibtracs_tracks.py"
+      - "tests/test_ibtracs_track_processing.py"
+      - ".github/workflows/ibtracs-track-tests.yml"
+
+jobs:
+  ibtracs-track-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pytest numpy pandas
+      - name: Run IBTrACS track processing tests
+        run: python -m pytest -q tests/test_ibtracs_track_processing.py
