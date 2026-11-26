@@ -1,4 +1,4 @@
-"""Run the first LAST-Q QAOA experiment for the Bus 6 contingency."""
+"""Run the LAST-Q QAOA experiment for the Bus 6 contingency."""
 from __future__ import annotations
 
 import argparse
@@ -19,12 +19,21 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--case", type=Path, default=DEFAULT_CASE)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--target", type=str, default=None,
-                        help="CUDA-Q target, e.g. qpp-cpu or nvidia. Default: CUDA-Q default.")
+    parser.add_argument(
+        "--target", type=str, default=None,
+        help="CUDA-Q target, e.g. qpp-cpu or nvidia. Default: CUDA-Q default.",
+    )
     parser.add_argument("--shots", type=int, default=2048)
     parser.add_argument("--layers", type=int, default=1)
-    parser.add_argument("--max-iterations", type=int, default=60)
+    parser.add_argument(
+        "--max-iterations", type=int, default=60,
+        help="COBYLA maxiter/evaluation limit applied independently to each start.",
+    )
     parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument(
+        "--starts", type=int, default=1,
+        help="Number of deterministic COBYLA initializations; sample the best exact expectation.",
+    )
     args = parser.parse_args()
 
     case = load_case(args.case)
@@ -37,6 +46,7 @@ def main():
         max_iterations=args.max_iterations,
         seed=args.seed,
         target=args.target,
+        starts=args.starts,
     )
 
     sampled = qaoa["final_sample"]
@@ -81,7 +91,11 @@ def main():
         "target": qaoa["target"],
         "qubits": qaoa["qubit_count"],
         "layers": qaoa["qaoa_layers"],
+        "starts": qaoa["multi_start_count"],
+        "selected_start_index": qaoa["selected_start_index"],
+        "all_starts_successful": qaoa["all_starts_successful"],
         "optimizer_success": qaoa["optimizer_success"],
+        "total_objective_evaluations": qaoa["objective_evaluations"],
         "best_sampled_energy": sampled["best_sampled_energy"],
         "sampled_expected_energy": sampled["expected_qubo_energy"],
         "exact_final_expectation": qaoa["exact_final_expectation"],
