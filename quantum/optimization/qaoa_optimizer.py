@@ -4,7 +4,7 @@ from __future__ import annotations
 import math
 import random
 import time
-from typing import Mapping
+from typing import Mapping, Sequence
 
 from quantum.circuits.qaoa_circuit import (
     build_qaoa_sampling_kernel,
@@ -19,7 +19,6 @@ def qubo_to_ising(qubo: QUBO) -> dict:
     h = [-0.5 * qubo.linear[i] for i in range(n)]
     j_matrix = [[0.0 for _ in range(n)] for _ in range(n)]
     constant = float(qubo.offset)
-
     for i in range(n):
         constant += 0.5 * qubo.linear[i]
         for j in range(i + 1, n):
@@ -30,7 +29,6 @@ def qubo_to_ising(qubo: QUBO) -> dict:
             h[i] -= 0.25 * coefficient
             h[j] -= 0.25 * coefficient
             j_matrix[i][j] = 0.25 * coefficient
-
     return {
         "constant": float(constant),
         "linear": [float(value) for value in h],
@@ -48,11 +46,9 @@ def build_ising_spin_operator(ising: dict):
         from cudaq import spin
     except ImportError as exc:
         raise ImportError("CUDA-Q is required to build the Ising observable.") from exc
-
     n = int(ising["qubit_count"])
     if n < 1:
         raise ValueError("The Ising observable requires at least one qubit")
-
     operator = float(ising["constant"]) * spin.i(0)
     for i, coefficient in enumerate(ising["linear"]):
         if coefficient != 0.0:
@@ -81,7 +77,6 @@ def evaluate_sample_counts(qubo: QUBO, counts: Mapping[str, int]) -> dict:
     total_shots = sum(int(count) for count in counts.values())
     if total_shots <= 0:
         raise ValueError("Sample counts must contain at least one shot")
-
     distribution = []
     expected_energy = 0.0
     for bitstring, raw_count in counts.items():
@@ -102,7 +97,6 @@ def evaluate_sample_counts(qubo: QUBO, counts: Mapping[str, int]) -> dict:
                 qubo.branch_ids[i] for i, bit in enumerate(bits) if bit
             ],
         })
-
     distribution.sort(key=lambda row: (row["qubo_energy"], -row["count"], row["bitstring"]))
     best = distribution[0]
     return {
@@ -116,6 +110,16 @@ def evaluate_sample_counts(qubo: QUBO, counts: Mapping[str, int]) -> dict:
     }
 
 
+def select_best_start_index(candidates: Sequence[Mapping]) -> int:
+    """Return the zero-based candidate index with the lowest exact expectation."""
+    if not candidates:
+        raise ValueError("At least one optimized QAOA start is required")
+    return min(
+        range(len(candidates)),
+        key=lambda index: float(candidates[index]["exact_final_expectation"]),
+    )
+
+
 def optimize_qaoa(
     qubo: QUBO,
     layers: int = 1,
@@ -123,14 +127,22 @@ def optimize_qaoa(
     max_iterations: int = 60,
     seed: int = 7,
     target: str | None = None,
+    starts: int = 1,
 ) -> dict:
-    """Optimize exact Ising expectation, then sample the optimized circuit."""
+    """Optimize exact Ising expectation from multiple starts, then sample the best.
+
+    max_iterations is the COBYLA maxiter option applied independently to each
+    start. In the current SciPy implementation this acts as an objective-
+    evaluation limit.
+    """
     if layers < 1:
         raise ValueError("QAOA layer count must be at least 1")
     if shots < 1:
         raise ValueError("Shot count must be positive")
     if max_iterations < 1:
         raise ValueError("Maximum optimizer iterations must be positive")
+    if starts < 1:
+        raise ValueError("QAOA start count must be at least 1")
 
     try:
         import cudaq
@@ -139,7 +151,6 @@ def optimize_qaoa(
             "CUDA-Q is not installed in this Python environment. "
             "Use the CUDA-Q environment before running LAST-Q QAOA."
         ) from exc
-
     try:
         from scipy.optimize import minimize
     except ImportError as exc:
@@ -161,46 +172,108 @@ def optimize_qaoa(
     state_kernel = build_qaoa_state_kernel()
     sampling_kernel = build_qaoa_sampling_kernel()
     n = len(qubo.variables)
-    rng = random.Random(seed)
-    initial = [rng.uniform(0.0, 2.0 * math.pi) for _ in range(2 * layers)]
 
-    def kernel_arguments(parameters):
-        gammas = [float(value) for value in parameters[:layers]]
-        betas = [float(value) for value in parameters[layers:]]
-        return (n, gammas, betas, ising["linear"], ising["quadratic_flat"])
+    candidate_results = []
+    total_optimization_seconds = 0.0
+    total_candidate_evaluation_seconds = 0.0
+    total_objective_evaluations = 0
 
-    evaluation_count = 0
+    for start_index in range(starts):
+        # Preserve the historical initialization for the first start.
+        # Subsequent starts use independent, reproducible initialization seeds.
+        start_seed = int(seed) + start_index
+        rng = random.Random(start_seed)
+        initial = [
+            rng.uniform(0.0, 2.0 * math.pi) for _ in range(2 * layers)
+        ]
 
-    def objective(parameters):
-        nonlocal evaluation_count
-        result = cudaq.observe(
-            state_kernel, observable, *kernel_arguments(parameters)
+        def kernel_arguments(parameters):
+            gammas = [float(value) for value in parameters[:layers]]
+            betas = [float(value) for value in parameters[layers:]]
+            return (n, gammas, betas, ising["linear"], ising["quadratic_flat"])
+
+        evaluation_count = 0
+
+        def objective(parameters):
+            nonlocal evaluation_count
+            result = cudaq.observe(
+                state_kernel, observable, *kernel_arguments(parameters)
+            )
+            evaluation_count += 1
+            value = result.expectation()
+            return float(value.real if hasattr(value, "real") else value)
+
+        optimization_start = time.perf_counter()
+        optimization = minimize(
+            objective,
+            initial,
+            method="COBYLA",
+            options={
+                "maxiter": int(max_iterations),
+                "rhobeg": 0.5,
+                "tol": 1e-3,
+                "catol": 1e-4,
+            },
         )
-        evaluation_count += 1
-        value = result.expectation()
-        return float(value.real if hasattr(value, "real") else value)
+        optimization_seconds = time.perf_counter() - optimization_start
+        total_optimization_seconds += optimization_seconds
+        total_objective_evaluations += evaluation_count
 
-    optimization_start = time.perf_counter()
-    optimization = minimize(
-        objective,
-        initial,
-        method="COBYLA",
-        options={
-            "maxiter": int(max_iterations),
-            "rhobeg": 0.5,
-            "tol": 1e-3,
-            "catol": 1e-4,
-        },
+        optimized_parameters = [float(value) for value in optimization.x]
+        candidate_arguments = kernel_arguments(optimized_parameters)
+        candidate_evaluation_start = time.perf_counter()
+        candidate_exact_result = cudaq.observe(
+            state_kernel, observable, *candidate_arguments
+        )
+        candidate_exact_value = candidate_exact_result.expectation()
+        candidate_exact_expectation = float(
+            candidate_exact_value.real if hasattr(candidate_exact_value, "real")
+            else candidate_exact_value
+        )
+        candidate_evaluation_seconds = (
+            time.perf_counter() - candidate_evaluation_start
+        )
+        total_candidate_evaluation_seconds += candidate_evaluation_seconds
+
+        candidate_results.append({
+            "start_index": start_index + 1,
+            "initialization_seed": start_seed,
+            "initial_parameters": initial,
+            "optimized_parameters": optimized_parameters,
+            "optimized_gammas": optimized_parameters[:layers],
+            "optimized_betas": optimized_parameters[layers:],
+            "exact_final_expectation": candidate_exact_expectation,
+            "optimizer_success": bool(optimization.success),
+            "optimizer_status": (
+                int(optimization.status) if hasattr(optimization, "status") else None
+            ),
+            "optimizer_message": str(optimization.message),
+            "optimizer_iterations": (
+                int(optimization.nit) if hasattr(optimization, "nit") else None
+            ),
+            "optimizer_nfev": (
+                int(optimization.nfev) if hasattr(optimization, "nfev") else None
+            ),
+            "objective_evaluations": evaluation_count,
+            "optimizer_final_objective": (
+                float(optimization.fun) if hasattr(optimization, "fun") else None
+            ),
+            "optimization_runtime_seconds": optimization_seconds,
+            "exact_candidate_evaluation_seconds": candidate_evaluation_seconds,
+        })
+
+    selected_index = select_best_start_index(candidate_results)
+    selected = candidate_results[selected_index]
+    final_arguments = (
+        n,
+        selected["optimized_gammas"],
+        selected["optimized_betas"],
+        ising["linear"],
+        ising["quadratic_flat"],
     )
-    optimization_seconds = time.perf_counter() - optimization_start
-
-    optimized_parameters = [float(value) for value in optimization.x]
-    final_arguments = kernel_arguments(optimized_parameters)
 
     exact_final_start = time.perf_counter()
-    exact_final_result = cudaq.observe(
-        state_kernel, observable, *final_arguments
-    )
+    exact_final_result = cudaq.observe(state_kernel, observable, *final_arguments)
     exact_final_value = exact_final_result.expectation()
     exact_final_expectation = float(
         exact_final_value.real if hasattr(exact_final_value, "real")
@@ -227,34 +300,32 @@ def optimize_qaoa(
         "qaoa_layers": layers,
         "shots_per_final_evaluation": shots,
         "optimizer": "COBYLA",
-        "optimizer_success": bool(optimization.success),
-        "optimizer_status": (
-            int(optimization.status) if hasattr(optimization, "status") else None
-        ),
-        "optimizer_message": str(optimization.message),
-        "optimizer_iterations": (
-            int(optimization.nit) if hasattr(optimization, "nit") else None
-        ),
-        "optimizer_nfev": (
-            int(optimization.nfev) if hasattr(optimization, "nfev") else None
-        ),
-        "objective_evaluations": evaluation_count,
-        "optimizer_final_objective": (
-            float(optimization.fun) if hasattr(optimization, "fun") else None
-        ),
+        "optimizer_success": selected["optimizer_success"],
+        "optimizer_status": selected["optimizer_status"],
+        "optimizer_message": selected["optimizer_message"],
+        "optimizer_iterations": selected["optimizer_iterations"],
+        "optimizer_nfev": selected["optimizer_nfev"],
+        "objective_evaluations": total_objective_evaluations,
+        "selected_start_objective_evaluations": selected["objective_evaluations"],
+        "optimizer_final_objective": selected["optimizer_final_objective"],
         "exact_final_expectation": exact_final_expectation,
-        "optimizer_max_constraint_violation": (
-            float(optimization.maxcv) if hasattr(optimization, "maxcv") else None
-        ),
-        "optimizer_result_keys": list(optimization.keys()),
-        "optimizer_max_function_evaluations": int(max_iterations),
-        "optimization_runtime_seconds": optimization_seconds,
+        "optimizer_max_constraint_violation": None,
+        "optimizer_result_keys": [],
+        "optimizer_max_function_evaluations_per_start": int(max_iterations),
+        "optimization_runtime_seconds": total_optimization_seconds,
+        "exact_candidate_evaluation_runtime_seconds": total_candidate_evaluation_seconds,
         "exact_final_evaluation_seconds": exact_final_seconds,
         "final_sampling_runtime_seconds": final_sampling_seconds,
         "cudaq_random_seed": int(seed),
-        "initial_parameters": initial,
-        "optimized_gammas": optimized_parameters[:layers],
-        "optimized_betas": optimized_parameters[layers:],
+        "initial_parameters": selected["initial_parameters"],
+        "optimized_gammas": selected["optimized_gammas"],
+        "optimized_betas": selected["optimized_betas"],
+        "multi_start_count": starts,
+        "selected_start_index": selected["start_index"],
+        "all_starts_successful": all(
+            candidate["optimizer_success"] for candidate in candidate_results
+        ),
+        "multi_start_results": candidate_results,
         "final_sample": final_summary,
         "ising_hamiltonian": ising,
         "seed": seed,
