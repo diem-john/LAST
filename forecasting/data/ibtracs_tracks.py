@@ -152,12 +152,14 @@ def build_ibtracs_tracks(
     valid_frames: list[pd.DataFrame] = []
     rejected_frames: list[pd.DataFrame] = []
     source_columns: set[str] = set()
+    source_row_count = 0
     for path in files:
         frame = pd.read_csv(path, low_memory=False)
         missing = REQUIRED_COLUMNS - set(frame.columns)
         if missing:
             raise ValueError(f"{path.name}: missing required columns {sorted(missing)}")
         source_columns.update(str(column) for column in frame.columns)
+        source_row_count += len(frame)
         frame = frame.copy()
         frame["storm_instance_id"] = path.stem
         frame["source_file"] = path.name
@@ -236,9 +238,9 @@ def build_ibtracs_tracks(
         )
     tracks["elapsed_since_previous_hours"] = elapsed_hours
     tracks["segment_distance_km"] = distance
-    tracks["translation_speed_kmh"] = np.where(
-        valid_segment, distance / elapsed_hours, np.nan
-    )
+    speed = np.full(len(tracks), np.nan, dtype=float)
+    speed[valid_segment] = distance[valid_segment] / elapsed_hours[valid_segment]
+    tracks["translation_speed_kmh"] = speed
     tracks["heading_deg_from_previous"] = bearing
 
     grid_status = "not_requested"
@@ -258,9 +260,7 @@ def build_ibtracs_tracks(
         "metadata_directory": str(root),
         "metadata_file_count": len(files),
         "storm_instance_count": int(tracks["storm_instance_id"].nunique()),
-        "source_row_count": int(sum(
-            len(pd.read_csv(path, usecols=lambda _: True)) for path in files
-        )),
+        "source_row_count": int(source_row_count),
         "valid_track_row_count": int(len(tracks)),
         "rejected_row_count": int(len(rejected)),
         "duplicate_timestamp_count": int(tracks["duplicate_timestamp"].sum()),
