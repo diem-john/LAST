@@ -258,6 +258,10 @@ def optimize_qaoa(
             "optimizer_final_objective": (
                 float(optimization.fun) if hasattr(optimization, "fun") else None
             ),
+            "optimizer_max_constraint_violation": (
+                float(optimization.maxcv) if hasattr(optimization, "maxcv") else None
+            ),
+            "optimizer_result_keys": list(optimization.keys()),
             "optimization_runtime_seconds": optimization_seconds,
             "exact_candidate_evaluation_seconds": candidate_evaluation_seconds,
         })
@@ -309,8 +313,9 @@ def optimize_qaoa(
         "selected_start_objective_evaluations": selected["objective_evaluations"],
         "optimizer_final_objective": selected["optimizer_final_objective"],
         "exact_final_expectation": exact_final_expectation,
-        "optimizer_max_constraint_violation": None,
-        "optimizer_result_keys": [],
+        "optimizer_max_constraint_violation": selected["optimizer_max_constraint_violation"],
+        "optimizer_result_keys": selected["optimizer_result_keys"],
+        "optimizer_max_function_evaluations": int(max_iterations),
         "optimizer_max_function_evaluations_per_start": int(max_iterations),
         "optimization_runtime_seconds": total_optimization_seconds,
         "exact_candidate_evaluation_runtime_seconds": total_candidate_evaluation_seconds,
