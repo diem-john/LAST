@@ -1,0 +1,36 @@
+name: LAST-Q topology tests
+
+on:
+  push:
+    branches:
+      - feature/last-q-qaoa-grid-restoration
+    paths:
+      - "grid/**"
+      - "quantum/**"
+      - "scripts/run_lastq_classical_baseline.py"
+      - "tests/test_lastq_reconfiguration.py"
+      - "data/electrical/ieee33bw_reference.json"
+      - ".github/workflows/lastq-topology-tests.yml"
+  pull_request:
+    paths:
+      - "grid/**"
+      - "quantum/**"
+      - "scripts/run_lastq_classical_baseline.py"
+      - "tests/test_lastq_reconfiguration.py"
+      - "data/electrical/ieee33bw_reference.json"
+      - ".github/workflows/lastq-topology-tests.yml"
+
+jobs:
+  topology-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test runner
+        run: python -m pip install --upgrade pytest
+      - name: Run LAST-Q topology tests
+        run: python -m pytest -q tests/test_lastq_reconfiguration.py
