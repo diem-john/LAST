@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from grid.reconfiguration import (
+    build_post_contingency_network,
     enumerate_tie_configurations,
     evaluate_reconfiguration,
     load_case,
@@ -17,9 +18,7 @@ CASE_PATH = ROOT / "data" / "electrical" / "ieee33bw_reference.json"
 
 def test_bus6_fault_creates_three_components_and_opens_all_incident_branches():
     case = load_case(CASE_PATH)
-    active, surviving, components = __import__(
-        "grid.reconfiguration", fromlist=["build_post_contingency_network"]
-    ).build_post_contingency_network(case, (6,))
+    active, surviving, components = build_post_contingency_network(case, (6,))
 
     assert 6 not in active
     assert len(components) == 3
@@ -43,7 +42,7 @@ def test_five_tie_enumeration_finds_five_radial_restoration_states():
     )
 
 
-def test_q ubo_has_five_variables_and_zero_energy_for_feasible_states():
+def test_qubo_has_five_variables_and_zero_energy_for_feasible_states():
     case = load_case(CASE_PATH)
     qubo = build_tie_restoration_qubo(case, faulted_buses=(6,))
 
