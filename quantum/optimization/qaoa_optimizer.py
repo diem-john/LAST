@@ -131,6 +131,10 @@ def optimize_qaoa(
             )
         cudaq.set_target(target)
 
+    # Seed CUDA-Q's simulator RNG separately from Python's parameter RNG.
+    # Backend support for deterministic sampling can vary by simulator.
+    cudaq.set_random_seed(int(seed))
+
     ising = qubo_to_ising(qubo)
     kernel = build_qaoa_sampling_kernel()
     n = len(qubo.variables)
@@ -186,9 +190,33 @@ def optimize_qaoa(
         "shots_per_evaluation": shots,
         "optimizer": "COBYLA",
         "optimizer_success": bool(optimization.success),
+        "optimizer_status": (
+            int(optimization.status)
+            if hasattr(optimization, "status") else None
+        ),
         "optimizer_message": str(optimization.message),
-        "optimizer_iterations": int(getattr(optimization, "nit", 0)),
+        # SciPy's COBYLA reports objective-function evaluations as nfev.
+        # Keep nit nullable: not every SciPy version exposes it for COBYLA.
+        "optimizer_iterations": (
+            int(optimization.nit)
+            if hasattr(optimization, "nit") else None
+        ),
+        "optimizer_nfev": (
+            int(optimization.nfev)
+            if hasattr(optimization, "nfev") else None
+        ),
         "objective_evaluations": evaluation_count,
+        "optimizer_final_objective": (
+            float(optimization.fun)
+            if hasattr(optimization, "fun") else None
+        ),
+        "optimizer_max_constraint_violation": (
+            float(optimization.maxcv)
+            if hasattr(optimization, "maxcv") else None
+        ),
+        "optimizer_result_keys": list(optimization.keys()),
+        "optimizer_max_function_evaluations": int(max_iterations),
+        "cudaq_random_seed": int(seed),
         "initial_parameters": initial,
         "optimized_gammas": optimized_parameters[:layers],
         "optimized_betas": optimized_parameters[layers:],
