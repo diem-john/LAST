@@ -31,6 +31,10 @@ def main():
     )
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument(
+        "--sampling-seed", type=int, default=None,
+        help="Independent CUDA-Q final-sampling seed; defaults to --seed.",
+    )
+    parser.add_argument(
         "--starts", type=int, default=1,
         help="Number of deterministic COBYLA initializations; sample the best exact expectation.",
     )
@@ -47,6 +51,7 @@ def main():
         seed=args.seed,
         target=args.target,
         starts=args.starts,
+        sampling_seed=args.sampling_seed,
     )
 
     sampled = qaoa["final_sample"]
@@ -92,6 +97,7 @@ def main():
         "qubits": qaoa["qubit_count"],
         "layers": qaoa["qaoa_layers"],
         "starts": qaoa["multi_start_count"],
+        "sampling_seed": qaoa["cudaq_sampling_seed"],
         "selected_start_index": qaoa["selected_start_index"],
         "all_starts_successful": qaoa["all_starts_successful"],
         "optimizer_success": qaoa["optimizer_success"],
