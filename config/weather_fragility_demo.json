@@ -28,7 +28,7 @@
         "midpoint": 0.5,
         "scale": 0.2
       },
-      "component_class": "ground_level_electrical_asset"
+      "component_class": "distribution_branch_sample"
     }
   }
 }
