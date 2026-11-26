@@ -72,3 +72,36 @@ def test_exact_observe_matches_large_shot_qubo_energy_estimate():
         assert abs(exact - sampled_energy) < 1.0
     finally:
         cudaq.set_target(previous_target)
+
+def test_multistart_optimizer_samples_candidate_with_lowest_exact_expectation():
+    from quantum.optimization.qaoa_optimizer import optimize_qaoa
+
+    previous_target = cudaq.get_target().name
+    try:
+        cudaq.set_target("qpp-cpu")
+        _, qubo = _case_qubo()
+        result = optimize_qaoa(
+            qubo,
+            layers=1,
+            shots=64,
+            max_iterations=12,
+            seed=31,
+            target="qpp-cpu",
+            starts=2,
+        )
+
+        candidates = result["multi_start_results"]
+        assert len(candidates) == 2
+        expected_best = min(
+            candidate["exact_final_expectation"] for candidate in candidates
+        )
+        assert result["selected_start_index"] in (1, 2)
+        assert result["exact_final_expectation"] == pytest.approx(expected_best)
+        assert result["multi_start_count"] == 2
+        assert result["final_sample"]["total_shots"] == 64
+        assert result["objective_evaluations"] == sum(
+            candidate["objective_evaluations"] for candidate in candidates
+        )
+    finally:
+        cudaq.set_target(previous_target)
+
