@@ -114,3 +114,11 @@ def test_unknown_branch_and_tie_failures_are_rejected():
         build_branch_contingency(case, [999])
     with pytest.raises(ValueError, match="normally-open ties"):
         build_branch_contingency(case, [33])
+
+
+def test_rainfall_alone_is_not_misrepresented_as_direct_branch_failure(tmp_path):
+    features = tmp_path / "features.csv"
+    write_features(features, [row(1, "precipitation", 80, "mm h-1")])
+    config = load_fragility_config(ROOT / "config/weather_fragility_demo.json")
+    with pytest.raises(ValueError, match="Rainfall is not a direct branch-failure driver"):
+        calculate_branch_failure_probabilities(features, config)
