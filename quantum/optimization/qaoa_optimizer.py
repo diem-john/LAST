@@ -3,17 +3,18 @@ from __future__ import annotations
 
 import math
 import random
+import time
 from typing import Mapping
 
-from quantum.circuits.qaoa_circuit import build_qaoa_sampling_kernel
+from quantum.circuits.qaoa_circuit import (
+    build_qaoa_sampling_kernel,
+    build_qaoa_state_kernel,
+)
 from quantum.optimization.qubo_formulation import QUBO
 
 
 def qubo_to_ising(qubo: QUBO) -> dict:
-    """Convert E(x) to constant + sum(h_i Z_i) + sum(J_ij Z_i Z_j).
-
-    Uses x_i = (1 - Z_i) / 2 and the QUBO convention documented by QUBO.
-    """
+    """Convert E(x) to constant + sum(h_i Z_i) + sum(J_ij Z_i Z_j)."""
     n = len(qubo.variables)
     h = [-0.5 * qubo.linear[i] for i in range(n)]
     j_matrix = [[0.0 for _ in range(n)] for _ in range(n)]
@@ -39,6 +40,29 @@ def qubo_to_ising(qubo: QUBO) -> dict:
         ],
         "qubit_count": n,
     }
+
+
+def build_ising_spin_operator(ising: dict):
+    """Build the full Ising observable, including its identity offset."""
+    try:
+        from cudaq import spin
+    except ImportError as exc:
+        raise ImportError("CUDA-Q is required to build the Ising observable.") from exc
+
+    n = int(ising["qubit_count"])
+    if n < 1:
+        raise ValueError("The Ising observable requires at least one qubit")
+
+    operator = float(ising["constant"]) * spin.i(0)
+    for i, coefficient in enumerate(ising["linear"]):
+        if coefficient != 0.0:
+            operator += float(coefficient) * spin.z(i)
+    for i in range(n):
+        for j in range(i + 1, n):
+            coefficient = float(ising["quadratic"][i][j])
+            if coefficient != 0.0:
+                operator += coefficient * spin.z(i) * spin.z(j)
+    return operator
 
 
 def decode_bitstring(bitstring: str, qubit_count: int) -> tuple[int, ...]:
@@ -100,7 +124,7 @@ def optimize_qaoa(
     seed: int = 7,
     target: str | None = None,
 ) -> dict:
-    """Run QAOA with a SciPy COBYLA outer loop and CUDA-Q circuit sampling."""
+    """Optimize exact Ising expectation, then sample the optimized circuit."""
     if layers < 1:
         raise ValueError("QAOA layer count must be at least 1")
     if shots < 1:
@@ -131,39 +155,32 @@ def optimize_qaoa(
             )
         cudaq.set_target(target)
 
-    # Seed CUDA-Q's simulator RNG separately from Python's parameter RNG.
-    # Backend support for deterministic sampling can vary by simulator.
     cudaq.set_random_seed(int(seed))
-
     ising = qubo_to_ising(qubo)
-    kernel = build_qaoa_sampling_kernel()
+    observable = build_ising_spin_operator(ising)
+    state_kernel = build_qaoa_state_kernel()
+    sampling_kernel = build_qaoa_sampling_kernel()
     n = len(qubo.variables)
     rng = random.Random(seed)
     initial = [rng.uniform(0.0, 2.0 * math.pi) for _ in range(2 * layers)]
 
-    def sample_parameters(parameters):
+    def kernel_arguments(parameters):
         gammas = [float(value) for value in parameters[:layers]]
         betas = [float(value) for value in parameters[layers:]]
-        result = cudaq.sample(
-            kernel,
-            n,
-            gammas,
-            betas,
-            ising["linear"],
-            ising["quadratic_flat"],
-            shots_count=shots,
-        )
-        return {str(key): int(result[key]) for key in result}
+        return (n, gammas, betas, ising["linear"], ising["quadratic_flat"])
 
     evaluation_count = 0
 
     def objective(parameters):
         nonlocal evaluation_count
-        counts = sample_parameters(parameters)
-        summary = evaluate_sample_counts(qubo, counts)
+        result = cudaq.observe(
+            state_kernel, observable, *kernel_arguments(parameters)
+        )
         evaluation_count += 1
-        return summary["expected_qubo_energy"]
+        value = result.expectation()
+        return float(value.real if hasattr(value, "real") else value)
 
+    optimization_start = time.perf_counter()
     optimization = minimize(
         objective,
         initial,
@@ -175,47 +192,65 @@ def optimize_qaoa(
             "catol": 1e-4,
         },
     )
+    optimization_seconds = time.perf_counter() - optimization_start
 
     optimized_parameters = [float(value) for value in optimization.x]
-    final_counts = sample_parameters(optimized_parameters)
+    final_arguments = kernel_arguments(optimized_parameters)
+
+    exact_final_start = time.perf_counter()
+    exact_final_result = cudaq.observe(
+        state_kernel, observable, *final_arguments
+    )
+    exact_final_value = exact_final_result.expectation()
+    exact_final_expectation = float(
+        exact_final_value.real if hasattr(exact_final_value, "real")
+        else exact_final_value
+    )
+    exact_final_seconds = time.perf_counter() - exact_final_start
+
+    sampling_start = time.perf_counter()
+    sampled_result = cudaq.sample(
+        sampling_kernel, *final_arguments, shots_count=shots
+    )
+    final_counts = {str(key): int(sampled_result[key]) for key in sampled_result}
     final_summary = evaluate_sample_counts(qubo, final_counts)
+    final_sampling_seconds = time.perf_counter() - sampling_start
     active_target = cudaq.get_target().name if hasattr(cudaq, "get_target") else target
 
     return {
         "algorithm": "QAOA",
         "backend": "NVIDIA CUDA-Q",
+        "optimization_objective": "analytic_ising_expectation",
+        "final_evaluation": "finite_shot_computational_basis_sampling",
         "target": active_target,
         "qubit_count": n,
         "qaoa_layers": layers,
-        "shots_per_evaluation": shots,
+        "shots_per_final_evaluation": shots,
         "optimizer": "COBYLA",
         "optimizer_success": bool(optimization.success),
         "optimizer_status": (
-            int(optimization.status)
-            if hasattr(optimization, "status") else None
+            int(optimization.status) if hasattr(optimization, "status") else None
         ),
         "optimizer_message": str(optimization.message),
-        # SciPy's COBYLA reports objective-function evaluations as nfev.
-        # Keep nit nullable: not every SciPy version exposes it for COBYLA.
         "optimizer_iterations": (
-            int(optimization.nit)
-            if hasattr(optimization, "nit") else None
+            int(optimization.nit) if hasattr(optimization, "nit") else None
         ),
         "optimizer_nfev": (
-            int(optimization.nfev)
-            if hasattr(optimization, "nfev") else None
+            int(optimization.nfev) if hasattr(optimization, "nfev") else None
         ),
         "objective_evaluations": evaluation_count,
         "optimizer_final_objective": (
-            float(optimization.fun)
-            if hasattr(optimization, "fun") else None
+            float(optimization.fun) if hasattr(optimization, "fun") else None
         ),
+        "exact_final_expectation": exact_final_expectation,
         "optimizer_max_constraint_violation": (
-            float(optimization.maxcv)
-            if hasattr(optimization, "maxcv") else None
+            float(optimization.maxcv) if hasattr(optimization, "maxcv") else None
         ),
         "optimizer_result_keys": list(optimization.keys()),
         "optimizer_max_function_evaluations": int(max_iterations),
+        "optimization_runtime_seconds": optimization_seconds,
+        "exact_final_evaluation_seconds": exact_final_seconds,
+        "final_sampling_runtime_seconds": final_sampling_seconds,
         "cudaq_random_seed": int(seed),
         "initial_parameters": initial,
         "optimized_gammas": optimized_parameters[:layers],
