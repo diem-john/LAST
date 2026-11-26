@@ -1,0 +1,32 @@
+name: IBTrACS regional analysis tests
+
+on:
+  push:
+    branches:
+      - feature/lastq-ibtracs-regional-analysis
+    paths:
+      - "forecasting/data/ibtracs_regions.py"
+      - "scripts/filter_visualize_ibtracs_regions.py"
+      - "tests/test_ibtracs_regional_analysis.py"
+      - ".github/workflows/ibtracs-regional-tests.yml"
+  pull_request:
+    paths:
+      - "forecasting/data/ibtracs_regions.py"
+      - "scripts/filter_visualize_ibtracs_regions.py"
+      - "tests/test_ibtracs_regional_analysis.py"
+      - ".github/workflows/ibtracs-regional-tests.yml"
+
+jobs:
+  ibtracs-regional-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pytest numpy pandas matplotlib
+      - name: Run IBTrACS regional tests
+        run: python -m pytest -q tests/test_ibtracs_regional_analysis.py
