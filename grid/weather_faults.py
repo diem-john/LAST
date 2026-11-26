@@ -135,9 +135,19 @@ def calculate_branch_failure_probabilities(
     """Calculate per-branch, per-time failure probabilities from mapped features."""
     rows = _read_features(mapped_features_csv, include_regional=include_regional)
     observations = _hazard_observations(rows, fragility_config)
+    if not observations:
+        raise ValueError(
+            "No configured hazard measurements found for branch samples. "
+            "Rainfall is not a direct branch-failure driver in this model; "
+            "configure a validated derived hazard such as flood_depth first."
+        )
     semantics_by_key = {
         (r["timestamp_utc"], r["temporal_semantics"], r["branch_id"]): r for r in rows
     }
+    sources_by_key: dict[tuple[str, str, int], set[str]] = defaultdict(set)
+    for row in rows:
+        key = (row["timestamp_utc"], row["temporal_semantics"], row["branch_id"])
+        sources_by_key[key].add(str(row.get("source_id", "unknown")))
     output = []
     for (timestamp, semantics, branch_id), exposures in sorted(observations.items()):
         hazard_probabilities = {}
@@ -153,6 +163,7 @@ def calculate_branch_failure_probabilities(
             "temporal_semantics": semantics,
             "branch_id": branch_id,
             "asset_id": source_row["asset_id"],
+            "source_ids": sorted(sources_by_key[(timestamp, semantics, branch_id)]),
             "hazard_exposures": exposures,
             "hazard_failure_probabilities": hazard_probabilities,
             "combined_failure_probability": combined,
