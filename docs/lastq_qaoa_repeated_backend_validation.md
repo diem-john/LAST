@@ -105,7 +105,8 @@ The summary reports mean, sample standard deviation, and median for:
 
 It also reports selected optimizer success, all-start convergence rate,
 paired GPU/CPU optimization speedup, and paired GPU-minus-CPU differences in
-exact expectation and feasible probability.
+exact expectation and feasible probability. The runner exposes an independent
+`--sampling-seed`; if omitted, it defaults to `--seed`.
 
 ## Interpretation
 
@@ -116,8 +117,11 @@ exact expectation and feasible probability.
 - Compare exact expectation and topology-feasible probability alongside
   runtime. Faster execution alone does not imply better optimization quality.
 - Final sampling time is reported separately from optimization time.
-- Repetitions use the same seed within each seed/backend group. They are
-  repeated timing observations, not 20 independent random initializations.
+- Repetitions keep the optimizer initialization seed fixed within each
+  seed/backend group, so the optimized parameters are reproducible. They use
+  distinct final-sampling seeds across repetitions, with the same sampling seed
+  paired across CPU and GPU. This captures finite-shot sampling variability
+  without changing the optimizer initialization.
 - The benchmark uses a small five-qubit problem. GPU launch/runtime overhead,
   machine load, thermal state, driver/runtime versions, and target warm-up can
   affect measured results.
