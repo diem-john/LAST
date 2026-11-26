@@ -128,6 +128,7 @@ def optimize_qaoa(
     seed: int = 7,
     target: str | None = None,
     starts: int = 1,
+    sampling_seed: int | None = None,
 ) -> dict:
     """Optimize exact Ising expectation from multiple starts, then sample the best.
 
@@ -286,6 +287,10 @@ def optimize_qaoa(
     exact_final_seconds = time.perf_counter() - exact_final_start
 
     sampling_start = time.perf_counter()
+    # Keep optimizer initialization reproducible while allowing independent
+    # finite-shot draws across repeated benchmark trials.
+    effective_sampling_seed = int(seed if sampling_seed is None else sampling_seed)
+    cudaq.set_random_seed(effective_sampling_seed)
     sampled_result = cudaq.sample(
         sampling_kernel, *final_arguments, shots_count=shots
     )
@@ -322,6 +327,7 @@ def optimize_qaoa(
         "exact_final_evaluation_seconds": exact_final_seconds,
         "final_sampling_runtime_seconds": final_sampling_seconds,
         "cudaq_random_seed": int(seed),
+        "cudaq_sampling_seed": effective_sampling_seed,
         "initial_parameters": selected["initial_parameters"],
         "optimized_gammas": selected["optimized_gammas"],
         "optimized_betas": selected["optimized_betas"],
