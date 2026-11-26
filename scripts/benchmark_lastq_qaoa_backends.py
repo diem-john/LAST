@@ -61,6 +61,7 @@ def run_trial(
     backend: str,
     seed: int,
     repetition: int,
+    sampling_seed: int,
     output_path: Path,
     *,
     layers: int,
@@ -79,6 +80,7 @@ def run_trial(
         "--max-iterations", str(max_iterations),
         "--starts", str(starts),
         "--seed", str(seed),
+        "--sampling-seed", str(sampling_seed),
         "--output", str(output_path),
     ]
 
@@ -114,6 +116,7 @@ def run_trial(
         "target": data.get("target", target),
         "seed": seed,
         "repetition": repetition,
+        "sampling_seed": sampling_seed,
         "optimizer_success": data.get("optimizer_success"),
         "all_starts_successful": data.get("all_starts_successful"),
         "selected_start_index": data.get("selected_start_index"),
@@ -247,6 +250,8 @@ def main() -> None:
         "repetitions_per_seed_backend": args.repetitions,
         "warmups_per_backend": args.warmups,
         "execution_order": "alternating CPU/GPU order across seed-repetition pairs",
+        "optimizer_seed_policy": "same seed for all repetitions of each seed/backend",
+        "sampling_seed_policy": "100000 + seed * 100 + repetition; paired across backends",
     }
 
     print("LAST-Q repeated CPU/GPU benchmark")
@@ -259,7 +264,7 @@ def main() -> None:
             warmup_path = run_dir / f"warmup_{backend}_{warmup_index}.json"
             print(f"\nWARM-UP {backend.upper()} ({warmup_index}/{args.warmups})")
             run_trial(
-                backend, args.seeds[0], 0, warmup_path,
+                backend, args.seeds[0], 0, 900000 + args.seeds[0], warmup_path,
                 layers=args.layers,
                 starts=args.starts,
                 max_iterations=args.max_iterations,
@@ -283,7 +288,8 @@ def main() -> None:
                 )
                 print(f"Running {backend.upper()} -> {output_path.name}")
                 row = run_trial(
-                    backend, seed, repetition, output_path,
+                    backend, seed, repetition,
+                    100000 + seed * 100 + repetition, output_path,
                     layers=args.layers,
                     starts=args.starts,
                     max_iterations=args.max_iterations,
