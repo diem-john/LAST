@@ -1,0 +1,37 @@
+name: IBTrACS wind-to-contingency pipeline tests
+
+on:
+  push:
+    paths:
+      - "forecasting/physics/**"
+      - "grid/ibtracs_wind_exposure.py"
+      - "grid/ibtracs_fragility.py"
+      - "grid/weather_faults.py"
+      - "forecasting/data/ibtracs_*.py"
+      - "tests/test_ibtracs_wind_to_contingency.py"
+      - "scripts/calibrate_ibtracs_wind_fragility.py"
+      - ".github/workflows/ibtracs-wind-contingency-tests.yml"
+  pull_request:
+    paths:
+      - "forecasting/physics/**"
+      - "grid/ibtracs_wind_exposure.py"
+      - "grid/ibtracs_fragility.py"
+      - "grid/weather_faults.py"
+      - "forecasting/data/ibtracs_*.py"
+      - "tests/test_ibtracs_wind_to_contingency.py"
+      - ".github/workflows/ibtracs-wind-contingency-tests.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip numpy pandas matplotlib pytest
+      - name: Run focused physics and contingency tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: pytest -q tests/test_ibtracs_wind_to_contingency.py
