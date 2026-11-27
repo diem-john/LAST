@@ -21,20 +21,21 @@ readiness or quantum advantage is claimed.
 
 ## Critical source-data qualification
 
-The repository's per-storm metadata files currently expose custom columns such
-as `year, month, day, hour, grade, lat, lng, pressure, wind, dir50, long50,
-short50, dir30, long30, short30`. They do not expose the standard
-`WMO_WIND`, `WMO_PRES`, `WMO_AGENCY`, or equivalent agency-specific columns
-shown in the NOAA IBTrACS v04r01 technical documentation.
+The repository's per-storm metadata schema (`year, month, day, hour, grade,
+lat, lng, pressure, wind, dir50, long50, short50, dir30, long30, short30,
+landfall, intp`) and HDF5 image naming pattern match the Digital Typhoon
+Dataset. Digital Typhoon identifies its track/intensity source as JMA-derived.
+Its documentation specifies knots for maximum wind, and JMA's maximum sustained
+wind convention is a 10-minute mean. The exact release/version of the local
+Digital Typhoon copy has not yet been established.
 
-The NOAA documentation says IBTrACS maximum sustained winds are conventionally
-reported in knots, but averaging periods vary by reporting agency (commonly
-1-minute or 10-minute, with other agency conventions). Therefore the standard
-IBTrACS documentation cannot, by itself, certify the semantics of this
-project's custom `wind` field. Confirm the exact upstream source/release,
-unit, averaging period, reference height, and pressure unit before running 7E.
-The program intentionally refuses to proceed when wind unit, averaging period,
-or measurement height are unset in `config/ibtracs_wind_field.json`.
+The configured wind unit is therefore `knots`, and the averaging period is
+`10` minutes. The model uses a `10 m` surface-wind reference height as an
+explicit standard modeling assumption; the inspected metadata schema does not
+itself include a height field. This distinction is retained in
+`source_fields.wind_height_status`. Confirm the local release and height
+convention against the exact archived dataset before treating the pipeline as
+fully source-verified.
 
 The `long50/short50` and `long30/short30` fields are not consumed by this
 initial model because their geometric meaning and units are not documented in
@@ -156,16 +157,16 @@ sampling assumes conditional independence given the reconstructed wind field.
 
 First confirm and edit `config/ibtracs_wind_field.json`:
 
-- `source_fields.wind_unit`: `knots`, `m/s`, or `mph`;
-- `source_fields.wind_averaging_period_minutes`: confirmed source averaging
-  period;
-- `source_fields.wind_height_m`: confirmed reference height;
-- `source_fields.source_dataset_release`, `source_agency`, and source note;
-- `rmw.rmw_km`: measured or explicitly selected sensitivity value.
+- `source_fields.wind_unit`: currently `knots`, based on Digital Typhoon documentation;
+- `source_fields.wind_averaging_period_minutes`: currently `10`, based on the JMA best-track convention;
+- `source_fields.wind_height_m`: currently `10` as an explicit standard surface-wind modeling reference assumption, not a height field present in the CSV;
+- `source_fields.source_dataset_release`: exact local release remains unverified;
+- `rmw.rmw_km`: measured or explicitly selected sensitivity value;
+- `wind_adjustment`: currently adds the user-selected `15 knots` to every finite numeric source observation, preserving the raw field and leaving missing values missing. This is an experimental sensitivity assumption, not a validated correction.
 
-The provided config intentionally leaves source semantics null. Do not guess
-these values from the generic NOAA IBTrACS documentation because the local
-metadata is a custom schema.
+The unit and averaging period are supported by the Digital Typhoon/JMA source
+identification. The 10 m height is an explicit modeling assumption and should
+be confirmed against the exact local archive before formal publication.
 
 After confirming the fields:
 
@@ -205,20 +206,22 @@ storms. Avoid using the same storm event in both fitting and validation.
 
 ## Scientific references
 
-1. NOAA NCEI, *IBTrACS v04r01 Technical Documentation* (2025):
+1. National Institute of Informatics, *Digital Typhoon Dataset* and unit documentation: https://agora.ex.nii.ac.jp/digital-typhoon/dataset/V3/index.html.en and https://agora.ex.nii.ac.jp/digital-typhoon/help/unit.html.en
+2. Japan Meteorological Agency, *RSMC Best Track Data Format*: https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/Besttracks/e_format_bst.html
+3. NOAA NCEI, *IBTrACS v04r01 Technical Documentation* (2025):
    https://www.ncei.noaa.gov/sites/default/files/2025-04/IBTrACS_version4r01_Technical_Details.pdf
-2. Willoughby, H. E., Darling, R. W. R., and Rahn, M. E. (2006),
+4. Willoughby, H. E., Darling, R. W. R., and Rahn, M. E. (2006),
    *Parametric Representation of the Primary Hurricane Vortex. Part I:
    Observations and Evaluation of the Holland (1980) Model*, Monthly Weather
    Review, 134, 1102–1120. https://doi.org/10.1175/MWR3106.1
-3. Knaff, J. A., Sampson, C. R., Fitzpatrick, P. J., Jin, Y., and Hill, C. M.
+5. Knaff, J. A., Sampson, C. R., Fitzpatrick, P. J., Jin, Y., and Hill, C. M.
    (2011), *Simple Diagnosis of Tropical Cyclone Structure via Pressure
    Gradients*, Weather and Forecasting, 26, 1020–1031.
    https://doi.org/10.1175/WAF-D-11-00013.1
-4. *Reconceptualizing Reliability Indices as Metrics to Quantify Distribution
+6. *Reconceptualizing Reliability Indices as Metrics to Quantify Distribution
    System Resilience* (2024), Energies, 17(8), 1909. The pole curve is treated
    here as a literature-reference sensitivity function, not local calibration.
-5. Qudaisat, M. and Alipour, A. (2026), *Multivariate logistic wind fragility
+7. Qudaisat, M. and Alipour, A. (2026), *Multivariate logistic wind fragility
    functions of overhead distribution poles*, International Journal of
    Disaster Risk Reduction, 134, 105996. This recent work underscores the
    need for component and site characteristics in fragility models.
