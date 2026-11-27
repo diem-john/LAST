@@ -7,14 +7,17 @@ on:
       - "grid/ibtracs_wind_exposure.py"
       - "grid/ibtracs_fragility.py"
       - "grid/weather_faults.py"
+      - "grid/restoration_optimization.py"
       - "forecasting/data/ibtracs_*.py"
-      - "tests/test_ibtracs_wind_to_contingency.py"
       - "scripts/calibrate_ibtracs_wind_fragility.py"
       - "scripts/run_ibtracs_sensitivity_analysis.py"
       - "scripts/run_ibtracs_contingency_prioritization.py"
-      - "tests/test_ibtracs_contingency_prioritization.py"
       - "scripts/run_ibtracs_minimal_cut_sets_restoration.py"
+      - "scripts/run_phase8_restoration_optimization.py"
+      - "tests/test_ibtracs_wind_to_contingency.py"
+      - "tests/test_ibtracs_contingency_prioritization.py"
       - "tests/test_ibtracs_minimal_cut_sets_restoration.py"
+      - "tests/test_restoration_optimization.py"
       - ".github/workflows/ibtracs-wind-contingency-tests.yml"
   pull_request:
     paths:
@@ -22,12 +25,15 @@ on:
       - "grid/ibtracs_wind_exposure.py"
       - "grid/ibtracs_fragility.py"
       - "grid/weather_faults.py"
+      - "grid/restoration_optimization.py"
       - "forecasting/data/ibtracs_*.py"
-      - "tests/test_ibtracs_wind_to_contingency.py"
       - "scripts/run_ibtracs_contingency_prioritization.py"
-      - "tests/test_ibtracs_contingency_prioritization.py"
       - "scripts/run_ibtracs_minimal_cut_sets_restoration.py"
+      - "scripts/run_phase8_restoration_optimization.py"
+      - "tests/test_ibtracs_wind_to_contingency.py"
+      - "tests/test_ibtracs_contingency_prioritization.py"
       - "tests/test_ibtracs_minimal_cut_sets_restoration.py"
+      - "tests/test_restoration_optimization.py"
       - ".github/workflows/ibtracs-wind-contingency-tests.yml"
 
 jobs:
@@ -40,11 +46,12 @@ jobs:
           python-version: "3.11"
       - name: Install test dependencies
         run: python -m pip install --upgrade pip numpy pandas matplotlib pytest
-      - name: Run focused physics and contingency tests
+      - name: Run focused physics and restoration tests
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: >-
           pytest -q
           tests/test_ibtracs_wind_to_contingency.py
           tests/test_ibtracs_contingency_prioritization.py
-          tests/test_ibtracs_minimal_cut_sets_restoration.py\n          tests/test_restoration_optimization.py
+          tests/test_ibtracs_minimal_cut_sets_restoration.py
+          tests/test_restoration_optimization.py
