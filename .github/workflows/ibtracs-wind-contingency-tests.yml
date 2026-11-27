@@ -47,4 +47,4 @@ jobs:
           pytest -q
           tests/test_ibtracs_wind_to_contingency.py
           tests/test_ibtracs_contingency_prioritization.py
-          tests/test_ibtracs_minimal_cut_sets_restoration.py
+          tests/test_ibtracs_minimal_cut_sets_restoration.py\n          tests/test_restoration_optimization.py
