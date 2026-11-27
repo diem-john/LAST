@@ -19,6 +19,7 @@ from grid.ibtracs_fragility import (
     fit_logistic_pole_fragility,
     pole_failure_probability,
 )
+from forecasting.physics.tropical_cyclone_wind import prepare_wind_track_parameters
 
 
 def _wind_config():
@@ -67,6 +68,28 @@ def test_source_wind_semantics_are_required():
 def test_explicit_wind_unit_conversion():
     assert convert_wind_to_ms([10], "knots")[0] == pytest.approx(5.1444444)
     assert convert_wind_to_ms([10], "mph")[0] == pytest.approx(4.4704)
+
+def test_additive_15_knot_adjustment_preserves_original_and_missing_values():
+    config = _wind_config()
+    config["wind_adjustment"] = {"value": 15.0, "unit": "knots"}
+    tracks = pd.DataFrame({"wind": [0.0, 10.0, np.nan]})
+
+    result = prepare_wind_track_parameters(tracks, config)
+
+    knot_ms = 0.5144444444444445
+    assert result["vmax_source_raw"].iloc[:2].tolist() == [0.0, 10.0]
+    assert result["vmax_observed_ms"].iloc[0] == pytest.approx(0.0)
+    assert result["vmax_ms"].iloc[0] == pytest.approx(15.0 * knot_ms)
+    assert result["vmax_ms"].iloc[1] == pytest.approx(25.0 * knot_ms)
+    assert np.isnan(result["vmax_ms"].iloc[2])
+    assert result["wind_adjustment_ms"].eq(15.0 * knot_ms).all()
+
+
+def test_wind_adjustment_rejects_negative_offset():
+    config = _wind_config()
+    config["wind_adjustment"] = {"value": -15.0, "unit": "knots"}
+    with pytest.raises(ValueError, match="nonnegative"):
+        prepare_wind_track_parameters(pd.DataFrame({"wind": [0.0]}), config)
 
 
 def test_willoughby_profile_peaks_at_configured_rmw():
