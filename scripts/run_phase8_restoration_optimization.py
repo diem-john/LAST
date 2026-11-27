@@ -144,7 +144,7 @@ def run_cudaq_qaoa(
             "runtime_seconds": optimization_seconds + sample_seconds,
             "optimization_runtime_seconds": optimization_seconds,
             "sampling_runtime_seconds": sample_seconds,
-            "optimal_expectation": float(optimal_expectation),
+            "optimal_expectation": float(optimal_expectation) + float(ising["constant"]),
             "optimal_parameters": [float(value) for value in optimal_parameters],
         }
 
@@ -173,7 +173,7 @@ def run_cudaq_qaoa(
         "sampling_runtime_seconds": sample_seconds,
         "optimal_expectation": float(optimal_expectation),
         "optimal_parameters": [float(value) for value in optimal_parameters],
-        "target": target or "CUDA-Q default target",
+        "target": target or "CUDA-Q default (not explicitly set)",
     }
 
 
@@ -246,6 +246,9 @@ def main() -> int:
             "qaoa_qubo_energy": None if qaoa is None else qaoa.get("qubo_energy"),
             "qaoa_runtime_seconds": None if qaoa is None else qaoa.get("runtime_seconds"),
             "qaoa_feasible_shot_fraction": None if qaoa is None else qaoa.get("feasible_shot_fraction"),
+            "qaoa_expected_qubo_energy": None if qaoa is None else qaoa.get("optimal_expectation"),
+            "qaoa_parameters": None if qaoa is None else json.dumps(qaoa.get("optimal_parameters", [])),
+            "cudaq_target": None if qaoa is None else qaoa.get("target", args.cudaq_target or "CUDA-Q default (not explicitly set)"),
             "absolute_restored_load_gap_kw": gap,
             "qaoa_matches_classical_optimum": (
                 None if qaoa_load is None else abs(exact_load - float(qaoa_load or 0.0)) < 1e-9
@@ -283,6 +286,7 @@ def main() -> int:
             "qaoa_layers": None if args.classical_only else args.qaoa_layers,
             "qaoa_shots": None if args.classical_only else args.qaoa_shots,
             "qaoa_max_iterations": None if args.classical_only else args.qaoa_max_iterations,
+            "cudaq_target": None if args.classical_only else (args.cudaq_target or "CUDA-Q default (not explicitly set)"),
             "seed": args.seed,
         },
         "semantics_and_limitations": [
