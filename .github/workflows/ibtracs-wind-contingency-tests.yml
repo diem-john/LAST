@@ -8,16 +8,19 @@ on:
       - "grid/ibtracs_fragility.py"
       - "grid/weather_faults.py"
       - "grid/restoration_optimization.py"
+      - "grid/constraint_preserving_restoration.py"
       - "forecasting/data/ibtracs_*.py"
       - "scripts/calibrate_ibtracs_wind_fragility.py"
       - "scripts/run_ibtracs_sensitivity_analysis.py"
       - "scripts/run_ibtracs_contingency_prioritization.py"
       - "scripts/run_ibtracs_minimal_cut_sets_restoration.py"
       - "scripts/run_phase8_restoration_optimization.py"
+      - "scripts/run_phase8_1_xy_mixer_benchmark.py"
       - "tests/test_ibtracs_wind_to_contingency.py"
       - "tests/test_ibtracs_contingency_prioritization.py"
       - "tests/test_ibtracs_minimal_cut_sets_restoration.py"
       - "tests/test_restoration_optimization.py"
+      - "tests/test_constraint_preserving_restoration.py"
       - ".github/workflows/ibtracs-wind-contingency-tests.yml"
   pull_request:
     paths:
@@ -26,14 +29,17 @@ on:
       - "grid/ibtracs_fragility.py"
       - "grid/weather_faults.py"
       - "grid/restoration_optimization.py"
+      - "grid/constraint_preserving_restoration.py"
       - "forecasting/data/ibtracs_*.py"
       - "scripts/run_ibtracs_contingency_prioritization.py"
       - "scripts/run_ibtracs_minimal_cut_sets_restoration.py"
       - "scripts/run_phase8_restoration_optimization.py"
+      - "scripts/run_phase8_1_xy_mixer_benchmark.py"
       - "tests/test_ibtracs_wind_to_contingency.py"
       - "tests/test_ibtracs_contingency_prioritization.py"
       - "tests/test_ibtracs_minimal_cut_sets_restoration.py"
       - "tests/test_restoration_optimization.py"
+      - "tests/test_constraint_preserving_restoration.py"
       - ".github/workflows/ibtracs-wind-contingency-tests.yml"
 
 jobs:
@@ -55,3 +61,4 @@ jobs:
           tests/test_ibtracs_contingency_prioritization.py
           tests/test_ibtracs_minimal_cut_sets_restoration.py
           tests/test_restoration_optimization.py
+          tests/test_constraint_preserving_restoration.py
