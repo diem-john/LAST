@@ -8,23 +8,25 @@ The initial formulation is intentionally limited to **at most one single-tie act
 
 ## Decision variables and QUBO
 
-For an outage state with (n) Phase 7K restoration candidates, define (x_i\in\{0,1\}), where (x_i=1) selects candidate tie action (i). The all-zero vector means no action.
+For an outage state with (n) Phase 7K restoration candidates, define binary decision variables (x_i). A value of 1 selects candidate tie action (i); a value of 0 does not select it. The all-zero vector represents no action.
 
 Let (b_i) be the benchmark active load (kW) reported as restored by candidate (i). The QUBO is:
 
-[
-E(x)=-\sum_{i=1}^{n} b_i x_i + P\sum_{i<j}x_i x_j
-]
+```text
+E(x) = -sum_i(b_i * x_i) + P * sum_(i<j)(x_i * x_j)
+P    = penalty_factor * (sum_i(b_i) + 1)
+```
 
-with:
+The penalty factor must be at least 1.0. The penalty is therefore larger than the sum of all candidate benefits. Every multi-action vector has energy greater than the no-action vector, enforcing an at-most-one constraint. The objective does not model combined tie closures; it ranks individual restoration actions.
 
-[
-P=\text{penalty\_factor}\left(\sum_i b_i+1\right)
-]
+The QUBO is converted to an Ising Hamiltonian using:
 
-The penalty is larger than the sum of all candidate benefits. Therefore, every multi-action vector has energy greater than the no-action vector, enforcing an at-most-one constraint. The objective does not model combined tie closures; it ranks individual restoration actions.
+```text
+x_i = (1 - Z_i) / 2
+H   = constant + sum_i(h_i * Z_i) + sum_(i<j)(J_ij * Z_i * Z_j)
+```
 
-The QUBO is converted to an Ising Hamiltonian using (x_i=(1-Z_i)/2). QAOA alternates the cost unitary and an X-mixer layer. CUDA-Q performs the variational expectation evaluation and sampling. The classical baseline enumerates all (2^n) bitstrings and filters by the same at-most-one constraint.
+QAOA alternates the cost unitary and an X-mixer layer. CUDA-Q performs the variational expectation evaluation and sampling. The classical baseline enumerates all (2^n) bitstrings and filters by the same at-most-one constraint.
 
 ## Inputs
 
@@ -72,12 +74,12 @@ Do not infer GPU acceleration from the package version alone; record the selecte
 
 Compare both methods on identical outage states and QUBO coefficients. Report:
 - exact classical objective and runtime;
-- QAOA optimized expectation, best feasible sampled objective, and runtime;
+- QAOA optimized expected QUBO energy, best feasible sampled objective, and runtime;
 - feasible-shot fraction and whether the QAOA sample matches the exact optimum;
 - absolute restored-load gap in kW;
 - QAOA depth, shots, optimizer iterations, target, and seed.
 
-The exact enumeration is a strong baseline because the benchmark contains only a small number of normally-open tie switches. QAOA is a research comparison, not presumed to be faster or better.
+The exact enumeration is a strong baseline because the benchmark contains only a small number of normally-open tie switches. QAOA is a research comparison, not presumed to be faster or better. QAOA runtime includes variational optimization and final sampling; classical runtime is exact enumeration only, so the measurement boundary must be reported clearly.
 
 ## Scope limitations
 
