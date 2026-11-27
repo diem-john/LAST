@@ -165,21 +165,45 @@ def prepare_wind_track_parameters(
     raw = pd.to_numeric(frame[column], errors="coerce")
     observed_vmax_ms = convert_wind_to_ms(raw.to_numpy(dtype=float), str(source["wind_unit"]))
 
+    # Digital Typhoon/JMA maximum sustained wind is available for grades 3–5.
+    # Grades 2 (tropical depression) and 6 (extratropical cyclone) have no
+    # applicable value in this field; their exported zero placeholders must
+    # not be treated as measured calm winds or receive an additive offset.
+    eligible_grades = source.get("eligible_grade_values")
+    grade_column = str(source.get("grade_column", "grade"))
+    if eligible_grades is not None:
+        if grade_column not in frame:
+            raise ValueError(
+                f"Track table does not contain configured grade column {grade_column!r}"
+            )
+        grade_values = pd.to_numeric(frame[grade_column], errors="coerce")
+        grade_eligible = grade_values.isin([float(value) for value in eligible_grades])
+        observed_vmax_ms = np.where(grade_eligible.to_numpy(), observed_vmax_ms, np.nan)
+    else:
+        grade_eligible = pd.Series(True, index=frame.index)
+
     adjustment = config.get("wind_adjustment", {})
     adjustment_value = float(adjustment.get("value", 0.0))
     adjustment_unit = str(adjustment.get("unit", "knots"))
     if not np.isfinite(adjustment_value) or adjustment_value < 0:
         raise ValueError("wind_adjustment.value must be a finite, nonnegative number")
     adjustment_ms = float(convert_wind_to_ms([adjustment_value], adjustment_unit)[0])
-    adjusted_vmax_ms = observed_vmax_ms + adjustment_ms
-    # Preserve missing/invalid source observations; do not turn missing values into the offset.
+    adjustment_applied_ms = np.where(
+        grade_eligible.to_numpy() & np.isfinite(observed_vmax_ms),
+        adjustment_ms,
+        0.0,
+    )
+    adjusted_vmax_ms = observed_vmax_ms + adjustment_applied_ms
+    # Missing, ineligible, zero, and non-finite source observations remain unavailable.
     vmax = np.where(np.isfinite(adjusted_vmax_ms) & (adjusted_vmax_ms > 0), adjusted_vmax_ms, np.nan)
 
     frame["vmax_source_raw"] = raw
+    frame["wind_grade_eligible"] = grade_eligible.to_numpy()
     frame["vmax_observed_ms"] = observed_vmax_ms
     frame["wind_adjustment_value"] = adjustment_value
     frame["wind_adjustment_unit"] = adjustment_unit
     frame["wind_adjustment_ms"] = adjustment_ms
+    frame["wind_adjustment_applied_ms"] = adjustment_applied_ms
     frame["vmax_adjusted_ms"] = vmax
     frame["vmax_ms"] = vmax
     frame["rmw_km"] = float(config["rmw"]["rmw_km"])
