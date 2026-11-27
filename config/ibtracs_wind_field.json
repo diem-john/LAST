@@ -3,17 +3,19 @@
   "model_status": "uncalibrated_research_sensitivity",
   "source_fields": {
     "wind_column": "wind",
-    "wind_unit": null,
-    "wind_averaging_period_minutes": null,
-    "wind_height_m": null,
+    "wind_unit": "knots",
+    "wind_averaging_period_minutes": 10,
+    "wind_height_m": 10,
     "pressure_column": "pressure",
-    "pressure_unit": null,
-    "source_dataset_release": null,
-    "source_agency": null,
-    "source_semantics_note": "The project metadata CSV uses custom field names (wind, pressure, grade, long50, short50, etc.) and does not contain the standard IBTrACS v04r01 agency/source columns. Confirm provenance, wind unit, averaging period, and reference height before running Phase 7E."
+    "pressure_unit": "hPa",
+    "source_dataset_release": "Digital Typhoon Dataset; exact local release/version not verified",
+    "source_agency": "Japan Meteorological Agency (JMA) RSMC Tokyo best-track-derived",
+    "source_semantics_note": "Repository metadata schema and HDF5 filename pattern match the Digital Typhoon Dataset. Digital Typhoon documents maximum wind in knots; its source best-track is JMA-derived, and JMA uses 10-minute maximum sustained wind. The 10 m reference height is used as the standard surface-wind modeling reference; the dataset metadata inspected does not explicitly state measurement height. Exact local Digital Typhoon release/version remains unverified.",
+    "wind_height_status": "10_m_standard_surface_reference_assumption",
+    "pressure_unit_note": "Digital Typhoon/JMA central pressure is expressed in hPa; pressure is not used by the current wind-profile implementation."
   },
   "wind_adjustment": {
-    "value": 15.0,
+    "value": 15,
     "unit": "knots",
     "application": "additive_to_every_finite_numeric_observation",
     "status": "user_defined_research_sensitivity_assumption",
@@ -22,8 +24,12 @@
   "radial_profile": "willoughby_2006",
   "rmw": {
     "method": "fixed_sensitivity_assumption",
-    "rmw_km": 30.0,
-    "sensitivity_values_km": [20.0, 30.0, 40.0],
+    "rmw_km": 30,
+    "sensitivity_values_km": [
+      20,
+      30,
+      40
+    ],
     "note": "No verified RMW field is available in the normalized track table. 30 km is a sensitivity assumption, not an observed or calibrated radius."
   },
   "hemisphere": "north",
