@@ -151,7 +151,11 @@ def reconstruct_wind_at_points(
 def prepare_wind_track_parameters(
     tracks: pd.DataFrame, config: dict[str, Any]
 ) -> pd.DataFrame:
-    """Add explicit-unit Vmax and configured RMW to every valid storm observation."""
+    """Add configured wind adjustment, explicit-unit Vmax, and RMW.
+
+    The configured additive offset is applied to every finite numeric source
+    observation after unit conversion. Missing values remain missing.
+    """
     validate_wind_config(config)
     source = config["source_fields"]
     column = str(source["wind_column"])
@@ -159,9 +163,24 @@ def prepare_wind_track_parameters(
         raise ValueError(f"Track table does not contain configured wind column {column!r}")
     frame = tracks.copy()
     raw = pd.to_numeric(frame[column], errors="coerce")
-    vmax = convert_wind_to_ms(raw.fillna(0.0).to_numpy(), str(source["wind_unit"]))
-    vmax = np.where(vmax > 0, vmax, np.nan)
+    observed_vmax_ms = convert_wind_to_ms(raw.to_numpy(dtype=float), str(source["wind_unit"]))
+
+    adjustment = config.get("wind_adjustment", {})
+    adjustment_value = float(adjustment.get("value", 0.0))
+    adjustment_unit = str(adjustment.get("unit", "knots"))
+    if not np.isfinite(adjustment_value) or adjustment_value < 0:
+        raise ValueError("wind_adjustment.value must be a finite, nonnegative number")
+    adjustment_ms = float(convert_wind_to_ms([adjustment_value], adjustment_unit)[0])
+    adjusted_vmax_ms = observed_vmax_ms + adjustment_ms
+    # Preserve missing/invalid source observations; do not turn missing values into the offset.
+    vmax = np.where(np.isfinite(adjusted_vmax_ms) & (adjusted_vmax_ms > 0), adjusted_vmax_ms, np.nan)
+
     frame["vmax_source_raw"] = raw
+    frame["vmax_observed_ms"] = observed_vmax_ms
+    frame["wind_adjustment_value"] = adjustment_value
+    frame["wind_adjustment_unit"] = adjustment_unit
+    frame["wind_adjustment_ms"] = adjustment_ms
+    frame["vmax_adjusted_ms"] = vmax
     frame["vmax_ms"] = vmax
     frame["rmw_km"] = float(config["rmw"]["rmw_km"])
     frame["wind_unit_source"] = str(source["wind_unit"])
