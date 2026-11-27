@@ -66,3 +66,16 @@ def test_empty_candidate_set_returns_no_action():
     assert result["bitstring"] == ""
     assert result["selected_tie_branch_ids"] == []
     assert result["restored_load_kw"] == 0.0
+
+
+def test_penalty_factor_below_one_is_rejected():
+    import pytest
+
+    with pytest.raises(ValueError, match="at least 1.0"):
+        build_restoration_qubo(_candidates(), penalty_factor=0.9)
+
+
+def test_candidate_variable_order_is_stable_by_tie_id():
+    shuffled = _candidates().iloc[[2, 0, 1]].reset_index(drop=True)
+    qubo = build_restoration_qubo(shuffled)
+    assert qubo["candidate_rows"]["candidate_tie_branch_id"].tolist() == [34, 35, 36]
