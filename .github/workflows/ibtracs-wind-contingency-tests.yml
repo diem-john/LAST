@@ -13,6 +13,8 @@ on:
       - "scripts/run_ibtracs_sensitivity_analysis.py"
       - "scripts/run_ibtracs_contingency_prioritization.py"
       - "tests/test_ibtracs_contingency_prioritization.py"
+      - "scripts/run_ibtracs_minimal_cut_sets_restoration.py"
+      - "tests/test_ibtracs_minimal_cut_sets_restoration.py"
       - ".github/workflows/ibtracs-wind-contingency-tests.yml"
   pull_request:
     paths:
@@ -22,6 +24,10 @@ on:
       - "grid/weather_faults.py"
       - "forecasting/data/ibtracs_*.py"
       - "tests/test_ibtracs_wind_to_contingency.py"
+      - "scripts/run_ibtracs_contingency_prioritization.py"
+      - "tests/test_ibtracs_contingency_prioritization.py"
+      - "scripts/run_ibtracs_minimal_cut_sets_restoration.py"
+      - "tests/test_ibtracs_minimal_cut_sets_restoration.py"
       - ".github/workflows/ibtracs-wind-contingency-tests.yml"
 
 jobs:
@@ -37,4 +43,8 @@ jobs:
       - name: Run focused physics and contingency tests
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: pytest -q tests/test_ibtracs_wind_to_contingency.py
+        run: >-
+          pytest -q
+          tests/test_ibtracs_wind_to_contingency.py
+          tests/test_ibtracs_contingency_prioritization.py
+          tests/test_ibtracs_minimal_cut_sets_restoration.py
