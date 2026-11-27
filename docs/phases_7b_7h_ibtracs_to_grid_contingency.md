@@ -98,7 +98,25 @@ The formula is not calibrated to Taipower or to the local feeder, and its
 underlying study assumptions may not transfer to this network. Treat results
 only as sensitivity values. Replace the reference curve and pole counts with
 component-specific local data, or fit fragility curves using paired historical
-wind exposure and observed outage/damage records.
+wind exposure and observed outage/damage records. A fitting utility is included:
+
+```bash
+python scripts/calibrate_ibtracs_wind_fragility.py \
+  --observations data/calibration/pole_wind_damage_observations.csv \
+  --asset-class concrete_distribution_pole \
+  --pole-spacing-m 50 \
+  --output config/ibtracs_wind_fragility_calibrated.json
+```
+
+The input CSV must contain `asset_class`, `wind_speed_ms`, and binary
+`failed` (0 = observed non-failure, 1 = observed failure). Use actual paired
+exposure/outcome records for the same component class and a consistent wind
+averaging period and reference height. The fitter requires at least 20
+observations, at least five failures, at least five non-failures, and
+nonconstant wind speeds. It uses a regularized logistic model. The fitted
+coefficients and sample counts are recorded in the output configuration.
+This fitting utility does not itself establish external validation; hold out
+entire storm events for validation and check calibration before use.
 
 ## Phase 7H — Weather-driven contingencies
 
