@@ -20,27 +20,106 @@ from grid.weather_faults import build_branch_contingency
 
 def load_wind_fragility_config(path: str | Path) -> dict[str, Any]:
     config = json.loads(Path(path).read_text(encoding="utf-8"))
-    required = ("pole_spacing_m", "pole_probability_intercept", "pole_probability_exponent_per_mph")
     if config.get("schema_version") != 1:
         raise ValueError("Wind fragility config schema_version must be 1")
-    if any(config.get(key) is None for key in required):
-        raise ValueError(f"Fragility config requires {required}")
-    if float(config["pole_spacing_m"]) <= 0:
-        raise ValueError("pole_spacing_m must be positive")
     if config.get("calibration_status") not in {
         "uncalibrated_literature_reference", "locally_calibrated"
     }:
         raise ValueError("Unsupported calibration_status")
+    if config.get("pole_spacing_m") is None or float(config["pole_spacing_m"]) <= 0:
+        raise ValueError("pole_spacing_m must be positive")
+    model = config.get("model_type", "exponential_literature_reference")
+    if model == "exponential_literature_reference":
+        required = ("pole_probability_intercept", "pole_probability_exponent_per_mph")
+        if any(config.get(key) is None for key in required):
+            raise ValueError(f"Fragility config requires {required}")
+    elif model == "logistic_calibrated":
+        if config.get("calibration_status") != "locally_calibrated":
+            raise ValueError("logistic_calibrated requires calibration_status=locally_calibrated")
+        if config.get("pole_logistic_intercept") is None or config.get("pole_logistic_slope_per_ms") is None:
+            raise ValueError("Calibrated logistic model requires pole_logistic_intercept and pole_logistic_slope_per_ms")
+    else:
+        raise ValueError(f"Unsupported fragility model_type: {model}")
     return config
 
 
 def pole_failure_probability(wind_speed_ms: float, config: dict[str, Any]) -> float:
-    """Literature-reference pole curve: a*exp(b*wind_mph), clipped to [0,1]."""
-    wind_mph = max(0.0, float(wind_speed_ms)) / 0.44704
-    intercept = float(config["pole_probability_intercept"])
-    exponent = float(config["pole_probability_exponent_per_mph"])
-    value = intercept * math.exp(min(60.0, exponent * wind_mph))
+    """Return pole failure probability from the configured reference or fitted curve."""
+    speed = max(0.0, float(wind_speed_ms))
+    model = config.get("model_type", "exponential_literature_reference")
+    if model == "logistic_calibrated":
+        z = float(config["pole_logistic_intercept"]) + float(config["pole_logistic_slope_per_ms"]) * speed
+        value = 1.0 / (1.0 + math.exp(-max(-60.0, min(60.0, z))))
+    else:
+        wind_mph = speed / 0.44704
+        intercept = float(config["pole_probability_intercept"])
+        exponent = float(config["pole_probability_exponent_per_mph"])
+        value = intercept * math.exp(min(60.0, exponent * wind_mph))
     return min(1.0, max(0.0, value))
+
+
+def fit_logistic_pole_fragility(
+    observations: pd.DataFrame,
+    *,
+    wind_column: str = "wind_speed_ms",
+    failure_column: str = "failed",
+    ridge: float = 1e-4,
+    max_iterations: int = 200,
+) -> dict[str, Any]:
+    """Fit a regularized logistic pole-failure curve from paired exposure/outcome data."""
+    missing = {wind_column, failure_column} - set(observations.columns)
+    if missing:
+        raise ValueError(f"Calibration observations missing columns: {sorted(missing)}")
+    frame = observations[[wind_column, failure_column]].copy()
+    frame[wind_column] = pd.to_numeric(frame[wind_column], errors="coerce")
+    frame[failure_column] = pd.to_numeric(frame[failure_column], errors="coerce")
+    frame = frame.dropna()
+    if not frame[wind_column].ge(0).all() or not frame[failure_column].isin([0, 1]).all():
+        raise ValueError("Calibration requires nonnegative wind_speed_ms and binary failed labels")
+    y = frame[failure_column].to_numpy(dtype=float)
+    x_wind = frame[wind_column].to_numpy(dtype=float)
+    failures = int(y.sum())
+    nonfailures = int(len(y) - failures)
+    if len(y) < 20 or failures < 5 or nonfailures < 5:
+        raise ValueError("Calibration requires >=20 records, >=5 failures, and >=5 non-failures")
+    if float(np.std(x_wind)) <= 1e-9:
+        raise ValueError("Calibration wind speeds must have nonzero variance")
+    design = np.column_stack([np.ones(len(x_wind)), x_wind])
+    beta = np.array([math.log((failures + 0.5) / (nonfailures + 0.5)), 0.0])
+    penalty = np.diag([0.0, float(ridge)])
+    converged = False
+    for _ in range(max_iterations):
+        logits = np.clip(design @ beta, -40.0, 40.0)
+        probability = 1.0 / (1.0 + np.exp(-logits))
+        gradient = design.T @ (y - probability) - penalty @ beta
+        weights = probability * (1.0 - probability)
+        hessian = design.T @ (weights[:, None] * design) + penalty + np.eye(2) * 1e-10
+        step = np.linalg.solve(hessian, gradient)
+        beta_next = beta + step
+        if not np.isfinite(beta_next).all():
+            raise ValueError("Logistic fragility fit became non-finite")
+        beta = beta_next
+        if float(np.linalg.norm(step)) < 1e-8:
+            converged = True
+            break
+    logits = np.clip(design @ beta, -40.0, 40.0)
+    probability = 1.0 / (1.0 + np.exp(-logits))
+    eps = 1e-12
+    log_likelihood = float(np.sum(y * np.log(probability + eps) + (1-y) * np.log(1-probability + eps)))
+    return {
+        "model_type": "logistic_calibrated",
+        "pole_logistic_intercept": float(beta[0]),
+        "pole_logistic_slope_per_ms": float(beta[1]),
+        "sample_count": int(len(y)),
+        "failure_count": failures,
+        "nonfailure_count": nonfailures,
+        "wind_speed_min_ms": float(x_wind.min()),
+        "wind_speed_max_ms": float(x_wind.max()),
+        "log_likelihood": log_likelihood,
+        "ridge_penalty": float(ridge),
+        "converged": bool(converged),
+        "fit_method": "regularized_newton_raphson",
+    }
 
 
 def estimate_synthetic_branch_lengths(
