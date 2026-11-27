@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "calibration_status": "uncalibrated_literature_reference",
+  "calibration_note": "Sensitivity-only reference curve. Not calibrated to Taiwan, Chiayi, Taipower, or the synthetic IEEE-33 feeder. Replace or fit with local component failure and wind observations before interpreting as empirical probabilities.",
+  "pole_probability_intercept": 0.0001,
+  "pole_probability_exponent_per_mph": 0.0421,
+  "source_reference": "Literature-reported empirical pole failure equation: p_pole = 0.0001 * exp(0.0421 * V_mph); see the cited distribution resilience study and its underlying reference. Implemented in mph as stated in the source equation.",
+  "pole_spacing_m": 50.0,
+  "pole_spacing_sensitivity_m": [40.0, 50.0, 60.0],
+  "pole_count_method": "ceil_synthetic_straight_line_branch_length / assumed_pole_spacing + 1",
+  "branch_geometry_note": "Branch lengths are straight-line distances between synthetic bus sample points, not surveyed conductor route lengths. Pole counts are illustrative assumptions.",
+  "failure_dependence": "conditional_independent_pole_failures_within_branch_and_independent_branches_given_wind_field",
+  "scenario_generation_requires_explicit_flag": true
+}
