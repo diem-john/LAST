@@ -18,8 +18,8 @@ def build_restoration_qubo(
     penalty_factor: float = 1.0,
 ) -> dict[str, Any]:
     """Build E(x) = -sum(benefit_i*x_i) + P*sum_{i<j}(x_i*x_j)."""
-    if penalty_factor <= 0:
-        raise ValueError("penalty_factor must be positive")
+    if penalty_factor < 1.0:
+        raise ValueError("penalty_factor must be at least 1.0 to guarantee constraint dominance")
     required = {"restoration_candidate_id", "candidate_tie_branch_id", "restored_load_kw"}
     missing = required - set(candidates.columns)
     if missing:
