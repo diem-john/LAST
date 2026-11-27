@@ -12,6 +12,13 @@
     "source_agency": null,
     "source_semantics_note": "The project metadata CSV uses custom field names (wind, pressure, grade, long50, short50, etc.) and does not contain the standard IBTrACS v04r01 agency/source columns. Confirm provenance, wind unit, averaging period, and reference height before running Phase 7E."
   },
+  "wind_adjustment": {
+    "value": 15.0,
+    "unit": "knots",
+    "application": "additive_to_every_finite_numeric_observation",
+    "status": "user_defined_research_sensitivity_assumption",
+    "note": "Add 15 knots to each finite numeric source wind observation before wind-field reconstruction. Preserve original values; missing observations remain missing. This is an experimental offset, not a physical correction or calibrated bias adjustment."
+  },
   "radial_profile": "willoughby_2006",
   "rmw": {
     "method": "fixed_sensitivity_assumption",
