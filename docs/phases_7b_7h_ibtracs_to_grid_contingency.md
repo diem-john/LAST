@@ -43,9 +43,7 @@ the repository. They must not be interpreted as wind radii until verified.
 
 ## Study wind adjustment
 
-The current study configuration applies an additive **15-knot offset** to every
-finite numeric source wind observation before conversion into m/s and wind-field
-reconstruction. The original source value is retained in
+The current study configuration applies an additive **15-knot offset** only to finite numeric wind observations in eligible JMA grades 3, 4, and 5. Grades 2 (tropical depression) and 6 (extratropical cyclone) do not carry an applicable maximum sustained wind value in this field; their zero placeholders are treated as unavailable. The grade and raw source value are preserved. The original source value is retained in
 `vmax_source_raw`; the unadjusted converted value is retained in
 `vmax_observed_ms`; and the adjusted value used by the wind model is stored in
 `vmax_ms` / `vmax_adjusted_ms`. Missing or non-finite observations remain
@@ -53,10 +51,9 @@ missing and are not replaced by the offset.
 
 This +15-knot term is a user-selected experimental sensitivity assumption. It
 is not a validated physical correction, sensor-bias estimate, or calibrated
-adjustment. It also increases already-positive observations. Results must
-therefore be interpreted as conditional on this assumption and, in subsequent
-sensitivity analysis, compared against alternative offsets (for example 0, 10,
-15, and 20 knots).
+adjustment. It increases already-positive eligible observations. Results must
+therefore be interpreted as conditional on this assumption and compared against
+an unadjusted 0-knot baseline.
 
 The adjustment does not establish the source wind averaging period or reference
 height. Those source semantics remain separate configuration requirements.
@@ -232,3 +229,49 @@ The pipeline is an auditable research workflow that turns historical storm
 tracks into synthetic network wind-exposure estimates and topology-only
 contingency samples. It is not a forecast, utility asset model, validated
 fragility model, or operational switching recommendation.
+
+
+## Phase 7I — Wind and fragility sensitivity analysis
+
+The source-wind eligibility rule is grade-aware. Digital Typhoon/JMA maximum
+sustained wind is used only for grades 3, 4, and 5. Grade 2 (tropical depression)
+and grade 6 (extratropical cyclone) values are treated as unavailable, not as
+measured calm winds. No additive adjustment is applied to ineligible grades.
+
+Run the sensitivity matrix after Phase 7C has generated the complete Minxiong
+selected-track CSV:
+
+```bash
+export PYTHONPATH="$(pwd):$PYTHONPATH"
+pytest -q tests/test_ibtracs_wind_to_contingency.py
+python scripts/run_ibtracs_sensitivity_analysis.py \
+  --allow-uncalibrated-sensitivity \
+  --wind-adjustments-knots 0,15 \
+  --rmw-km 20,30,40 \
+  --pole-spacing-m 40,50,60 \
+  --samples-per-storm 100 \
+  --seed 42
+```
+
+The default design contains 18 combinations (2 wind offsets × 3 RMW values ×
+3 pole-spacing assumptions). The random seed and sample count are held constant
+across combinations to support paired comparisons. The runner writes:
+- `reports/ibtracs/phase_7i/phase_7i_sensitivity_summary.csv`;
+- `reports/ibtracs/phase_7i/phase_7i_branch_risk_ranking.csv`;
+- `reports/ibtracs/phase_7i/phase_7i_sensitivity_manifest.json`.
+
+The summary reports expected and sampled failed-branch counts, probability of
+any branch failure, mean and 95th-percentile de-energized buses, and connected
+components. Branch rankings report mean and maximum peak-event failure
+probability for each branch across storms. These remain conditional sensitivity
+outputs under an uncalibrated fragility curve and synthetic geometry; they are
+not observed failure rates or validated electrical outcomes.
+
+### Grade semantics and source qualification
+
+The Digital Typhoon paper states that maximum sustained wind is recorded only
+for grades 3, 4, and 5; grade 2 denotes tropical depression and grade 6 denotes
+extratropical cyclone. The local CSV contains zero wind placeholders for grades
+2 and 6. These values must not be converted into artificial nonzero wind by
+adding a sensitivity offset. The grade-aware filter is therefore applied before
+wind-field reconstruction.
