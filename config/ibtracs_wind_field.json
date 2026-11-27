@@ -12,14 +12,21 @@
     "source_agency": "Japan Meteorological Agency (JMA) RSMC Tokyo best-track-derived",
     "source_semantics_note": "Repository metadata schema and HDF5 filename pattern match the Digital Typhoon Dataset. Digital Typhoon documents maximum wind in knots; its source best-track is JMA-derived, and JMA uses 10-minute maximum sustained wind. The 10 m reference height is used as the standard surface-wind modeling reference; the dataset metadata inspected does not explicitly state measurement height. Exact local Digital Typhoon release/version remains unverified.",
     "wind_height_status": "10_m_standard_surface_reference_assumption",
-    "pressure_unit_note": "Digital Typhoon/JMA central pressure is expressed in hPa; pressure is not used by the current wind-profile implementation."
+    "pressure_unit_note": "Digital Typhoon/JMA central pressure is expressed in hPa; pressure is not used by the current wind-profile implementation.",
+    "grade_column": "grade",
+    "eligible_grade_values": [
+      3,
+      4,
+      5
+    ],
+    "wind_availability_note": "Digital Typhoon/JMA maximum sustained wind is recorded for grades 3 (tropical storm), 4 (severe tropical storm), and 5 (typhoon). Grade 2 (tropical depression) and grade 6 (extratropical cyclone) have no applicable maximum sustained wind value; zero placeholders in these grades are treated as unavailable and are excluded before applying any wind adjustment."
   },
   "wind_adjustment": {
     "value": 15,
     "unit": "knots",
-    "application": "additive_to_every_finite_numeric_observation",
+    "application": "additive_to_finite_numeric_observations_for_eligible_grades_only",
     "status": "user_defined_research_sensitivity_assumption",
-    "note": "Add 15 knots to each finite numeric source wind observation before wind-field reconstruction. Preserve original values; missing observations remain missing. This is an experimental offset, not a physical correction or calibrated bias adjustment."
+    "note": "Add the configured offset only to finite numeric source wind observations whose grade is in source_fields.eligible_grade_values (3, 4, 5). Grade 2 and 6 wind placeholders are treated as unavailable. Preserve original values; missing and ineligible observations remain missing. This is an experimental offset, not a physical correction or calibrated bias adjustment."
   },
   "radial_profile": "willoughby_2006",
   "rmw": {
