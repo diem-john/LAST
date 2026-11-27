@@ -40,6 +40,26 @@ The `long50/short50` and `long30/short30` fields are not consumed by this
 initial model because their geometric meaning and units are not documented in
 the repository. They must not be interpreted as wind radii until verified.
 
+## Study wind adjustment
+
+The current study configuration applies an additive **15-knot offset** to every
+finite numeric source wind observation before conversion into m/s and wind-field
+reconstruction. The original source value is retained in
+`vmax_source_raw`; the unadjusted converted value is retained in
+`vmax_observed_ms`; and the adjusted value used by the wind model is stored in
+`vmax_ms` / `vmax_adjusted_ms`. Missing or non-finite observations remain
+missing and are not replaced by the offset.
+
+This +15-knot term is a user-selected experimental sensitivity assumption. It
+is not a validated physical correction, sensor-bias estimate, or calibrated
+adjustment. It also increases already-positive observations. Results must
+therefore be interpreted as conditional on this assumption and, in subsequent
+sensitivity analysis, compared against alternative offsets (for example 0, 10,
+15, and 20 knots).
+
+The adjustment does not establish the source wind averaging period or reference
+height. Those source semantics remain separate configuration requirements.
+
 ## Phase 7E — Parametric wind-field reconstruction
 
 The current implementation uses a Willoughby et al. (2006)-style two-region
