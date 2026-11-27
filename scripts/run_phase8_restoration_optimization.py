@@ -171,7 +171,7 @@ def run_cudaq_qaoa(
         "runtime_seconds": optimization_seconds + sample_seconds,
         "optimization_runtime_seconds": optimization_seconds,
         "sampling_runtime_seconds": sample_seconds,
-        "optimal_expectation": float(optimal_expectation),
+        "optimal_expectation": float(optimal_expectation) + float(ising["constant"]),
         "optimal_parameters": [float(value) for value in optimal_parameters],
         "target": target or "CUDA-Q default (not explicitly set)",
     }
