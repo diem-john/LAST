@@ -9,6 +9,7 @@ on:
       - "grid/weather_faults.py"
       - "forecasting/data/ibtracs_*.py"
       - "tests/test_ibtracs_wind_to_contingency.py"
+      - "scripts/calibrate_ibtracs_wind_fragility.py"
       - ".github/workflows/ibtracs-wind-contingency-tests.yml"
   pull_request:
     paths:
