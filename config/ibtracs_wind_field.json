@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "model_status": "uncalibrated_research_sensitivity",
+  "source_fields": {
+    "wind_column": "wind",
+    "wind_unit": null,
+    "wind_averaging_period_minutes": null,
+    "wind_height_m": null,
+    "pressure_column": "pressure",
+    "pressure_unit": null,
+    "source_dataset_release": null,
+    "source_agency": null,
+    "source_semantics_note": "The project metadata CSV uses custom field names (wind, pressure, grade, long50, short50, etc.) and does not contain the standard IBTrACS v04r01 agency/source columns. Confirm provenance, wind unit, averaging period, and reference height before running Phase 7E."
+  },
+  "radial_profile": "willoughby_2006",
+  "rmw": {
+    "method": "fixed_sensitivity_assumption",
+    "rmw_km": 30.0,
+    "sensitivity_values_km": [20.0, 30.0, 40.0],
+    "note": "No verified RMW field is available in the normalized track table. 30 km is a sensitivity assumption, not an observed or calibrated radius."
+  },
+  "hemisphere": "north",
+  "translation_asymmetry": "miyazaki_1962",
+  "surface_wind_note": "Use the source sustained wind value as the radial profile Vmax only after confirming that it represents a 10-m sustained wind. No conversion between 1-min, 3-min, or 10-min averaging periods is applied."
+}
