@@ -16,6 +16,8 @@ from grid.ibtracs_fragility import (
     pole_failure_probability,
     sample_weather_contingencies,
     select_peak_network_snapshot,
+    fit_logistic_pole_fragility,
+    pole_failure_probability,
 )
 
 
@@ -165,3 +167,35 @@ def test_weather_contingency_sampler_is_reproducible():
     b, _ = sample_weather_contingencies(peak, case, samples_per_storm=3, seed=7)
     assert a == b
     assert all(item["failed_branch_ids"] == [1] for item in a)
+
+
+
+def test_local_logistic_fragility_can_be_fitted_from_paired_outcomes():
+    winds = np.linspace(10.0, 50.0, 100)
+    probabilities = 1.0 / (1.0 + np.exp(-(-8.0 + 0.2 * winds)))
+    rng = np.random.default_rng(17)
+    failed = rng.binomial(1, probabilities)
+    observations = pd.DataFrame({
+        "wind_speed_ms": winds,
+        "failed": failed,
+    })
+    fitted = fit_logistic_pole_fragility(observations)
+    assert fitted["sample_count"] == 100
+    assert fitted["failure_count"] >= 5
+    assert fitted["nonfailure_count"] >= 5
+    config = {
+        "model_type": "logistic_calibrated",
+        "calibration_status": "locally_calibrated",
+        "pole_logistic_intercept": fitted["pole_logistic_intercept"],
+        "pole_logistic_slope_per_ms": fitted["pole_logistic_slope_per_ms"],
+    }
+    assert pole_failure_probability(40.0, config) > pole_failure_probability(10.0, config)
+
+
+def test_logistic_fragility_rejects_single_class_labels():
+    observations = pd.DataFrame({
+        "wind_speed_ms": np.linspace(5.0, 30.0, 30),
+        "failed": [0] * 30,
+    })
+    with pytest.raises(ValueError, match=">=5 failures"):
+        fit_logistic_pole_fragility(observations)
