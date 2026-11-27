@@ -98,8 +98,8 @@ def run_cudaq_qaoa(
     parameter_count = 2 * layers
     rng = np.random.default_rng(seed)
     initial = np.concatenate([
-        rng.uniform(0.0, 2.0 * np.pi, size=layers),
-        rng.uniform(0.0, np.pi, size=layers),
+        rng.uniform(-np.pi, np.pi, size=layers),
+        rng.uniform(-np.pi, np.pi, size=layers),
     ]).tolist()
     optimizer = cudaq.optimizers.COBYLA()
     optimizer.max_iterations = max_iterations
