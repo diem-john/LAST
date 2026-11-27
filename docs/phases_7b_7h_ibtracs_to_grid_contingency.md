@@ -258,7 +258,8 @@ The default design contains 18 combinations (2 wind offsets × 3 RMW values ×
 across combinations to support paired comparisons. The runner writes:
 - `reports/ibtracs/phase_7i/phase_7i_sensitivity_summary.csv`;
 - `reports/ibtracs/phase_7i/phase_7i_branch_risk_ranking.csv`;
-- `reports/ibtracs/phase_7i/phase_7i_sensitivity_manifest.json`.
+- `reports/ibtracs/phase_7i/phase_7i_sensitivity_manifest.json`;
+- `reports/ibtracs/phase_7i/phase_7i_event_ranking.csv` (event-level peak wind and expected branch failure summary for each parameter configuration).
 
 The summary reports expected and sampled failed-branch counts, probability of
 any branch failure, mean and 95th-percentile de-energized buses, and connected
@@ -275,3 +276,50 @@ extratropical cyclone. The local CSV contains zero wind placeholders for grades
 2 and 6. These values must not be converted into artificial nonzero wind by
 adding a sensitivity offset. The grade-aware filter is therefore applied before
 wind-field reconstruction.
+
+
+## Phase 7J — Critical branch and contingency prioritization
+
+Phase 7J consumes the Phase 7I branch ranking and event-level storm ranking
+files together with the canonical IEEE 33-bus case. It produces:
+
+- `phase_7j_branch_priority.csv`: maps every in-service branch ID to its
+  from/to bus endpoints and aggregates mean peak-event failure probability
+  across the 18 sensitivity configurations. It also reports maximum modeled
+  probability, mean within-run rank, and the fraction of configurations in
+  which a branch appears in the top ten.
+- `phase_7j_storm_priority.csv`: aggregates each historical storm's peak
+  network wind, expected failed branch count, and maximum branch probability
+  across the Phase 7I parameter configurations.
+- `phase_7j_representative_contingencies.csv`: evaluates all combinations
+  of one, two, and three branches among the ten highest-ranked branches
+  (175 deterministic combinations by default). Each combination is applied
+  to the IEEE 33-bus graph and ranked by de-energized bus count, connected
+  components, and the sum of branch risk scores.
+- `phase_7j_manifest.json`: records inputs, scenario semantics, and limits.
+
+Run after regenerating Phase 7I with the updated event-level export:
+
+```bash
+export PYTHONPATH="$(pwd):$PYTHONPATH"
+python scripts/run_ibtracs_sensitivity_analysis.py \
+  --allow-uncalibrated-sensitivity \
+  --wind-adjustments-knots 0,15 \
+  --rmw-km 20,30,40 \
+  --pole-spacing-m 40,50,60 \
+  --samples-per-storm 100 \
+  --seed 42
+
+python scripts/run_ibtracs_contingency_prioritization.py \
+  --top-k-branches 10 \
+  --max-failed-branches 3
+```
+
+The representative combinations are deterministic screening cases built from
+the top-ranked individual branches. They are not joint-probability estimates,
+not a replacement for the Monte Carlo samples, and not necessarily correlated
+outage patterns. The storm priority file ranks historical peak events, not
+future forecasts. The topology assessment does not validate AC power flow,
+voltage, thermal limits, protection, load shedding, BESS dispatch, or switching
+operability. All fragility probabilities remain uncalibrated literature-
+reference sensitivity values and the network geometry remains synthetic.

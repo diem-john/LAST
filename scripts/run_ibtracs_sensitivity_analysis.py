@@ -117,6 +117,7 @@ def main() -> int:
 
     summary_rows: list[dict] = []
     branch_rows: list[dict] = []
+    event_rank_rows: list[dict] = []
     combinations = [
         (offset, rmw, spacing)
         for offset in args.wind_adjustments_knots
@@ -183,6 +184,15 @@ def main() -> int:
             "random_seed": int(args.seed),
         })
 
+        for event in event_rows:
+            event_rank_rows.append({
+                "run_id": run_index,
+                "wind_adjustment_knots": float(offset),
+                "rmw_km": float(rmw),
+                "pole_spacing_m": float(spacing),
+                **event,
+            })
+
         branch_peak = peak.groupby("branch_id", as_index=False).agg(
             mean_peak_failure_probability=("branch_failure_probability", "mean"),
             max_peak_failure_probability=("branch_failure_probability", "max"),
@@ -211,6 +221,8 @@ def main() -> int:
     branch_ranking = pd.DataFrame(branch_rows)
     summary.to_csv(output_dir / "phase_7i_sensitivity_summary.csv", index=False, encoding="utf-8-sig")
     branch_ranking.to_csv(output_dir / "phase_7i_branch_risk_ranking.csv", index=False, encoding="utf-8-sig")
+    event_ranking = pd.DataFrame(event_rank_rows)
+    event_ranking.to_csv(output_dir / "phase_7i_event_ranking.csv", index=False, encoding="utf-8-sig")
     manifest = {
         "status": "phase_7i_sensitivity_analysis_completed",
         "design": {
@@ -229,6 +241,7 @@ def main() -> int:
         "outputs": {
             "summary": str(output_dir / "phase_7i_sensitivity_summary.csv"),
             "branch_ranking": str(output_dir / "phase_7i_branch_risk_ranking.csv"),
+            "event_ranking": str(output_dir / "phase_7i_event_ranking.csv"),
         },
     }
     (output_dir / "phase_7i_sensitivity_manifest.json").write_text(
@@ -239,6 +252,7 @@ def main() -> int:
         "combinations": len(combinations),
         "summary_output": str(output_dir / "phase_7i_sensitivity_summary.csv"),
         "branch_ranking_output": str(output_dir / "phase_7i_branch_risk_ranking.csv"),
+        "event_ranking_output": str(output_dir / "phase_7i_event_ranking.csv"),
         "manifest_output": str(output_dir / "phase_7i_sensitivity_manifest.json"),
     }, indent=2))
     return 0
