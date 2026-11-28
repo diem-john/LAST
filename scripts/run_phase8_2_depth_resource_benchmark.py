@@ -72,6 +72,11 @@ def _evaluate(candidates, *, benchmark_type, scenario_id, seed, depth, shots, it
     ):
         sampled_load = result.get("restored_load_kw")
         exact_load = float(exact["restored_load_kw"])
+        feasible_shots = result.get("feasible_shots")
+        total_shots = result.get("total_shots")
+        violations = result.get("constraint_violations")
+        if violations is None and feasible_shots is not None and total_shots is not None:
+            violations = max(0, int(total_shots) - int(feasible_shots))
         rows.append({
             "benchmark_type": benchmark_type,
             "scenario_id": str(scenario_id),
@@ -93,7 +98,7 @@ def _evaluate(candidates, *, benchmark_type, scenario_id, seed, depth, shots, it
             "feasible_shots": result.get("feasible_shots"),
             "total_shots": result.get("total_shots"),
             "feasible_shot_fraction": result.get("feasible_shot_fraction"),
-            "constraint_violations": result.get("constraint_violations"),
+            "constraint_violations": violations,
             "qaoa_runtime_seconds": result.get("runtime_seconds"),
             "classical_exact_runtime_seconds": exact_x.get("runtime_seconds"),
             "optimization_runtime_seconds": result.get("optimization_runtime_seconds"),
