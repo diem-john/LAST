@@ -43,3 +43,10 @@ def test_xy_no_action_short_circuit_reports_no_executed_gates():
     assert result["primitive_gate_count"] == 0
     assert result["two_qubit_gate_count"] == 0
     assert result["source_order_depth_upper_bound"] == 0
+
+
+def test_phase8_2_runner_imports_without_cudaq_runtime():
+    import importlib
+
+    runner = importlib.import_module("scripts.run_phase8_2_depth_resource_benchmark")
+    assert callable(runner.main)
