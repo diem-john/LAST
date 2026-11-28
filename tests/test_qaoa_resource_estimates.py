@@ -35,3 +35,11 @@ def test_xy_mixer_resource_estimate_includes_no_action_and_complete_graph():
 def test_resource_estimates_reject_invalid_dimensions(function, args):
     with pytest.raises(ValueError):
         function(*args)
+
+
+def test_xy_no_action_short_circuit_reports_no_executed_gates():
+    result = estimate_xy_mixer_resources(action_count=0, layers=3)
+    assert result["qubit_count"] == 1
+    assert result["primitive_gate_count"] == 0
+    assert result["two_qubit_gate_count"] == 0
+    assert result["source_order_depth_upper_bound"] == 0
