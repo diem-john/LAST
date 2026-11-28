@@ -38,7 +38,7 @@ def estimate_x_mixer_resources(
         "primitive_gate_count": single_qubit + two_qubit,
         "single_qubit_gate_count": single_qubit,
         "two_qubit_gate_count": two_qubit,
-        "source_order_depth_upper_bound": (1 if n else 0) + p * (2 + 3 * edges),
+        "source_order_depth_upper_bound": (1 if n else 0) + p * (2 * n + 3 * edges),
         "resource_estimate_basis": "source_kernel_primitive_gate_calls",
     }
 
@@ -54,8 +54,8 @@ def estimate_xy_mixer_resources(action_count: int, layers: int) -> dict[str, int
     p = _validate_layers(layers)
     qubits = n + 1
     edges = qubits * (qubits - 1) // 2
-    initial_gates = 1  # X on the no-action reference qubit
-    cost_gates = n * p  # one RZ per action qubit and layer
+    initial_gates = 1
+    cost_gates = n * p
     mixer_gates = 18 * edges * p
     two_qubit = 4 * edges * p
     single_qubit = initial_gates + cost_gates + (mixer_gates - two_qubit)
@@ -65,6 +65,6 @@ def estimate_xy_mixer_resources(action_count: int, layers: int) -> dict[str, int
         "primitive_gate_count": initial_gates + cost_gates + mixer_gates,
         "single_qubit_gate_count": single_qubit,
         "two_qubit_gate_count": two_qubit,
-        "source_order_depth_upper_bound": initial_gates + p * (1 + 18 * edges),
+        "source_order_depth_upper_bound": initial_gates + p * (n + 18 * edges),
         "resource_estimate_basis": "source_kernel_primitive_gate_calls",
     }
