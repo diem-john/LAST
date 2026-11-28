@@ -46,7 +46,8 @@ def test_exact_one_hot_solver_matches_penalty_formulation_optimum():
     penalty = solve_classical_exact(build_restoration_qubo(candidates))
     assert one_hot["selected_tie_branch_ids"] == [35]
     assert one_hot["restored_load_kw"] == penalty["restored_load_kw"] == 250.0
-    assert one_hot["bitstring"] == "0100"
+    # Index 0 is no-action; index 2 is Tie 35 after stable sorting by tie ID.
+    assert one_hot["bitstring"] == "0010"
 
 
 def test_no_action_wins_when_all_benefits_are_zero_or_negative():
