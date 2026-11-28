@@ -53,6 +53,16 @@ def estimate_xy_mixer_resources(action_count: int, layers: int) -> dict[str, int
     n = _validate_nonnegative("action_count", action_count)
     p = _validate_layers(layers)
     qubits = n + 1
+    if n == 0:
+        return {
+            "qubit_count": qubits,
+            "mixer_edge_count": 0,
+            "primitive_gate_count": 0,
+            "single_qubit_gate_count": 0,
+            "two_qubit_gate_count": 0,
+            "source_order_depth_upper_bound": 0,
+            "resource_estimate_basis": "deterministic_no_action_short_circuit",
+        }
     edges = qubits * (qubits - 1) // 2
     initial_gates = 1
     cost_gates = n * p
